@@ -1,4 +1,5 @@
 <?php
+include 'lib/class/BaseDonnee.php';
 define('SMARTY_DIR', 'lib/smarty/libs/');
 require_once(SMARTY_DIR . 'Smarty.class.php');
 $smarty = new Smarty();
