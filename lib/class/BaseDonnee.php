@@ -12,7 +12,7 @@
  * @author loknight
  */
 class BaseDonnee {
-        private $dbName = "smite";//mettre le nom de votre base de donnée
+        private $dbName = "acuBD";//mettre le nom de votre base de donnée
         private $pass = ""; //donnez le mot de passe de votre bd 
         private $user = "root"; //donnez le nom d'utilisateur de la bd (probablement "root")
 
