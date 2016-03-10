@@ -24,6 +24,4 @@ abstract class DAO{
     abstract public function selectAll();
     abstract public function selectById($id);
     
-    
-} 
-?>
+}
