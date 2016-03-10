@@ -8,3 +8,18 @@ and open the template in the editor.
     Author     : loknight
 */
 
+/* General */
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-image: url("../images/test2.jpg");
+    background-position: center top;
+    background-size: 100% auto;
+    height: 200px;
+}
+header *{
+    margin-left: 350px;
+}
