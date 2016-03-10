@@ -9,7 +9,7 @@
 require_once 'BaseDonnee.php';
 
 abstract class DAO{
-    protected static $connexion;
+    protected $connexion;
     
     function __construct(){
         try{

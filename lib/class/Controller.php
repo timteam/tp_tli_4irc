@@ -21,7 +21,6 @@ class Controller {
         include "DAO/PathologieDAO.php";
         $DAO = new PathologieDAO();
         $smarty = new Smarty();
-
         $smarty->template_dir = 'templates/';
         $smarty->compile_dir = 'templates_c/';
         $smarty->config_dir = 'configs/';
