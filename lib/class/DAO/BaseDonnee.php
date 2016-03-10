@@ -16,7 +16,7 @@ class BaseDonnee {
         private $pass = ""; //donnez le mot de passe de votre bd 
         private $user = "root"; //donnez le nom d'utilisateur de la bd (probablement "root")
 
-        private function getDB(){
+        public function getDB(){
                 $db = null;
                 try{
                         $db = new PDO('mysql:host=localhost;dbname='.$this->dbName, $this->user, $this->pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
