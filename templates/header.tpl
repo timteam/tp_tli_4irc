@@ -1,5 +1,4 @@
         <header>
-            <img src="media/images/Autumn-Acu.jpg"/>
             <h1>
                 Acupuncture
             </h1>
