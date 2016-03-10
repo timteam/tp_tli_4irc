@@ -20,12 +20,12 @@ class PathologieDAO extends DAO{
         parent::__construct();
     }
     
-    protected function selectAll() {
+    public function selectAll() {
         return ($this->connexion->requete("SELECT * FROM acu.patho"));
     }
 
-    protected function selectById($id) {
-        return ($connexion::requete("SELECT * FROM acu.patho WHERE idP = $id"));
+    public function selectById($id) {
+        return ($this->connexion->requete("SELECT * FROM acu.patho WHERE idP = $id"));
     }
     
     /**
@@ -33,8 +33,8 @@ class PathologieDAO extends DAO{
      * @param type $id
      * @return type liste de symptones qui est en générale unique
      */
-    protected function selectPathoByIdSymptone($id){
-        return ($connexion::requete("SELECT * FROM acu.patho p where p.idP in (
+    public function selectPathoByIdSymptone($id){
+        return ($this->connexion->requete("SELECT * FROM acu.patho p where p.idP in (
                                         select idP from acu.symptPatho sp where sp.idS = "
                                         + $id +")"));
     }
@@ -44,7 +44,7 @@ class PathologieDAO extends DAO{
      * @param type $listSymptones
      * @return type liste de symptones
      */
-    protected function selectPathoByListIdSymptone($listSymptones){
+    public function selectPathoByListIdSymptone($listSymptones){
         $parameters = "";
         foreach($listSymptones['sId'] as $id){
             $parameters = $parameters + $id +", ";
@@ -52,7 +52,7 @@ class PathologieDAO extends DAO{
         $parameters = $parameters->substr($parameters,0,2);
         $parameters = $parameters + ")";
         
-        return ($connexion::requete("SELECT * FROM acu.patho p where p.idP in (
+        return ($this->connexion->requete("SELECT * FROM acu.patho p where p.idP in (
                                         select idP from acu.symptPatho sp where sp.idS in ("
                                         + $parameters +"))"));
     }
