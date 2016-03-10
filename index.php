@@ -15,3 +15,4 @@ if(!empty($_GET)){
 }else{
    $smarty->display('index.tpl');
 } 
+?>

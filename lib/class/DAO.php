@@ -9,8 +9,21 @@
 require_once 'BaseDonnee.php';
 
 abstract class DAO{
-    private static $connexion;
+    protected static $connexion;
     
+    function __construct(){
+        try{
+            $this->$connexion = BaseDonnee::getDB();
+        }catch(Exception $e){
+            //printf("Echec de connexion : \n" + $e);
+            throw new Exception("Echec de connexion : \n" + $e);
+        }
+        
+    }
+      
     abstract protected function selectAll();
+    abstract protected function selectById($id);
     
-}
+    
+} 
+?>
