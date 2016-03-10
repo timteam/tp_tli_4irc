@@ -9,7 +9,7 @@
 require_once 'BaseDonnee.php';
 
 abstract class DAO{
-    private static $connexion;
+    protected static $connexion;
     
     function __construct(){
         try{
@@ -24,6 +24,4 @@ abstract class DAO{
     abstract public function selectAll();
     abstract public function selectById($id);
     
-    
-} 
-?>
+}

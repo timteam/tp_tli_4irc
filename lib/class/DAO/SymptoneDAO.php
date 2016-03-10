@@ -10,12 +10,12 @@ require_once 'DAO.php';
 
 class SymptoneDAO extends DAO{
     
-    protected function selectAll() {
-        return ($connexion::requete("SELECT * FROM acu.symptone"));
+    public function selectAll() {
+        return ($this->connexion->requete("SELECT * FROM acu.symptone"));
     }
 
-    protected function selectById($id) {
-        return ($connexion::requete("SELECT * FROM acu.symptone WHERE ids = "+$id));
+    public function selectById($id) {
+        return ($this->connexion->requete("SELECT * FROM acu.symptone WHERE ids = "+$id));
     }
 
 }
