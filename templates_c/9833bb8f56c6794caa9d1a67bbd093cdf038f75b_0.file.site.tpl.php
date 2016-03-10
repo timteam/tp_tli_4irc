@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-10 15:00:07
+/* Smarty version 3.1.29, created on 2016-03-10 16:11:42
   from "D:\wamp\www\tpPhp\tp_tli_4irc\templates\site.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56e18bf78e0b51_24165489',
+  'unifunc' => 'content_56e19cbeea9613_91371549',
   'file_dependency' => 
   array (
     '9833bb8f56c6794caa9d1a67bbd093cdf038f75b' => 
     array (
       0 => 'D:\\wamp\\www\\tpPhp\\tp_tli_4irc\\templates\\site.tpl',
-      1 => 1457622004,
+      1 => 1457626299,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_56e18bf78e0b51_24165489 ($_smarty_tpl) {
+function content_56e19cbeea9613_91371549 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,7 +38,7 @@ function content_56e18bf78e0b51_24165489 ($_smarty_tpl) {
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->tpl_vars['module']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('argument'=>'$argument'), 0, true);
+        <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, ((string)$_smarty_tpl->tpl_vars['module']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('argument'=>$_smarty_tpl->tpl_vars['argument']->value), 0, true);
 ?>
 
         <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);

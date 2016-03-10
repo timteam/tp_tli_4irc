@@ -8,7 +8,7 @@
             {foreach from=$argument item=pathologie}
             <tr>
                 <td>
-                    {$pathologie.desc}
+                    {$pathologie.3}
                 </td>
             </tr>
             {/foreach}
