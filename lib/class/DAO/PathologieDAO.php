@@ -35,24 +35,24 @@ class PathologieDAO extends DAO{
     }
     
     /**
-     * Récupère la liste des Symptones par rapport à une pathologie sélectionnée.
+     * Récupère la liste des Symptomes par rapport à une pathologie sélectionnée.
      * @param type $id
      * @return type liste de symptones qui est en générale unique
      */
-    public function selectPathoByIdSymptone($id){
+    public function selectPathoByIdSymptome($id){
         return ($this->connexion->requete("SELECT * FROM acu.patho p where p.idP in (
                                         select idP from acu.symptPatho sp where sp.idS = "
                                         + $id +")"));
     }
     
     /**
-     * Récupère la liste des Symptones par rapport à une pathologie sélectionnée.
-     * @param type $listSymptones
+     * Récupère la liste des Symptomes par rapport à une pathologie sélectionnée.
+     * @param type $listSymptomes
      * @return type liste de symptones
      */
-    public function selectPathoByListIdSymptone($listSymptones){
+    public function selectPathoByListIdSymptome($listSymptomes){
         $parameters = "";
-        foreach($listSymptones['sId'] as $id){
+        foreach($listSymptomes['sId'] as $id){
             $parameters = $parameters + $id +", ";
         }
         $parameters = $parameters->substr($parameters,0,2);
