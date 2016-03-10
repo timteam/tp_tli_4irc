@@ -9,11 +9,11 @@
 require_once 'BaseDonnee.php';
 
 abstract class DAO{
-    protected static $connexion;
+    private static $connexion;
     
     function __construct(){
         try{
-            $this->$connexion = BaseDonnee::getDB();
+            $this->connexion = new BaseDonnee();
         }catch(Exception $e){
             //printf("Echec de connexion : \n" + $e);
             throw new Exception("Echec de connexion : \n" + $e);

@@ -21,7 +21,7 @@ class PathologieDAO extends DAO{
     }
     
     protected function selectAll() {
-        return ($connexion::requete("SELECT * FROM acu.patho"));
+        return ($this->connexion->requete("SELECT * FROM acu.patho"));
     }
 
     protected function selectById($id) {

@@ -9,7 +9,7 @@ $smarty->compile_dir = 'templates_c/';
 $smarty->config_dir = 'configs/';
 $smarty->cache_dir = 'cache/';
 
-if (!empty($_GET)) {
+if (!empty($_GET) && isset($_GET["action"])) {
     include "lib/class/Controller.php";
     //parameters["action"] must contain the controller Action
     $controller = new Controller();

@@ -14,6 +14,12 @@
 class Controller {
     //put your code here
     public function pathosAction(){
-        echo 'I am in pathos method of the controller';
+        
+        include "DAO/PathologieDAO.php";
+        $DAO = new PathologieDAO();
+        
+        $smarty->assign('argument',$DAO->selectAll());
+        $smarty->assign('module','pathologie.tpl');
+        $smarty->display('site.tpl');
     }
 }
