@@ -24,4 +24,8 @@ class PathologieDAO extends DAO{
         return $connexion::requete("SELECT * FROM acu.patho");
     }
 
+    protected function selectById($id) {
+        return $connexion::requete("SELECT * FROM acu.patho WHERE idP = $id");
+    }
+
 }
