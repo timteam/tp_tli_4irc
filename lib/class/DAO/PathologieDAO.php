@@ -20,7 +20,7 @@ class PathologieDAO extends DAO{
         parent::__construct();
     }
     
-    protected function selectAll() {
+    public function selectAll() {
         return ($this->connexion->requete("SELECT * FROM acu.patho"));
     }
 
