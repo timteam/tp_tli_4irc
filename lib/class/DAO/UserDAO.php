@@ -15,15 +15,15 @@
 require_once 'DAO.php';
 
 class UserDAO extends DAO{
-    protected function selectAll() {
+    public function selectAll() {
         return ($connexion::requete("SELECT * FROM acu.user"));
     }
 
-    protected function selectById($id) {
+    public function selectById($id) {
         return ($connexion::requete("SELECT * FROM acu.user WHERE idU = $id"));
     }
     
-    function insertUser($user, $password){
+    public function insertUser($user, $password){
         return ($connexion::requete("INSERT INTO acu.user (name, password) VALUES (\"$user\", \"$password\""));
     }
 }
