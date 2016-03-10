@@ -22,7 +22,7 @@ class BaseDonnee {
         public function __construct(){
             require_once 'configs/config.php';
             $pass = $appConfig['DBPassword'];
-            $port = $appConfig['DBPort'];
+            $port = $appConfig['DBport'];
         }
         
 
