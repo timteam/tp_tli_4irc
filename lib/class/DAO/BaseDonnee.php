@@ -11,15 +11,25 @@
  *
  * @author loknight
  */
+
+
 class BaseDonnee {
         private $dbName = "acu";//mettre le nom de votre base de donnée
-        private $pass = ""; //donnez le mot de passe de votre bd 
+        private $pass; //donnez le mot de passe de votre bd 
         private $user = "root"; //donnez le nom d'utilisateur de la bd (probablement "root")
+        private $port;
+        
+        public function __construct(){
+            require_once 'configs/config.php';
+            $pass = $appConfig['DBPassword'];
+            $port = $appConfig['DBPort'];
+        }
+        
 
         public function getDB(){
                 $db = null;
                 try{
-                        $db = new PDO('mysql:host=localhost;dbname='.$this->dbName, $this->user, $this->pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                        $db = new PDO('mysql:host=localhost;port='.$this->port.';dbname='.$this->dbName, $this->user, $this->pass,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 }
                 catch (Exception $e){
                                 die('Erreur : ' . $e->getMessage());
