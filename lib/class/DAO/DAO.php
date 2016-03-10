@@ -8,7 +8,7 @@
 
 require_once 'BaseDonnee.php';
 
-abstract class DAO{
+abstract class DAO implements InterfaceDAO{
     protected static $connexion;
     
     function __construct(){
