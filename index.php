@@ -1,6 +1,5 @@
 <?php
 
-include 'lib/class/BaseDonnee.php';
 define('SMARTY_DIR', 'smarty/libs/');
 require_once(SMARTY_DIR . 'Smarty.class.php');
 $smarty = new Smarty();
@@ -23,6 +22,8 @@ if (!empty($_GET)) {
     }
     
 } else {
-    $smarty->display('index.tpl');
+   $smarty->assign('argument','');
+   $smarty->assign('module','index.tpl');
+   $smarty->display('site.tpl');
 }
 ?>

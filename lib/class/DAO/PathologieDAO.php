@@ -21,11 +21,11 @@ class PathologieDAO extends DAO{
     }
     
     protected function selectAll() {
-        return $connexion::requete("SELECT * FROM acu.patho");
+        return ($connexion::requete("SELECT * FROM acu.patho"));
     }
 
     protected function selectById($id) {
-        return $connexion::requete("SELECT * FROM acu.patho WHERE idP = $id");
+        return ($connexion::requete("SELECT * FROM acu.patho WHERE idP = $id"));
     }
     
     /**
