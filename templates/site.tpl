@@ -9,7 +9,7 @@
   </head>
   <body>
         {include file='header.tpl'}
-      
+        {include file='$module.tpl' argument='$argument' permission='$permission'}
         {include file='footer.tpl'}
   </body>
 </html>
