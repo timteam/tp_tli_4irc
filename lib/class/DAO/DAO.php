@@ -7,7 +7,6 @@
  */
 
 require_once 'BaseDonnee.php';
-require_once 'InterfaceDAO.php';
 
 abstract class DAO{
     protected static $connexion;
