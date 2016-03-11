@@ -25,18 +25,18 @@ class UserDAO extends DAO{
     }
     
     public function selectAll() {
-        return ($connexion::requete("SELECT * FROM acu.user"));
+        return ($connexion->requete("SELECT * FROM acu.user"));
     }
 
     public function selectById($id) {
-        return ($connexion::requete("SELECT * FROM acu.user WHERE idU = $id"));
+        return ($this->connexion->requete("SELECT * FROM acu.user WHERE idU = $id"));
     }
     
     public function insertUser($user, $password){
-        return ($connexion::requete("INSERT INTO acu.user (name, password) VALUES (\"$user\", \"$password\""));
+        return ($this->connexion->requete("INSERT INTO acu.user (name, password) VALUES (\"$user\", \"$password\""));
     }
     
     public function selectUserWithNameAndPassword($user, $password){
-        return ($connexion::requete("SELECT * FROM acu.user WHERE name = \"$user\" AND password = \"$password\""));
+        return ($this->connexion->requete("SELECT * FROM acu.user WHERE name = \"$user\" AND password = \"$password\""));
     }
 }
