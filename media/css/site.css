@@ -81,6 +81,7 @@ header{
     background-position: center top;
     background-size: 100% auto;
     height: 175px;
+    position: relative;
 }
 header>*{
     margin-left: 350px;
@@ -132,3 +133,20 @@ hr{
     color: #df020b;
 }
 
+#popup{
+    display: none;
+}
+
+/* Connexion */
+header #join,header #login{
+    border-radius: 0 0 5px 5px;
+    float: right;
+    background-color: #df020b;
+    color: white;
+    width: 100px;
+    height: 30px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
