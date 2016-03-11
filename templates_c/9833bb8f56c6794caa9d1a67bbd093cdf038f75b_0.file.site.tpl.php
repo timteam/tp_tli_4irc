@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-10 16:11:42
+/* Smarty version 3.1.29, created on 2016-03-11 07:32:11
   from "D:\wamp\www\tpPhp\tp_tli_4irc\templates\site.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56e19cbeea9613_91371549',
+  'unifunc' => 'content_56e2747b23d567_17448632',
   'file_dependency' => 
   array (
     '9833bb8f56c6794caa9d1a67bbd093cdf038f75b' => 
     array (
       0 => 'D:\\wamp\\www\\tpPhp\\tp_tli_4irc\\templates\\site.tpl',
-      1 => 1457626299,
+      1 => 1457681186,
       2 => 'file',
     ),
   ),
@@ -21,14 +21,14 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_56e19cbeea9613_91371549 ($_smarty_tpl) {
+function content_56e2747b23d567_17448632 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Acupuncture - Medecine chinoise millénaire</title>
-    <meta content="Acupuncture - Medecine chinoise millénaire" name="description">
+    <title>Acupunctura - Medecine chinoise millénaire</title>
+    <meta content="Acupunctura - Medecine chinoise millénaire" name="description">
     <link type="text/css" rel="stylesheet" href="media/css/site.css">
     <?php echo '<script'; ?>
  type="text/javascript" charset="UTF-8" src="media/js/site.js"><?php echo '</script'; ?>
