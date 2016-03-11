@@ -27,11 +27,11 @@ class PathologieDAO extends DAO{
     }
     
     public function selectAll() {
-        return ($this->connexion->requete("SELECT * FROM acu.patho"));
+        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho"));
     }
 
     public function selectById($id) {
-        return ($this->connexion->requete("SELECT * FROM acu.patho WHERE idP = $id"));
+        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho WHERE idP = $id"));
     }
     
     /**
@@ -40,7 +40,7 @@ class PathologieDAO extends DAO{
      * @return type liste de symptones qui est en générale unique
      */
     public function selectPathoByIdSymptome($id){
-        return ($this->connexion->requete("SELECT * FROM acu.patho p where p.idP in (
+        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho p where p.idP in (
                                         select idP from acu.symptPatho sp where sp.idS = "
                                         + $id +")"));
     }
@@ -58,7 +58,7 @@ class PathologieDAO extends DAO{
         $parameters = $parameters->substr($parameters,0,2);
         $parameters = $parameters + ")";
         
-        return ($this->connexion->requete("SELECT * FROM acu.patho p where p.idP in (
+        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho p where p.idP in (
                                         select idP from acu.symptPatho sp where sp.idS in ("
                                         + $parameters +"))"));
     }
@@ -66,7 +66,7 @@ class PathologieDAO extends DAO{
     
     
     public function selectAllWithMeridien() {
-        return ($this->connexion->requete("SELECT patho.desc, patho.type, meridien.nom FROM acu.patho"
+        return ($this->connexion->requeteObjet("SELECT patho.desc, patho.type , meridien.nom FROM acu.patho"
                                         . " JOIN acu.meridien on  patho.mer = meridien.code  "));
     }
 

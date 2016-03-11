@@ -13,31 +13,39 @@
  */
 require_once(SMARTY_DIR . 'Smarty.class.php');
 
+include "DAO/PathologieDAO.php";
+
 class Controller {
 
+    private $DAO;
+    private $smarty;
+    
     //put your code here
     public function pathosAction() {
-
-        include "DAO/PathologieDAO.php";
-        $DAO = new PathologieDAO();
-        $smarty = new Smarty();
-        $smarty->template_dir = 'templates/';
-        $smarty->compile_dir = 'templates_c/';
-        $smarty->config_dir = 'configs/';
-        $smarty->cache_dir = 'cache/';
-
-        $array = array();
         
-        foreach ($DAO->selectAllWithMeridien() as $value) {
-            $array[$value['nom']]['nom'] = $value['nom'];
-            $array[$value['nom']]['desc'][] = $value['desc'];
-        }
-        
-        //var_dump($array);
-        
-        $smarty->assign('argument', $array);
-        $smarty->assign('module', 'pathologie.tpl');
-        $smarty->display('site.tpl');
+        $this->DAO = new PathologieDAO();
+        $this->initialize();
+        $this->executeMethod($this->DAO->selectAllWithMeridien(),'pathologie.tpl');
+    }
+    
+    /**
+     * Initialise le template
+     */
+    private function initialize(){
+        $this->smarty = new Smarty();
+        $this->smarty->template_dir = 'templates/';
+        $this->smarty->compile_dir = 'templates_c/';
+        $this->smarty->config_dir = 'configs/';
+        $this->smarty->cache_dir = 'cache/';
+    }
+    /**
+     * Execute la méthode choisit
+     * @param type $methodDAO =  
+     */
+    private function executeMethod($methodDAO,$template){
+        $this->smarty->assign('argument', $methodDAO);
+        $this->smarty->assign('module', $template);
+        $this->smarty->display('site.tpl');
     }
     
     public function inscriptionAction() {
