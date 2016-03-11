@@ -63,13 +63,18 @@ class BaseDonnee {
                 $resu = null;
                 $db = $this->getDB();
                 //prepare la requete
-                $sth = $db->prepare($sql);
-                //execute la requete
-                $sth->execute();
-                
-                //transforme les occurences en liste d'objets
-                while(($result = $sth->fetch(PDO::FETCH_OBJ)) != null){
-                    $resu[] = $result;
+                try{
+                    $sth = $db->prepare($sql);
+                    //execute la requete
+                    $sth->execute();
+
+                    //transforme les occurences en liste d'objets
+                    while(($result = $sth->fetch(PDO::FETCH_OBJ)) != null){
+                        $resu[] = $result;
+                    }
+                }
+                catch(Exception $e){
+                    die('Erreur : ' . $e->getMessage());
                 }
                 return $resu;
         }

@@ -33,7 +33,19 @@ class UserDAO extends DAO{
     }
     
     public function insertUser($user, $password, $email){
-        return ($this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")"));
+        $array = array();
+        try {
+            $this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")");
+        } catch (Exception $ex) {
+            $array["user"] = null;
+            $array["message"] = $ex->getTraceAsString();
+            return $array;
+        }
+        
+        $array["user"] = $user;
+        $array["message"] = "Inscription réussie.";
+        return $array;
+        
     }
     
     public function selectUserWithNameAndPassword($user, $password){
