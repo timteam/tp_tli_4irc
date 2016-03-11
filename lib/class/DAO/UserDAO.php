@@ -26,4 +26,8 @@ class UserDAO extends DAO{
     public function insertUser($user, $password){
         return ($connexion::requete("INSERT INTO acu.user (name, password) VALUES (\"$user\", \"$password\""));
     }
+    
+    public function selectUserWithNameAndPassword($user, $password){
+        return ($connexion::requete("SELECT * FROM acu.user WHERE name = \"$user\" AND password = \"$password\""));
+    }
 }
