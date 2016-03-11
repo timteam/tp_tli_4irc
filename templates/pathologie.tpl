@@ -8,13 +8,13 @@
             </tr>
         </thead>   
         <tfoot>  
-            {foreach from=$argument item=meridien}
+            {foreach from=$argument item=objet}
             <tr>
                 <td>
-                    {$meridien.nom}
+                    {$objet->nom}
                 </td>
                 <td>
-                    {foreach from=$meridien.desc item=pathologie name=loop}
+                    {foreach from=$objet->desc item=pathologie name=loop}
                         {if !$smarty.foreach.loop.first}<span class="separateur">, </span>{/if} 
                             {$pathologie}
                     {/foreach}
