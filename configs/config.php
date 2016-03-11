@@ -7,6 +7,6 @@
  */
 
 $appConfig = array(
-    "DBPassword" => "",
+    "DBPassword" => "root",
     "DBport" => "3306"
     );
