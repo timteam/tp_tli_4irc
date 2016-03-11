@@ -72,14 +72,24 @@ class Controller {
         include "DAO/UserDAO.php";
         $DAO = new UserDAO();
         
-        return $DAO->insertUser($user, $password, $email);
+        $cryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        return $DAO->insertUser($user, $cryptedPassword, $email);
     }
     
     public function connexionValidatedAction($user, $password) {
         include "DAO/UserDAO.php";
         $DAO = new UserDAO();
+                
+        $array = $DAO->selectUserWithName($user);
+        if($array == null){
+            return null;
+        }
+        else if(password_verify($password, $array[0]["password"])){
+            return $array;
+        }
         
-        return $DAO->selectUserWithNameAndPassword($user, $password);
+        return null;
     }
 
 }

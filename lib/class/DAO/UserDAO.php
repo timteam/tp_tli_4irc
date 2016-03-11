@@ -48,7 +48,7 @@ class UserDAO extends DAO{
         
     }
     
-    public function selectUserWithNameAndPassword($user, $password){
-        return ($this->connexion->requete("SELECT * FROM acu.user WHERE name = \"$user\" AND password = \"$password\""));
+    public function selectUserWithName($user){
+        return ($this->connexion->requete("SELECT * FROM acu.user WHERE name = \"$user\""));
     }
 }
