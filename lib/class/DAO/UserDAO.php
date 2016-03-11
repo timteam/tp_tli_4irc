@@ -32,8 +32,8 @@ class UserDAO extends DAO{
         return ($this->connexion->requete("SELECT * FROM acu.user WHERE idU = $id"));
     }
     
-    public function insertUser($user, $password){
-        return ($this->connexion->requete("INSERT INTO acu.user (name, password) VALUES (\"$user\", \"$password\""));
+    public function insertUser($user, $password, $email){
+        return ($this->connexion->requete("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\""));
     }
     
     public function selectUserWithNameAndPassword($user, $password){

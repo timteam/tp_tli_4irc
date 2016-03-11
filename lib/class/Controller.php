@@ -39,5 +39,26 @@ class Controller {
         $smarty->assign('module', 'pathologie.tpl');
         $smarty->display('site.tpl');
     }
+    
+    public function inscriptionAction($pseudo, $password, $email) {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+
+        $array = array();
+        
+        $DAO->insertUser($pseudo, $password, $email);
+        
+        //var_dump($array);
+        
+        $smarty->assign('argument', $array);
+        $smarty->assign('module', 'pathologie.tpl');
+        $smarty->display('site.tpl');
+    }
 
 }
