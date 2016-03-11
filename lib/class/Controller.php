@@ -52,8 +52,7 @@ class Controller {
 
         //var_dump($array);
         
-        $smarty->assign('module', 'inscription.tpl');
-        $smarty->display('site.tpl');
+        $smarty->display('inscription.tpl');
     }
     
     public function connexionAction() {
@@ -66,8 +65,7 @@ class Controller {
         $smarty->config_dir = 'configs/';
         $smarty->cache_dir = 'cache/';
         
-        $smarty->assign('module', 'connexion.tpl');
-        $smarty->display('site.tpl');
+        $smarty->display('connexion.tpl');
     }
     
     public function inscriptionValidatedAction($user, $password, $email) {
@@ -102,13 +100,11 @@ class Controller {
         $array = $DAO->selectUserWithNameAndPassword($user, $password);
         
         if($array == null){
-            $smarty->assign('module', 'connexionErreur.tpl');
+            $smarty->display('connexionErreur.tpl');
         }
         else{   
-            $smarty->assign('module', 'connexionValide.tpl');
+            $smarty->display('connexionValide.tpl');
         }
-        
-        $smarty->display('site.tpl');
     }
 
 }
