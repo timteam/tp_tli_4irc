@@ -9,17 +9,126 @@ and open the template in the editor.
 */
 
 /* General */
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 300;
+    src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/EsvMC5un3kjyUhB9ZEPPwg.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/UyBMtLsHKBKXelqf4x7VRQ.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/1YwB1sO8YE1Lyjf12WNiUA.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/H2DMvhDLycM56KNuAtbJYA.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 900;
+    src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/R4a6fty3waPci7C44H8AjvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 900;
+    src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/tI4j516nok_GrVf4dhunkg.woff2") format("woff2");
+}
+
 *, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: "Lato";
+    box-sizing: border-box;
+}
+html{
+    background-color: #f3f3f3;
+}
+body{
+    width: 1000px;
+    border: 1px solid #eae9e7;
+    margin: 10px auto;
+    background: white
+}
+body>*{
 }
 header{
     background-image: url("../images/test2.jpg");
     background-position: center top;
     background-size: 100% auto;
-    height: 200px;
+    height: 175px;
 }
-header *{
+header>*{
     margin-left: 350px;
 }
+header h1{
+    color: #df020b;
+    margin-bottom: 10px;
+}
+header h2 span{
+    color: #df020b;
+    font-size: 1.6rem;
+}
+header h2 span+span{
+    margin-left: 5px;
+}
+hr{
+    color: #df020b;
+    margin: 0 5px;
+}
+
+#main{
+    border: 1px solid #666;
+    border-left: 5px solid #df020b;
+    padding: 10px 10px 1px 15px;
+    margin: 15px;
+}
+#main table{
+    border-collapse: collapse;
+}
+#main table th{
+    background: rgba(212, 221, 228, 0.5) none repeat scroll 0 0;
+    border: 1px solid #666;
+    border-left: 2px solid #df020b;
+    padding: 5px;
+}
+#main table td:first-child{
+    width: 25%;
+}
+#main table td{
+    border: 1px solid #666;
+    border-left: 2px solid #df020b;
+    padding: 5px;
+}
+
+#main table tr:nth-child(2n) td {
+    background-color: rgba(212, 221, 228, 0.25);
+}
+#main table td .separateur{
+    color: #df020b;
+}
+

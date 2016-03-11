@@ -26,7 +26,16 @@ class Controller {
         $smarty->config_dir = 'configs/';
         $smarty->cache_dir = 'cache/';
 
-        $smarty->assign('argument', $DAO->selectAll());
+        $array = array();
+        
+        foreach ($DAO->selectAllWithMeridien() as $value) {
+            $array[$value['nom']]['nom'] = $value['nom'];
+            $array[$value['nom']]['desc'][] = $value['desc'];
+        }
+        
+        //var_dump($array);
+        
+        $smarty->assign('argument', $array);
         $smarty->assign('module', 'pathologie.tpl');
         $smarty->display('site.tpl');
     }

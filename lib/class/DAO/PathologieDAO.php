@@ -62,4 +62,12 @@ class PathologieDAO extends DAO{
                                         select idP from acu.symptPatho sp where sp.idS in ("
                                         + $parameters +"))"));
     }
+    
+    
+    
+    public function selectAllWithMeridien() {
+        return ($this->connexion->requete("SELECT patho.desc, patho.type, meridien.nom FROM acu.patho"
+                                        . " JOIN acu.meridien on  patho.mer = meridien.code  "));
+    }
+
 }

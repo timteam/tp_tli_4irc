@@ -1,8 +1,9 @@
         <header>
             <h1>
-                Acupuncture
+                ACUPUNTURA
             </h1>
             <h2>
-                Medecine chinoise millénaire
+                <span>U</span>ne <span>M</span>edecine <span>M</span>illénaire <span>C</span>hinoise
             </h2>
         </header>
+        <hr />

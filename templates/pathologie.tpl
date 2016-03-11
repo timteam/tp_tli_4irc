@@ -1,14 +1,23 @@
 <div id="main">
-    <h1>Liste des pathologies</h1>
+    <h3>Liste des pathologies</h3>
     <table>
         <thead>
-            <td>Pathologie</td>
+            <tr>
+                <th>Méridien</th>
+                <th>Pathologies</th>
+            </tr>
         </thead>   
         <tfoot>  
-            {foreach from=$argument item=pathologie}
+            {foreach from=$argument item=meridien}
             <tr>
                 <td>
-                    {$pathologie.3}
+                    {$meridien.nom}
+                </td>
+                <td>
+                    {foreach from=$meridien.desc item=pathologie name=loop}
+                        {if !$smarty.foreach.loop.first}<span class="separateur">, </span>{/if} 
+                            {$pathologie}
+                    {/foreach}
                 </td>
             </tr>
             {/foreach}
