@@ -47,5 +47,47 @@ class Controller {
         $this->smarty->assign('module', $template);
         $this->smarty->display('site.tpl');
     }
+    
+    public function inscriptionAction() {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+
+        //var_dump($array);
+        
+        $smarty->display('inscription.tpl');
+    }
+    
+    public function connexionAction() {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+        
+        $smarty->display('connexion.tpl');
+    }
+    
+    public function inscriptionValidatedAction($user, $password, $email) {
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        
+        return $DAO->insertUser($user, $password, $email);
+    }
+    
+    public function connexionValidatedAction($user, $password) {
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        
+        return $DAO->selectUserWithNameAndPassword($user, $password);
+    }
 
 }

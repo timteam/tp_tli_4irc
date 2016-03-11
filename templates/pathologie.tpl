@@ -16,7 +16,7 @@
                 <td>
                     {foreach from=$objet->desc item=pathologie name=loop}
                         {if !$smarty.foreach.loop.first}<span class="separateur">, </span>{/if} 
-                            {$pathologie}
+                            {$pathologie|capitalize:false}
                     {/foreach}
                 </td>
             </tr>

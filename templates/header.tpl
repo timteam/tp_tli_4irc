@@ -1,4 +1,10 @@
         <header>
+            <div id="login" class="ajax-popup" data-href="">
+                <a>Connection</a>
+            </div>
+            <div id="join" class="ajax-popup" data-href="">
+                Inscription
+            </div>
             <h1>
                 ACUPUNTURA
             </h1>
