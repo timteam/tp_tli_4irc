@@ -21,8 +21,8 @@ class BaseDonnee {
         
         public function __construct(){
             require_once 'configs/config.php';
-            $pass = $appConfig['DBPassword'];
-            $port = $appConfig['DBport'];
+            $this->pass = $appConfig['DBPassword'];
+            $this->port = $appConfig['DBport'];
         }
         
 
