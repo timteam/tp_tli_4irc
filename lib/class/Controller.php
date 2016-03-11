@@ -39,5 +39,76 @@ class Controller {
         $smarty->assign('module', 'pathologie.tpl');
         $smarty->display('site.tpl');
     }
+    
+    public function inscriptionAction() {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+
+        //var_dump($array);
+        
+        $smarty->assign('module', 'inscription.tpl');
+        $smarty->display('site.tpl');
+    }
+    
+    public function connexionAction() {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+        
+        $smarty->assign('module', 'connexion.tpl');
+        $smarty->display('site.tpl');
+    }
+    
+    public function inscriptionValidatedAction($user, $password, $email) {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+
+        $array = $DAO->insertUser($user, $password, $email);
+        
+        //var_dump($array);
+        
+        $smarty->assign('argument', $array);
+        $smarty->assign('module', 'pathologie.tpl');
+        $smarty->display('site.tpl');
+    }
+    
+    public function connexionValidatedAction($user, $password) {
+
+        include "DAO/UserDAO.php";
+        $DAO = new UserDAO();
+        $smarty = new Smarty();
+        $smarty->template_dir = 'templates/';
+        $smarty->compile_dir = 'templates_c/';
+        $smarty->config_dir = 'configs/';
+        $smarty->cache_dir = 'cache/';
+
+        $array = $DAO->selectUserWithNameAndPassword($user, $password);
+        
+        if($array == null){
+            $smarty->assign('module', 'connexionErreur.tpl');
+        }
+        else{   
+            $smarty->assign('module', 'connexionValide.tpl');
+        }
+        
+        $smarty->display('site.tpl');
+    }
 
 }

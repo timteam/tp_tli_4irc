@@ -18,7 +18,7 @@ if (!empty($_GET) && isset($_GET["action"])) {
     $action = $_GET["action"];
     if (is_callable(array($controller, $action."Action"))) {
         
-        $controller->{$action . "Action"}($_GET);
+        $controller->{$action . "Action"}("Antoine", "mdp", "test@test.com");
     } else {
         echo "error in url";
     }
