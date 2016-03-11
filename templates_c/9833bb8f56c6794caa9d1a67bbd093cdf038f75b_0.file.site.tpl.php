@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-03-11 09:02:42
+/* Smarty version 3.1.29, created on 2016-03-11 09:08:19
   from "D:\wamp\www\tpPhp\tp_tli_4irc\templates\site.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56e289b21b9946_10642019',
+  'unifunc' => 'content_56e28b03cd3e67_43338691',
   'file_dependency' => 
   array (
     '9833bb8f56c6794caa9d1a67bbd093cdf038f75b' => 
     array (
       0 => 'D:\\wamp\\www\\tpPhp\\tp_tli_4irc\\templates\\site.tpl',
-      1 => 1457686957,
+      1 => 1457687296,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_56e289b21b9946_10642019 ($_smarty_tpl) {
+function content_56e28b03cd3e67_43338691 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,7 +31,7 @@ function content_56e289b21b9946_10642019 ($_smarty_tpl) {
     <meta content="Acupunctura - Medecine chinoise millénaire" name="description">
     <link type="text/css" rel="stylesheet" href="media/css/site.css">
     <?php echo '<script'; ?>
- type="text/javascript" charset="UTF-8" src="media/js/site.js"><?php echo '</script'; ?>
+ type="text/javascript" charset="UTF-8" src="media/javascript/site.js"><?php echo '</script'; ?>
 >
   </head>
   <body>

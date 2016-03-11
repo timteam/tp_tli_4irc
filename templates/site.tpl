@@ -5,7 +5,7 @@
     <title>Acupunctura - Medecine chinoise millénaire</title>
     <meta content="Acupunctura - Medecine chinoise millénaire" name="description">
     <link type="text/css" rel="stylesheet" href="media/css/site.css">
-    <script type="text/javascript" charset="UTF-8" src="media/js/site.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="media/javascript/site.js"></script>
   </head>
   <body>
         {include file='header.tpl'}
