@@ -36,7 +36,12 @@ class BaseDonnee {
                         }
                 return $db;
         }
-
+        
+        /**
+         * Retourne liste de champs
+         * @param type $sql
+         * @return type
+         */
         public function requete($sql){
                 $resu = null;
 
@@ -46,4 +51,30 @@ class BaseDonnee {
                 }
                 return $resu;
         }
+        
+        
+        
+        /**
+         * Exécute la requete et Retourne une liste d'objets
+         * @param type $sql : requete SQL
+         * @return type
+         */
+        public function requeteObjet($sql){
+                $resu = null;
+                $db = $this->getDB();
+                //prepare la requete
+                $sth = $db->prepare($sql);
+                //execute la requete
+                $sth->execute();
+                
+                //transforme les occurences en liste d'objets
+                while(($result = $sth->fetch(PDO::FETCH_OBJ)) != null){
+                    $resu[] = $result;
+                }
+                return $resu;
+        }
+        
+       
+        
+        
 }
