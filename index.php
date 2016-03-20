@@ -1,10 +1,10 @@
 <?php
 
-//debug();
+debug();
 
 
-require_once 'restafari.php';
-require_once 'routifari.php';
+require_once 'lib/class/restafari.php';
+require_once 'lib/class/routifari.php';
 
 $requestContentType = restafari::getContentType();
 $requestMethod = restafari::getRequestMethod();
@@ -25,10 +25,10 @@ try {
 }
 
 function debug() {
-    print_r($_GET);
-    print_r($_POST);
-    print_r($_SERVER);
-    print_r($_REQUEST);
+    //print_r($_GET);
+    //print_r($_POST);
+    //print_r($_SERVER);
+    //print_r($_REQUEST);
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 }

@@ -25,8 +25,8 @@ class routifari {
             new route('GET', 'HTML', '/sessions', 'session', 'session'), //shows login form
             new route('POST', 'JSON', '/sessions', 'session', 'session'), //login
             new route('DELETE', 'JSON', '/sessions', 'session', 'session'), //logout & redirects to ''
-            new route('GET', 'HTML', '/users/register', 'users', 'register'), //shows registration form
-            new route('POST', 'HTML', '/users', 'users', 'register'), //register user to DB
+            new route('GET', 'HTML', '/users/register', 'session', 'register'), //shows registration form
+            new route('POST', 'HTML', '/users', 'session', 'register'), //register user to DB
             new route('GET', 'HTML,JSON', '/symptomes', 'symptomes', 'symptomes'), //shows symptoms
             new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'), //shows pathos
             new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'), //shows méridiens
@@ -71,9 +71,9 @@ class routifari {
         $actionName = $route->getControllerActionName();
         if (file_exists('lib/class/controllers/' . $controllerName . '.php')) {
             include 'lib/class/controllers/' . $controllerName . '.php';
-            $controller = new $controllerName();
+            $controller = new $controllerName($requestContentType, $_GET, $_POST);
             if (is_callable(array($controller, $actionName))) {
-                $controller->{$actionName}($requestContentType, $_GET, $_POST);
+                $controller->{$actionName}();
             } else {
                 throw new Exception("methode \"$actionName\" inconnue dans le Controleur: " . $controllerName);
             }
