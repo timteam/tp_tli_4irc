@@ -5,7 +5,7 @@
                 <label for="login"> Pseudonyme :</label>
             </td>
             <td>
-                <input id="login" name="login" />
+                <input id="login" name="login" type="text" />
             </td>
         </tr>
         <tr>
@@ -13,7 +13,7 @@
                 <label for="pass"> Mots de passe :</label>
             </td>
             <td>
-                <input id="pass" name="pass" />
+                <input id="pass" name="pass" type="password" />
             </td>
         </tr>
             <tr>

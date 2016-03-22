@@ -1,19 +1,27 @@
-<form method="post" action="inscriptionValidated" id="formConnexion">
+<form method="post" action="users" id="formConnexion">
     <table>
         <tr>
             <td>
                 <label for="login"> Pseudonyme :</label>
             </td>
             <td>
-                <input id="login" name="login" />
+                <input id="login" name="login" type="text"  />
             </td>
         </tr>
         <tr>
             <td>
-                <label for="pass"> Mots de passe :</label>
+                <label for="email"> email :</label>
             </td>
             <td>
-                <input id="pass" name="pass" />
+                <input id="email" name="email" type="email"  />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="pass"> Mot de passe :</label>
+            </td>
+            <td>
+                <input id="pass" name="pass" type="password" />
             </td>
         </tr>
             <tr>
