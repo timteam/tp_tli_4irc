@@ -64,10 +64,8 @@ class SessionController extends Controller{
         $pass = $parameters['pass'];
         $email = $parameters['email'];
         
-        $result = isParametersUser($login, $pass, $email);
-        
-        if(!$result['result']){
-            
+        if(!isParametersUser($login, $pass, $email)){
+            return "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
         }
         
         $cryptedPassword = password_hash($pass, PASSWORD_DEFAULT);
@@ -84,8 +82,11 @@ class SessionController extends Controller{
      *          - 
      */
     private function isParametersUser($user, $pass, $email){
-        $verificationSimpleCote = strpos($user, "'") == false && strpos($user, "'") == false && strstr($user, "'") == false;
-        $verificationDoubleCote = strpos($user, "\"") == false && strstr($user, "\"") == false && strstr($user, "\"") == false;
+        $verificationVide = empty($user) && empty($pass) && empty($email);
+        $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strstr($email, "'") == false;
+        $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false && strstr($email, "\"") == false;
         $verificationEmail = strpos($email, "@") < strpos($email, ".");
+        
+        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail;
     }
 }
