@@ -11,6 +11,7 @@
  *
  * @author timotheetroncy
  */
+require_once 'Controller.php';
 class MeridiensController extends Controller{
     //put your code here
 }

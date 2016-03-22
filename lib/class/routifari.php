@@ -21,15 +21,15 @@ class routifari {
         //Pour un $controllerMethodName = 'HomeLand' avec méthode GET, on obtient la méthode de controller 'homelandActionGet'
         $this->routes = array(
             //       ($method, $contentType, $route, $controller,     $controllerMethodName)
-            new route('GET', 'HTML', '/', 'home', 'home'), //shows homepage
-            new route('GET', 'HTML', '/sessions', 'session', 'session'), //shows login form
-            new route('POST', 'JSON', '/sessions', 'session', 'session'), //login
-            new route('DELETE', 'JSON', '/sessions', 'session', 'session'), //logout & redirects to ''
-            new route('GET', 'HTML', '/users/register', 'session', 'register'), //shows registration form
-            new route('POST', 'HTML', '/users', 'session', 'register'), //register user to DB
-            new route('GET', 'HTML,JSON', '/symptomes', 'symptomes', 'symptomes'), //shows symptoms
-            new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'), //shows pathos
-            new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'), //shows méridiens
+            new route('GET',    'HTML',         '/',                'home',         'home'), //shows homepage
+            new route('GET',    'HTML',         '/sessions',        'session',      'session'), //shows login form
+            new route('POST',   'JSON',         '/sessions',        'session',      'session'), //login
+            new route('DELETE', 'JSON',         '/sessions',        'session',      'session'), //logout & redirects to ''
+            new route('GET',    'HTML',         '/users/register',  'session',      'register'), //shows registration form
+            new route('POST',   'HTML',         '/users',           'session',      'register'), //register user to DB
+            new route('GET',    'HTML,JSON',    '/symptomes',       'symptomes',    'symptomes'), //shows symptoms
+            new route('GET',    'HTML,JSON',    '/pathologies',     'pathologies',  'pathologies'), //shows pathos
+            new route('GET',    'JSON',         '/meridiens',       'meridiens',    'meridiens'), //shows méridiens
         );
 
         /**
@@ -47,7 +47,7 @@ class routifari {
          */
     }
 
-    public function launch($requestContentType, $requestMethod, $requestUrl) {
+    public function launch($requestContentType, $requestMethod, $requestUrl, $getParametres, $postParametres) {
         $UpRequestMethod = strtoupper($requestMethod);
         $LowRequestContentType = strtolower($requestContentType);
         $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50)));
@@ -56,7 +56,7 @@ class routifari {
         $routeFound = false;
         foreach ($this->routes as $route) {
             if (in_array($LowRequestContentType, $route->getContentTypes()) && $UpRequestMethod == $route->getMethod() && $parsedURL == $route->getRoute()) {
-                $this->launchAction($route, $LowRequestContentType);
+                $this->launchAction($route, $LowRequestContentType, $getParametres, $postParametres);
                 $routeFound = true;
                 break;
             }
@@ -66,12 +66,12 @@ class routifari {
         }
     }
 
-    public function launchAction(route $route, $requestContentType) {
+    public function launchAction(route $route, $requestContentType, $getParametres, $postParametres) {
         $controllerName = $route->getController();
         $actionName = $route->getControllerActionName();
         if (file_exists('lib/class/controllers/' . $controllerName . '.php')) {
             include 'lib/class/controllers/' . $controllerName . '.php';
-            $controller = new $controllerName($requestContentType, $_GET, $_POST);
+            $controller = new $controllerName($requestContentType, $getParametres, $postParametres);
             if (is_callable(array($controller, $actionName))) {
                 $controller->{$actionName}();
             } else {

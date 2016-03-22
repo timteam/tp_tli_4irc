@@ -15,16 +15,15 @@ abstract class Controller {
 
     private $smarty;
     private $requestContentType;
-    private $getParametres;
-    private $postParametres;
+    private $requestParametres;
+    private $urlParametres;
 
     public function __construct($requestContentType, $getParametres, $postParametres) {
         if ($requestContentType == 'text/html') {
             $this->initializeSmarty();
         }
         $this->requestContentType = $requestContentType;
-        $this->getParametres = $getParametres;
-        $this->postParametres = $postParametres;
+        $this->requestParametres = array_merge($getParametres, $postParametres);
     }
 
     /**
@@ -56,14 +55,11 @@ abstract class Controller {
     function getRequestContentType() {
         return $this->requestContentType;
     }
-
-    function getGetParametres() {
-        return $this->getParametres;
+    function getRequestParametres() {
+        return $this->requestParametres;
     }
 
-    function getPostParametres() {
-        return $this->postParametres;
+    function getUrlParametres() {
+        return $this->urlParametres;
     }
-
-
 }

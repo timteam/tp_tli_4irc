@@ -1,27 +1,29 @@
 <?php
 
-debug();
+//debug();
 
 
 require_once 'lib/class/restafari.php';
 require_once 'lib/class/routifari.php';
 
+initSmarty();
+
+//We get the HTTP request Method and the HTTP request Content
 $requestContentType = restafari::getContentType();
 $requestMethod = restafari::getRequestMethod();
 
-initSmarty();
-
 try {
+    $safeGetParams = safeParametres($_GET);
+    $safePostParams = safeParametres($_POST);
     $routafari = new routifari();
-    $requestUrl = $_GET['request_url'];
-    $routafari->launch($requestContentType, $requestMethod, $requestUrl);
+    $routafari->launch($requestContentType, $requestMethod, $safeGetParams['request_url'], $safeGetParams, $safePostParams);
 } catch (Exception $exc) {
+//    $smarty = new Smarty();
+//    $smarty->template_dir = 'templates/';
+//    $smarty->compile_dir = 'templates_c/';
+//    $smarty->config_dir = 'configs/';
+//    $smarty->cache_dir = 'cache/';
     echo '404, page introuvable: '.$exc->getMessage();
-    //echo $exc->getTraceAsString();
-    //devrait afficher 404 avec message associé;
-    //$smarty->assign('argument', '');
-    //$smarty->assign('module', 'index.tpl');
-    //$smarty->display('site.tpl');
 }
 
 function debug() {
@@ -36,9 +38,14 @@ function debug() {
 function initSmarty() {
     define('SMARTY_DIR', 'smarty/libs/');
     require_once(SMARTY_DIR . 'Smarty.class.php');
-    $smarty = new Smarty();
-    $smarty->template_dir = 'templates/';
-    $smarty->compile_dir = 'templates_c/';
-    $smarty->config_dir = 'configs/';
-    $smarty->cache_dir = 'cache/';
+}
+
+//Vient prévenir les injections SQL
+//Même si avec PDO normalement, pas besoin
+function safeParametres($array){
+    $return = array();
+    foreach ($array as $key => $value) {
+        $return[$key] = mysql_real_escape_string($value);
+    }
+    return $return;
 }
