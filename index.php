@@ -1,8 +1,7 @@
 <?php
 
 //debug();
-
-
+ 
 require_once 'lib/class/restafari.php';
 require_once 'lib/class/routifari.php';
 
@@ -13,6 +12,9 @@ $requestContentType = restafari::getContentType();
 $requestMethod = restafari::getRequestMethod();
 
 try {
+    //Les paramètres Get et post étant mergés pour plus de simplicité dans les controllers ($requestParameters),
+    //Si un paramètre Post a la même clé qu'un paramètre Get,
+    //Le paramètre Post écrase le paramètre Get
     $safeGetParams = safeParametres($_GET);
     $safePostParams = safeParametres($_POST);
     $routafari = new routifari();

@@ -23,6 +23,8 @@ abstract class Controller {
             $this->initializeSmarty();
         }
         $this->requestContentType = $requestContentType;
+        //Si même clé dans $getParametres et $postParametres
+        //paramètre post écrase paramètre get
         $this->requestParametres = array_merge($getParametres, $postParametres);
     }
 
