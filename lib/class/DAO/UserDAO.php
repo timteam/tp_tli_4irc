@@ -38,7 +38,7 @@ class UserDAO extends DAO{
             $this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")");
         } catch (Exception $ex) {
             $array["user"] = null;
-            $array["message"] = $ex->getTraceAsString();
+            $array["message"] = "Erreur : Le pseudonyme est déjà utilisé";
             return $array;
         }
         

@@ -52,10 +52,38 @@ class SessionController extends Controller{
     
     public function registerActionPost() {
         include "lib/class/DAO/UserDAO.php";
-        $DAO = new UserDAO();
-
-        $cryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $DAO = new UserDAO();    
+        
+        $parameters = $this->getRequestParametres();
+        
+        if($parameters == NULL){
+            return "TO FIX : Erreur dans la récupération des paramètres";
+        }
+        
+        $login = $parameters['login'];
+        $pass = $parameters['pass'];
+        $email = $parameters['email'];
+        
+        $result = isParametersUser($login, $pass, $email);
+        
+        if(!$result['result']){
+            
+        }
+        
+        $cryptedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
         return $DAO->insertUser($user, $cryptedPassword, $email);
+    }
+    
+    
+    /*
+     * Author : Antoine Bouquet
+     * Permet de vérifier les paramètres avant l'inscription de l'utilisateur
+     * Conditions : 
+     *          - pas de caractères ', ni " sur tous les champs
+     *          - 
+     */
+    private function isParametersUser($user, $pass, $email){
+        
     }
 }
