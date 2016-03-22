@@ -46,13 +46,11 @@ class restafari {
             return $defaultValue;
         }
         //récupérer le méthode http ('HEAD', 'PUT', 'GET', 'DELETE', 'POST', 'TRACE', 'CONNECT')
-        $requestMethod = strtoupper(filter_input(INPUT_SERVER, $_SERVER['REQUEST_METHOD'], FILTER_SANITIZE_STRING));
-        switch ($requestMethod) {
+        switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
             case 'GET':
-                return $requestMethod;
+                return 'GET';
             case 'POST':
-                $this->getRequestMethodOnFormPost();
-                return $requestMethod;
+                return restafari::getRequestMethodOnFormPost();
             case 'PUT':
                 return $requestMethod;
             case 'DELETE':
@@ -69,17 +67,16 @@ class restafari {
         if (!isset($_POST['_method'])) {
             return $defaultValue;
         }
-        $requestMethod = strtoupper(filter_input(INPUT_SERVER, $_SERVER['REQUEST_METHOD'], FILTER_SANITIZE_STRING));
 
-        switch ($requestMethod) {
+        switch ($_POST['_method']) {
             case 'GET':
-                return $requestMethod;
+                return $_POST['_method'];
             case 'POST':
-                return $requestMethod;
+                return $_POST['_method'];
             case 'PUT':
-                return $requestMethod;
+                return $_POST['_method'];
             case 'DELETE':
-                return $requestMethod;
+                return $_POST['_method'];
             default:
                 return $defaultValue;
         }
