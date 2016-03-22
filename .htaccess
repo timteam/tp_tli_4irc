@@ -1,4 +1,4 @@
 RewriteEngine on
 #avoid rewriting URL /media
-RewriteCond %{REQUEST_URI} !^/media/
+RewriteCond %{request_uri} !^(.*)media
 RewriteRule ^(.*)$ index.php?request_url=$1 [QSA,L]
