@@ -30,7 +30,7 @@ class PathologieDAO extends DAO{
         return ($this->connexion->requeteObjet("SELECT * FROM acu.patho"));
     }
 
-    public function selectById($id) {
+    public function selectByCode($id) {
         return ($this->connexion->requeteObjet("SELECT * FROM acu.patho WHERE idP = $id"));
     }
     
@@ -68,6 +68,22 @@ class PathologieDAO extends DAO{
     public function selectAllWithMeridien() {
         return ($this->connexion->requeteObjet("SELECT patho.desc, patho.type , meridien.nom FROM acu.patho"
                                         . " JOIN acu.meridien on  patho.mer = meridien.code  "));
+    }
+    
+    public function selectAllforPathologies(){
+        $patho = new PathologieDAO();
+        $meridien = new MeridienDAO();
+        $symptone = new SymptoneDAO();
+        $list = array(
+            "Pathologies" => $patho->selectAll(),
+            "Symptones" => $Keywords->selectAll(),
+            "Meridiens" => $meridient->selectAll()
+        );
+        
+    }
+
+    public function selectById($id) {
+        
     }
 
 }

@@ -14,7 +14,7 @@
 
 require_once 'DAO.php';
 
-class PathologieDAO extends DAO{
+class MeridienDAO extends DAO{
     
     function __construct() {
         try {
