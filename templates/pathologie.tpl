@@ -12,10 +12,13 @@
             <tr>
                 <td>
                     {$objet->nom}
+                    {$nom = $objet->nom}
                 </td>
                 <td>
                     {foreach from=$objet->desc item=pathologie name=loop}
-                        {if !$smarty.foreach.loop.first}<span class="separateur">, </span>{/if} 
+                        {if !$smarty.foreach.loop.first}
+                            <span class="separateur">, </span>
+                        {/if} 
                             {$pathologie|capitalize:false}
                     {/foreach}
                 </td>

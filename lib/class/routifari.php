@@ -15,13 +15,16 @@ class routifari {
 
     //put your code here
     private $routes;
+    private $smarty;
 
     public function __construct() {
         //Pour un $controller = 'homeLand' on obtient 'HomelandController' (première lettre capitale + 'Controller')
         //Pour un $controllerMethodName = 'HomeLand' avec méthode GET, on obtient la méthode de controller 'homelandActionGet'
         $this->routes = array(
             //       ($method, $contentType, $route, $controller,     $controllerMethodName)
+            new route('GET',    'HTML',         '/erreur404',       'erreur404',    'erreur404'), //shows error404 page
             new route('GET',    'HTML',         '/',                'home',         'home'), //shows homepage
+            new route('GET',    'HTML',         '/home',            'home',         'home'), //shows homepage
             new route('GET',    'HTML',         '/sessions',        'session',      'session'), //shows login form
             new route('POST',   'JSON',         '/sessions',        'session',      'session'), //login
             new route('DELETE', 'JSON',         '/sessions',        'session',      'session'), //logout & redirects to ''
@@ -48,21 +51,34 @@ class routifari {
     }
 
     public function launch($requestContentType, $requestMethod, $requestUrl, $getParametres, $postParametres) {
-        $UpRequestMethod = strtoupper($requestMethod);
-        $LowRequestContentType = strtolower($requestContentType);
-        $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50)));
+        try
+        {
+            $UpRequestMethod = strtoupper($requestMethod);
+            $LowRequestContentType = strtolower($requestContentType);
+            $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50)));
 
-        //La première route correspondante est exécutée
-        $routeFound = false;
-        foreach ($this->routes as $route) {
-            if (in_array($LowRequestContentType, $route->getContentTypes()) && $UpRequestMethod == $route->getMethod() && $parsedURL == $route->getRoute()) {
-                $this->launchAction($route, $LowRequestContentType, $getParametres, $postParametres);
-                $routeFound = true;
-                break;
+            //La première route correspondante est exécutée
+            $routeFound = false;
+            foreach ($this->routes as $route) {
+                if (in_array($LowRequestContentType, $route->getContentTypes()) && $UpRequestMethod == $route->getMethod() && $parsedURL == $route->getRoute()) {
+                    $this->launchAction($route, $LowRequestContentType, $getParametres, $postParametres);
+                    $routeFound = true;
+                    break;
+                }
             }
-        }
-        if (!$routeFound) {
-            throw new Exception("aucune route de correspond");
+            if (!$routeFound) {
+                throw new Exception("aucune route de correspond");
+            }
+        }catch(Exception $e){
+            require_once(SMARTY_DIR . 'Smarty.class.php');
+            $this->smarty = new Smarty();
+            $this->smarty->template_dir = 'templates/';
+            $this->smarty->compile_dir = 'templates_c/';
+            $this->smarty->config_dir = 'configs/';
+            $this->smarty->cache_dir = 'cache/';
+            $this->smarty->assign('argument', null);
+            $this->smarty->assign('module', 'erreur404.tpl');
+            $this->smarty->display('site.tpl');      
         }
     }
 
