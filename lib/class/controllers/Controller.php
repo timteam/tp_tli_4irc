@@ -45,9 +45,9 @@ abstract class Controller {
      * @param type $methodDAO =  
      */
     protected function executeMethod($methodDAO, $template) {
-        $this->smarty->assign('argument', $methodDAO);
-        $this->smarty->assign('module', $template);
-        $this->smarty->display('site.tpl');
+            $this->smarty->assign('argument', $methodDAO);
+            $this->smarty->assign('module', $template);
+            $this->smarty->display('site.tpl');
     }
     
     function getSmarty() {

@@ -20,12 +20,14 @@ try {
     $routafari = new routifari();
     $routafari->launch($requestContentType, $requestMethod, $safeGetParams['request_url'], $safeGetParams, $safePostParams);
 } catch (Exception $exc) {
-//    $smarty = new Smarty();
-//    $smarty->template_dir = 'templates/';
-//    $smarty->compile_dir = 'templates_c/';
-//    $smarty->config_dir = 'configs/';
-//    $smarty->cache_dir = 'cache/';
-    echo '404, page introuvable: '.$exc->getMessage();
+    $smarty = new Smarty();
+    $smarty->template_dir = 'templates/';
+    $smarty->compile_dir = 'templates_c/';
+    $smarty->config_dir = 'configs/';
+    $smarty->cache_dir = 'cache/';
+    $smarty->smarty->getassign('argument', $methodDAO);
+    $smarty->smarty->assign('module', $template);
+    $smarty->smarty->display('site.tpl');
 }
 
 function debug() {
