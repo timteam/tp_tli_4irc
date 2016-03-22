@@ -15,31 +15,15 @@ require_once 'Controller.php';
 class SessionController extends Controller{
     //put your code here
     
-        public function inscriptionAction() {
-
+    public function sessionActionGet() {
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();
-
-        $this->getSmarty()->display('inscription.tpl');
+        $this->getRequestParametres();
+        
+        $this->getSmarty()->display('connexion/connexion.tpl');
     }
-
-    public function connexionAction() {
-
-        include "lib/class/DAO/UserDAO.php";
-        $DAO = new UserDAO();
-        $this->getSmarty()->display('connexion.tpl');
-    }
-
-    public function inscriptionValidatedAction($user, $password, $email) {
-        include "lib/class/DAO/UserDAO.php";
-        $DAO = new UserDAO();
-
-        $cryptedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        return $DAO->insertUser($user, $cryptedPassword, $email);
-    }
-
-    public function connexionValidatedAction($user, $password) {
+    
+    public function sessionActionPost() {
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();
 
@@ -47,9 +31,30 @@ class SessionController extends Controller{
         if ($array == null) {
             return null;
         } else if (password_verify($password, $array[0]["password"])) {
+            session_start();
             return $array;
         }
 
         return null;
+    }
+    
+    public function sessionActionDelete() {
+        session_destroy();
+    }
+    
+    public function registerActionGet() {
+        include "lib/class/DAO/UserDAO.php";
+        $DAO = new UserDAO();
+
+        $this->getSmarty()->display('inscription.tpl');
+    }
+    
+    public function registerActionPost() {
+        include "lib/class/DAO/UserDAO.php";
+        $DAO = new UserDAO();
+
+        $cryptedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        return $DAO->insertUser($user, $cryptedPassword, $email);
     }
 }
