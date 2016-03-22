@@ -50,7 +50,7 @@ class SessionController extends Controller{
         $this->getSmarty()->display('connexion/inscription.tpl');
     }
     
-    public function registerActionPost() {
+    public function usersActionPost() {
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();    
         
@@ -70,7 +70,7 @@ class SessionController extends Controller{
         
         $cryptedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
-        return $DAO->insertUser($user, $cryptedPassword, $email);
+        return $DAO->insertUser($user, $cryptedPassword, $email)['message'];
     }
     
     
