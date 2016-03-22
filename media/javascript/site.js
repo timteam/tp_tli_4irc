@@ -30,12 +30,14 @@ $(document).ready(function () {
     });
     
     $('.formConnexion').submit(function () {
+        e.preventDefault(); 
         element = $(this);
         $.ajax({
             url: element.data('action'),
             dataType: 'html',
+            data: element.serialize(), 
             success: function (data) {
-                element.html(data);
+                alert(element.html());
             }
         });
     });
