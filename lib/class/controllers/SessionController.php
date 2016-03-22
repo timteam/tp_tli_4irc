@@ -47,7 +47,7 @@ class SessionController extends Controller{
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();
 
-        $this->getSmarty()->display('inscription.tpl');
+        $this->getSmarty()->display('connexion/inscription.tpl');
     }
     
     public function registerActionPost() {
@@ -84,6 +84,8 @@ class SessionController extends Controller{
      *          - 
      */
     private function isParametersUser($user, $pass, $email){
-        
+        $verificationSimpleCote = strpos($user, "'") == false && strpos($user, "'") == false && strstr($user, "'") == false;
+        $verificationDoubleCote = strpos($user, "\"") == false && strstr($user, "\"") == false && strstr($user, "\"") == false;
+        $verificationEmail = strpos($email, "@") < strpos($email, ".");
     }
 }
