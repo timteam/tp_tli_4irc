@@ -45,9 +45,10 @@ function initSmarty() {
 //Vient prévenir les injections SQL
 //Même si avec PDO normalement, pas besoin
 function safeParametres($array){
-    $return = array();
-    foreach ($array as $key => $value) {
-        $return[$key] = mysql_real_escape_string($value);
-    }
-    return $return;
+//    $return = array();
+//    foreach ($array as $key => $value) {
+//        $return[$key] = mysql_real_escape_string($value);
+//    }
+//    return $return;
+    return $array;
 }
