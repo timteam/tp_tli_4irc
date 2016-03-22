@@ -29,16 +29,17 @@ $(document).ready(function () {
         });
     });
     
-    $('.formConnexion').submit(function () {
+    $(document).submit('#formConnexion',function (e){
         e.preventDefault(); 
-        element = $(this);
+        var element = $('#formConnexion');
         $.ajax({
-            url: element.data('action'),
-            dataType: 'html',
+            url: element.attr('action'),
+            type: "POST",
             data: element.serialize(), 
             success: function (data) {
-                alert(element.html());
+                $('#formConnexion').html(data);
             }
         });
+        return false;
     });
 });

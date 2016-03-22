@@ -1,4 +1,4 @@
-<form method="post" data-action="connexionValidated" id="formConnexion">
+<form method="post" action="sessions" id="formConnexion">
     <table>
         <tr>
             <td>
