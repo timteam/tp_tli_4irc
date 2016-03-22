@@ -50,7 +50,7 @@ class SessionController extends Controller{
         $this->getSmarty()->display('connexion/inscription.tpl');
     }
     
-    public function usersActionPost() {
+    public function registerActionPost() {
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();    
         
