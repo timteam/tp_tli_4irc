@@ -14,6 +14,7 @@ $(document).ready(function () {
             duration: 250
         }
     });
+    
     $('.ajax-popup').click(function () {
         element = $(this);
         $.ajax({
@@ -24,6 +25,17 @@ $(document).ready(function () {
                 $("#popup").dialog("option", "title",element.data('titre'));
                 $("#popup").dialog("option", "width", 400);
                 $("#popup").dialog("open");
+            }
+        });
+    });
+    
+    $('.formConnexion').submit(function () {
+        element = $(this);
+        $.ajax({
+            url: element.data('action'),
+            dataType: 'html',
+            success: function (data) {
+                element.html(data);
             }
         });
     });
