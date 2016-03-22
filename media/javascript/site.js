@@ -14,6 +14,7 @@ $(document).ready(function () {
             duration: 250
         }
     });
+    
     $('.ajax-popup').click(function () {
         element = $(this);
         $.ajax({
@@ -26,5 +27,19 @@ $(document).ready(function () {
                 $("#popup").dialog("open");
             }
         });
+    });
+    
+    $(document).submit('#formConnexion',function (e){
+        e.preventDefault(); 
+        var element = $('#formConnexion');
+        $.ajax({
+            url: element.attr('action'),
+            type: "POST",
+            data: element.serialize(), 
+            success: function (data) {
+                $('.formConnexion').html(data);
+            }
+        });
+        return false;
     });
 });
