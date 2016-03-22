@@ -15,20 +15,15 @@ $(document).ready(function () {
         }
     });
     $('.ajax-popup').click(function () {
-        
         element = $(this);
-        $("#popup").html('<div>connexion</div>');
-        $("#popup").dialog("option", "title", "connexion");
-        $("#popup").dialog("option", "width", 800);
-        $("#popup").dialog("open");
         $.ajax({
             url: element.data('href'),
             dataType: 'html',
             success: function (data) {
-                element.parents('.fiche_bien').slideUp({
-                    duration: 250,
-                    easing: 'easeInQuad'
-                });
+                $("#popup").html(data);
+                $("#popup").dialog("option", "title",element.data('titre'));
+                $("#popup").dialog("option", "width", 400);
+                $("#popup").dialog("open");
             }
         });
     });

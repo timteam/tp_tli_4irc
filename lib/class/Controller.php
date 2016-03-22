@@ -52,7 +52,7 @@ class Controller {
 
         //var_dump($array);
         
-        $smarty->display('inscription.tpl');
+        $smarty->display('connexion/inscription.tpl');
     }
     
     public function connexionAction() {
@@ -65,7 +65,7 @@ class Controller {
         $smarty->config_dir = 'configs/';
         $smarty->cache_dir = 'cache/';
         
-        $smarty->display('connexion.tpl');
+        $smarty->display('connexion/connexion.tpl');
     }
     
     public function inscriptionValidatedAction($user, $password, $email) {

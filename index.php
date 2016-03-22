@@ -1,6 +1,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+$php_self = $_SERVER['PHP_SELF'];
+$array = explode("index.php", $php_self);
+define('ROOT_PATH', $array[0]);
 
 define('SMARTY_DIR', 'smarty/libs/');
 require_once(SMARTY_DIR . 'Smarty.class.php');
