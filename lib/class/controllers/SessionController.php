@@ -29,13 +29,14 @@ class SessionController extends Controller{
 
         $array = $DAO->selectUserWithName($user);
         if ($array == null) {
-            return null;
+            return "Le pseudonyme n'existe pas.";
         } else if (password_verify($password, $array[0]["password"])) {
             session_start();
-            return $array;
+            return "Connexion réussie !";
         }
-
-        return null;
+        else{
+            return "Le couple pseudonyme/mot de passe est faux.";
+        }
     }
     
     public function sessionActionDelete() {
