@@ -1,34 +1,54 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-$php_self = $_SERVER['PHP_SELF'];
-$array = explode("index.php", $php_self);
-define('ROOT_PATH', $array[0]);
 
-define('SMARTY_DIR', 'smarty/libs/');
-require_once(SMARTY_DIR . 'Smarty.class.php');
-$smarty = new Smarty();
+//debug();
+ 
+require_once 'lib/class/restafari.php';
+require_once 'lib/class/routifari.php';
 
-$smarty->template_dir = 'templates/';
-$smarty->compile_dir = 'templates_c/';
-$smarty->config_dir = 'configs/';
-$smarty->cache_dir = 'cache/';
+initSmarty();
 
-if (!empty($_GET) && isset($_GET["action"])) {
-    include "lib/class/Controller.php";
-    //parameters["action"] must contain the controller Action
-    $controller = new Controller();
-    $action = $_GET["action"];
-    if (is_callable(array($controller, $action."Action"))) {
-        
-        $controller->{$action . "Action"}("Antoine", "mdp", "test@test.com");
-    } else {
-        echo "error in url";
-    }
-    
-} else {
-   $smarty->assign('argument','');
-   $smarty->assign('module','index.tpl');
-   $smarty->display('site.tpl');
+//We get the HTTP request Method and the HTTP request Content
+$requestContentType = restafari::getContentType();
+$requestMethod = restafari::getRequestMethod();
+
+try {
+    //Les paramètres Get et post étant mergés pour plus de simplicité dans les controllers ($requestParameters),
+    //Si un paramètre Post a la même clé qu'un paramètre Get,
+    //Le paramètre Post écrase le paramètre Get
+    $safeGetParams = safeParametres($_GET);
+    $safePostParams = safeParametres($_POST);
+    $routafari = new routifari();
+    $routafari->launch($requestContentType, $requestMethod, $safeGetParams['request_url'], $safeGetParams, $safePostParams);
+} catch (Exception $exc) {
+//    $smarty = new Smarty();
+//    $smarty->template_dir = 'templates/';
+//    $smarty->compile_dir = 'templates_c/';
+//    $smarty->config_dir = 'configs/';
+//    $smarty->cache_dir = 'cache/';
+    echo '404, page introuvable: '.$exc->getMessage();
 }
-?>
+
+function debug() {
+    //print_r($_GET);
+    //print_r($_POST);
+    //print_r($_SERVER);
+    //print_r($_REQUEST);
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
+
+function initSmarty() {
+    define('SMARTY_DIR', 'smarty/libs/');
+    require_once(SMARTY_DIR . 'Smarty.class.php');
+}
+
+//Vient prévenir les injections SQL
+//Même si avec PDO normalement, pas besoin
+function safeParametres($array){
+//    $return = array();
+//    foreach ($array as $key => $value) {
+//        $return[$key] = mysql_real_escape_string($value);
+//    }
+//    return $return;
+    return $array;
+}
