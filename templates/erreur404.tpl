@@ -3,6 +3,6 @@
     </br>
     <h2>Page introuvable, retourner à l'accueil grâce à ce lien :</h2>
     </br>
-    <h2><a href="/">Accueil</a></h2>
+    <h2><a href="home">Accueil</a></h2>
     </br>
 </div>

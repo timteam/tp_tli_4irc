@@ -35,6 +35,8 @@ $(document).ready(function () {
         $.ajax({
             url: element.attr('action'),
             type: "POST",
+            dataType: 'html',
+            contentType: 'html',
             data: element.serialize(), 
             success: function (data) {
                 $('#formConnexion').html(data);
