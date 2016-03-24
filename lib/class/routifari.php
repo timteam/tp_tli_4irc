@@ -50,7 +50,7 @@ class routifari {
          */
     }
 
-    public function launch($requestContentType, $requestMethod, $requestUrl, $getParametres, $postParametres) {
+    public function launch($requestContentType, $requestMethod, $requestUrl, $parametres) {
         try
         {
             $UpRequestMethod = strtoupper($requestMethod);
@@ -61,7 +61,7 @@ class routifari {
             $routeFound = false;
             foreach ($this->routes as $route) {
                 if (in_array($LowRequestContentType, $route->getContentTypes()) && $UpRequestMethod == $route->getMethod() && $parsedURL == $route->getRoute()) {
-                    $this->launchAction($route, $LowRequestContentType, $getParametres, $postParametres);
+                    $this->launchAction($route, $LowRequestContentType, $parametres);
                     $routeFound = true;
                     break;
                 }
@@ -82,12 +82,12 @@ class routifari {
         }
     }
 
-    public function launchAction(route $route, $requestContentType, $getParametres, $postParametres) {
+    public function launchAction(route $route, $requestContentType, $parametres) {
         $controllerName = $route->getController();
         $actionName = $route->getControllerActionName();
         if (file_exists('lib/class/controllers/' . $controllerName . '.php')) {
             include 'lib/class/controllers/' . $controllerName . '.php';
-            $controller = new $controllerName($requestContentType, $getParametres, $postParametres);
+            $controller = new $controllerName($requestContentType, $parametres);
             if (is_callable(array($controller, $actionName))) {
                 $controller->{$actionName}();
             } else {
