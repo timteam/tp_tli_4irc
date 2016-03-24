@@ -16,14 +16,18 @@ class PathologiesController extends Controller {
 
     public function pathologiesActionGet() {
         require "lib/class/DAO/PathologieDAO.php";
+        require "lib/class/DAO/SymptomeDAO.php";
         $DAO = new PathologieDAO();
         //print_r($DAO->selectAllforPathologies());
         
         $list = $DAO->selectAllforPathologies();
         
+        $DAOS = new SymptomeDAO();
+        
         
         $allList = array();
-        $meridiensList = array();
+        $meridiensListé = array();
+        $listSymp = array();
         $name = null;
         $i = 0;
         foreach ($list['Pathologies'] as $value) {
@@ -40,12 +44,18 @@ class PathologiesController extends Controller {
                 echo(' ---------</br>');
                 echo('</br>------ nom : '.$name.' ---------</br>');
             }
-            echo('</br>------ '.$i.' ---------</br>');
             
-                
+            $idP = $value->idP;
+            echo (' <br> '.$idP.' <br> ');
+            $listSymp = $DAOS->selectSymptonesByPatho($idP);
+            echo('</br>------ OBJET : ');
+            print_r($listSymp);
+            echo(' ---------</br>');
+            if($listSymp != null){
+                $meridiensList[$value->idP]= $listSymp;
+            }
             
-            $meridiensList[$i]=$value->desc;
-            print_r($meridiensList);
+            //print_r($meridiensList);
             $i++;
         }
          //print_r($allList);
