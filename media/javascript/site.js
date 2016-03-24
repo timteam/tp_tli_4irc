@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    $("#meridien").select2({
+        placeholder: "Méridiens"
+      });
+    $("#keyword").select2({
+        placeholder: "Mots clés"
+    });
+    $("#type").select2({
+        placeholder: "Type de pathologie"
+    });
+    $("#caracteristique").select2({
+        placeholder: "Caractéristiques"
+    });
+    
     $("#popup").dialog({
         autoOpen: false,
         modal: true,
