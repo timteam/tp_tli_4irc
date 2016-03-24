@@ -25,6 +25,9 @@ $(document).ready(function () {
         hide: {
             effect: "fade",
             duration: 250
+        },
+        close: function(event, ui) {
+            location.reload(true);
         }
     });
     
