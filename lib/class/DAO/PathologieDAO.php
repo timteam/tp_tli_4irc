@@ -30,7 +30,7 @@ class PathologieDAO extends DAO{
         return ($this->connexion->requeteObjet("SELECT * FROM acu.patho"));
     }
 
-    public function selectByCode($id) {
+    public function selectById($id) {
         return ($this->connexion->requeteObjet("SELECT * FROM acu.patho WHERE idP = $id"));
     }
     
@@ -73,17 +73,14 @@ class PathologieDAO extends DAO{
     public function selectAllforPathologies(){
         $patho = new PathologieDAO();
         $meridien = new MeridienDAO();
-        $symptone = new SymptoneDAO();
+        $keywords = new keywordsDAO();
         $list = array(
             "Pathologies" => $patho->selectAll(),
-            "Symptones" => $Keywords->selectAll(),
-            "Meridiens" => $meridient->selectAll()
+            "Keywords" => $keywords->selectAll(),
+            "Meridiens" => $meridien->selectAll()
         );
-        
+        return $list;
     }
 
-    public function selectById($id) {
-        
-    }
 
 }
