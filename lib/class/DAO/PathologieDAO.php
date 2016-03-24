@@ -73,11 +73,10 @@ class PathologieDAO extends DAO{
     }
     
     public function selectAllforPathologies(){
-        $patho = new PathologieDAO();
         $meridien = new MeridienDAO();
         $keywords = new keywordsDAO();
         $list = array(
-            "Pathologies" => $patho->selectAll(),
+            "Pathologies" => $this->selectAll(),
             "Keywords" => $keywords->selectAll(),
             "Meridiens" => $meridien->selectAll()
         );
