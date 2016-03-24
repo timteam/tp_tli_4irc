@@ -1,5 +1,5 @@
 <div id="main">
-    <h3>Liste des pathologies</h3>
+    <h1>Liste des pathologies</h1>
     <table>
         <thead>
             <tr>

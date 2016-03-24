@@ -5,11 +5,17 @@
             <div id="login" class="ajax-popup" data-href="users/register" data-titre="Inscription à Acupuntura">
                 Inscription
             </div>
-            <h1>
+            <div id="titre">
                 ACUPUNTURA
-            </h1>
-            <h2>
+            </div>
+            <div id="soustitre">
                 <span>U</span>ne <span>M</span>edecine <span>M</span>illénaire <span>C</span>hinoise
-            </h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><img alt="Accueil" src="http://www.medecinechinoise.org/images/pagode.png"><a href="home">Accueil</a></li>
+                    <li><a href="pathologies">Les pathologies</a></li>
+                </ul>
+            </nav>
         </header>
         <hr />
