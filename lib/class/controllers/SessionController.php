@@ -101,13 +101,14 @@ class SessionController extends Controller{
      * Conditions : 
      *          - pas de caractères ', ni " sur tous les champs
      *          - champs non-vide
-     *  
+     *          - email bien formé 
+     * 
      */
     private function isParametersUserInscription($user, $pass, $email){
         $verificationVide = !empty($user) && !empty($pass) && !empty($email);
         $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strstr($email, "'") == false;
         $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false && strstr($email, "\"") == false;
-        $verificationEmail = strpos($email, "@") < strpos($email, ".");
+        $verificationEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         
         return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail;
     }
