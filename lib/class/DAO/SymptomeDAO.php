@@ -10,6 +10,16 @@ require_once 'DAO.php';
 
 class SymptoneDAO extends DAO{
     
+    function __construct() {
+        try {
+            
+        parent::__construct();
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+    }
+    
     public function selectAll() {
         return ($this->connexion->requete("SELECT * FROM acu.symptone"));
     }

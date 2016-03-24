@@ -69,7 +69,8 @@ class PathologieDAO extends DAO{
     
     public function selectAllWithMeridien() {
         return ($this->connexion->requeteObjet("SELECT patho.desc, patho.type , meridien.nom FROM acu.patho"
-                                        . " JOIN acu.meridien on  patho.mer = meridien.code  "));
+                                        . " JOIN acu.meridien on  patho.mer = meridien.code  "
+                                        . " order by meridien.nom"));
     }
     
     public function selectAllforPathologies(){
