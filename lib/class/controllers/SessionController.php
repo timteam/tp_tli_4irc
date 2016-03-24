@@ -45,11 +45,12 @@ class SessionController extends Controller{
         if ($array == null) {
             echo "Le pseudonyme n'existe pas.";
         } else if (password_verify($pass, $array[0]["password"])) {
-            if (!is_null($_SESSION['user'])) {
-                echo "TO FIX : Problème modification \"\$_SESSION['user']\"";
+            if (!isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+                echo "TO FIX : Problème modification \$_SESSION['user'] : " + $_SESSION['user'];
             } else {
                 $_SESSION['user'] = $login;
             }
+            
             echo "Connexion réussie !";
         }
         else{
@@ -99,7 +100,8 @@ class SessionController extends Controller{
      * Permet de vérifier les paramètres avant l'inscription de l'utilisateur
      * Conditions : 
      *          - pas de caractères ', ni " sur tous les champs
-     *          - 
+     *          - champs non-vide
+     *  
      */
     private function isParametersUserInscription($user, $pass, $email){
         $verificationVide = !empty($user) && !empty($pass) && !empty($email);
@@ -110,6 +112,11 @@ class SessionController extends Controller{
         return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail;
     }
     
+    /* Permet de vérifier les paramètres avant la connexion de l'utilisateur
+     * Conditions : 
+     *          - pas de caractères ', ni " sur tous les champs
+     *          - 
+     */
     private function isParametersUserConnection($user, $pass){
         $verificationVide = !empty($user) && !empty($pass);
         $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false;
