@@ -15,6 +15,7 @@ $(document).ready(function () {
         }
     });
     
+    
     $('.ajax-popup').click(function () {
         element = $(this);
         $.ajax({
