@@ -8,7 +8,7 @@
             </tr>
         </thead>   
         <tfoot>  
-            {foreach from=$argument item=objet}
+            {foreach from=$argument->Pathologies item=objet}
             <tr>
                 <td>
                     {$objet->nom}

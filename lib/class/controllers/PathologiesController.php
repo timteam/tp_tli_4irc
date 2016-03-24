@@ -17,7 +17,7 @@ class PathologiesController extends Controller {
     public function pathologiesActionGet() {
         include "lib/class/DAO/PathologieDAO.php";
         $DAO = new PathologieDAO();
-        //print_r($this->getRequestParametres());
-        $this->executeMethod($DAO->selectAllWithMeridien(), 'pathologie.tpl');   
+        print_r($DAO->selectAllforPathologies());
+        $this->executeMethod($DAO->selectAllforPathologies(), 'pathologie.tpl');   
     }
 }
