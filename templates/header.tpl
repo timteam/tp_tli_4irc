@@ -1,10 +1,16 @@
         <header>
-            <div id="join" class="ajax-popup" data-href="sessions" data-titre="Connexion à Acupuntura">
-                Connexion
-            </div>
-            <div id="login" class="ajax-popup" data-href="users/register" data-titre="Inscription à Acupuntura">
-                Inscription
-            </div>
+            {if $user == false}
+                <div id="join" class="ajax-popup" data-href="sessions" data-titre="Connexion à Acupuntura">
+                    Connexion
+                </div>
+                <div id="login" class="ajax-popup" data-href="users/register" data-titre="Inscription à Acupuntura">
+                    Inscription
+                </div>
+            {else}
+                <div id="loginOn">
+                    Bonjour {$nom}
+                </div>
+            {/if}
             <div id="titre">
                 ACUPUNTURA
             </div>

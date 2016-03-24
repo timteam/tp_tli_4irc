@@ -26,11 +26,31 @@ class SessionController extends Controller{
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();
 
-        $array = $DAO->selectUserWithName($user);
+        $parameters = $this->getRequestParametres();
+        
+        if($parameters == NULL){
+            echo "TO FIX : Erreur dans la récupération des paramètres";
+            return;
+        }
+        
+        $login = $parameters['login'];
+        $pass = $parameters['pass'];
+        
+        if(!$this->isParametersUserConnection($login, $pass)){
+            echo "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
+            return;
+        }
+        
+        $array = $DAO->selectUserWithName($login);
         if ($array == null) {
             echo "Le pseudonyme n'existe pas.";
-        } else if (password_verify($password, $array[0]["password"])) {
-            session_start();
+        } else if (password_verify($pass, $array[0]["password"])) {
+            if (!isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+                echo "TO FIX : Problème modification \$_SESSION['user'] : " + $_SESSION['user'];
+            } else {
+                $_SESSION['user'] = $login;
+            }
+            
             echo "Connexion réussie !";
         }
         else{
@@ -39,7 +59,7 @@ class SessionController extends Controller{
     }
     
     public function sessionActionDelete() {
-        session_destroy();
+        unset($_SESSION["user"]);
     }
     
     public function registerActionGet() {
@@ -64,7 +84,7 @@ class SessionController extends Controller{
         $pass = $parameters['pass'];
         $email = $parameters['email'];
         
-        if(!$this->isParametersUser($login, $pass, $email)){
+        if(!$this->isParametersUserInscription($login, $pass, $email)){
             echo "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
             return;
         }
@@ -80,14 +100,29 @@ class SessionController extends Controller{
      * Permet de vérifier les paramètres avant l'inscription de l'utilisateur
      * Conditions : 
      *          - pas de caractères ', ni " sur tous les champs
-     *          - 
+     *          - champs non-vide
+     *          - email bien formé 
+     * 
      */
-    private function isParametersUser($user, $pass, $email){
+    private function isParametersUserInscription($user, $pass, $email){
         $verificationVide = !empty($user) && !empty($pass) && !empty($email);
         $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strstr($email, "'") == false;
         $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false && strstr($email, "\"") == false;
-        $verificationEmail = strpos($email, "@") < strpos($email, ".");
+        $verificationEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         
         return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail;
+    }
+    
+    /* Permet de vérifier les paramètres avant la connexion de l'utilisateur
+     * Conditions : 
+     *          - pas de caractères ', ni " sur tous les champs
+     *          - 
+     */
+    private function isParametersUserConnection($user, $pass){
+        $verificationVide = !empty($user) && !empty($pass);
+        $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false;
+        $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false;
+        
+        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote;
     }
 }

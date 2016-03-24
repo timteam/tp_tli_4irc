@@ -180,6 +180,16 @@ nav ul li a:hover{
 }
 
 /* Connexion */
+
+#loginOn{
+    float: right;
+    border-radius: 0 0 0 5px;
+    background-color: #df020b;
+    color: white;
+    width: 200px;
+    height: 30px;
+    padding: 5px 10px;
+}
 header #join,header #login{
     border-radius: 0 0 5px 5px;
     float: right;
@@ -291,4 +301,33 @@ header #join,header #login{
 }
 .contenuImage1 img{
     width: 100%;
+}
+
+/* Recherche */
+
+select{
+    width: 220px;
+}
+
+h2.listeh2 {
+    border-bottom: #df020b solid medium;
+    color: #333;
+    font-size: 20px;
+    margin: 20px 0 5px;
+    padding: 0 0 5px;
+    clear: both;
+}
+.moteur h2 {
+    background-color: #df020b;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 10px;
+}
+.moteur form {
+    background-color: #EDD0D3;
+    padding: 10px;
+}
+#contenuHome .summary ul li {
+    margin: 0;
+    padding: 0 0 5px;
 }

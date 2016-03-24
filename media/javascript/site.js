@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    $("#meridien").select2({
+        placeholder: "Méridiens"
+      });
+    $("#keyword").select2({
+        placeholder: "Mots clés"
+    });
+    $("#type").select2({
+        placeholder: "Type de pathologie"
+    });
+    $("#caracteristique").select2({
+        placeholder: "Caractéristiques"
+    });
+    
     $("#popup").dialog({
         autoOpen: false,
         modal: true,
@@ -12,8 +25,12 @@ $(document).ready(function () {
         hide: {
             effect: "fade",
             duration: 250
+        },
+        close: function(event, ui) {
+            location.reload(true);
         }
     });
+    
     
     $('.ajax-popup').click(function () {
         element = $(this);
