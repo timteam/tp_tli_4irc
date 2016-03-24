@@ -18,7 +18,6 @@ class SessionController extends Controller{
     public function sessionActionGet() {
         include "lib/class/DAO/UserDAO.php";
         $DAO = new UserDAO();
-        $this->getRequestParametres();
         
         $this->getSmarty()->display('connexion/connexion.tpl');
     }
@@ -29,13 +28,13 @@ class SessionController extends Controller{
 
         $array = $DAO->selectUserWithName($user);
         if ($array == null) {
-            return "Le pseudonyme n'existe pas.";
+            echo "Le pseudonyme n'existe pas.";
         } else if (password_verify($password, $array[0]["password"])) {
             session_start();
-            return "Connexion réussie !";
+            echo "Connexion réussie !";
         }
         else{
-            return "Le couple pseudonyme/mot de passe est faux.";
+            echo "Le couple pseudonyme/mot de passe est faux.";
         }
     }
     
@@ -56,8 +55,11 @@ class SessionController extends Controller{
         
         $parameters = $this->getRequestParametres();
         
+        print_r($parameters);
+        
         if($parameters == NULL){
-            return "TO FIX : Erreur dans la récupération des paramètres";
+            echo "TO FIX : Erreur dans la récupération des paramètres";
+            return;
         }
         
         $login = $parameters['login'];
@@ -65,12 +67,13 @@ class SessionController extends Controller{
         $email = $parameters['email'];
         
         if(!isParametersUser($login, $pass, $email)){
-            return "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
+            echo "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
+            return;
         }
         
         $cryptedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
-        return $DAO->insertUser($user, $cryptedPassword, $email)['message'];
+        echo $DAO->insertUser($user, $cryptedPassword, $email)['message'];
     }
     
     
