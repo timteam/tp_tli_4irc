@@ -45,14 +45,14 @@ class restafari {
         if (!isset($_SERVER['REQUEST_METHOD'])) {
             return $defaultValue;
         }
+        $requestMethod = strtoupper($_SERVER['REQUEST_METHOD']);
         //récupérer le méthode http ('HEAD', 'PUT', 'GET', 'DELETE', 'POST', 'TRACE', 'CONNECT')
-        switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
+        switch ($requestMethod) {
             case 'GET':
-                
                 return restafari::getRequestMethodOnFormGet();
             case 'POST':
                 //return restafari::getRequestMethodOnFormPost();
-                return $requestMethod;
+                return restafari::getRequestMethodOnFormPost();
             case 'PUT':
                 return $requestMethod;
             case 'DELETE':
@@ -69,36 +69,36 @@ class restafari {
         if (!isset($_POST['_method'])) {
             return $defaultValue;
         }
-
-        switch ($_POST['_method']) {
+        $requestMethod = strtoupper($_POST['_method']);
+        switch ($requestMethod) {
             case 'GET':
-                return $_POST['_method'];
+                return $requestMethod;
             case 'POST':
-                return $_POST['_method'];
+                return $requestMethod;
             case 'PUT':
-                return $_POST['_method'];
+                return $requestMethod;
             case 'DELETE':
-                return $_POST['_method'];
+                return $requestMethod;
             default:
                 return $defaultValue;
         }
     }
-    
-        private static function getRequestMethodOnFormGET() {
+
+    private static function getRequestMethodOnFormGET() {
         $defaultValue = 'GET';
         if (!isset($_GET['_method'])) {
             return $defaultValue;
         }
-
-        switch ($_GET['_method']) {
+        $requestMethod = strtoupper($_GET['_method']);
+        switch ($requestMethod) {
             case 'GET':
-                return $_GET['_method'];
+                return $requestMethod;
             case 'POST':
-                return $_GET['_method'];
+                return $requestMethod;
             case 'PUT':
-                return $_GET['_method'];
+                return $requestMethod;
             case 'DELETE':
-                return $_GET['_method'];
+                return $requestMethod;
             default:
                 return $defaultValue;
         }
