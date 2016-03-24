@@ -34,7 +34,7 @@ $(document).ready(function () {
         var element = $('#formConnexion');
         $.ajax({
             url: element.attr('action'),
-            type: "POST",
+            type: "GET",
             dataType: 'html',
             contentType: 'text/html',
             data: element.serialize(), 

@@ -1,5 +1,6 @@
 <div id="main">
     <h1>Liste des pathologies</h1>
+    {$argument->nom}
     <table>
         <thead>
             <tr>
