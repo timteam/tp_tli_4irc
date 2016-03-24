@@ -1,6 +1,5 @@
 <div id="main">
     <h1>Liste des pathologies</h1>
-    {$argument->nom}
     <table>
         <thead>
             <tr>
@@ -9,7 +8,7 @@
             </tr>
         </thead>   
         <tfoot>  
-            {foreach from=$argument->Pathologies item=objet}
+            {foreach from=$argument.Pathologies item=objet}
             <tr>
                 <td>
                     {$objet->nom}

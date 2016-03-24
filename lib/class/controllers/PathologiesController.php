@@ -18,6 +18,8 @@ class PathologiesController extends Controller {
         require "lib/class/DAO/PathologieDAO.php";
         $DAO = new PathologieDAO();
         //print_r($DAO->selectAllforPathologies());
-        $this->executeMethod($DAO->selectAllforPathologies(), 'pathologie.tpl');   
+        
+        $array = $DAO->selectAllforPathologies();
+        $this->executeMethod($array, 'pathologie.tpl');   
     }
 }
