@@ -46,6 +46,11 @@ abstract class Controller {
      */
     protected function executeMethod($methodDAO, $template) {
             //$_SESSION['user']
+            if(isset($_SESSION['user'])){
+                $this->smarty->assign('user', $_SESSION['user']);
+            }  else {
+                $this->smarty->assign('user',false);
+            }
             $this->smarty->assign('argument', $methodDAO);
             $this->smarty->assign('module', $template);
             $this->smarty->display('site.tpl');

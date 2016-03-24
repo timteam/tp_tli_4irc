@@ -13,7 +13,7 @@
     <script type="text/javascript" charset="UTF-8" src="media/javascript/site.js"></script>
   </head>
   <body>
-        {include file='header.tpl'}
+        {include file='header.tpl' user=$user}
         {include file="$module" argument=$argument}
         {include file='footer.tpl'}
         <div id="popup"></div>
