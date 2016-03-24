@@ -66,8 +66,10 @@ class BaseDonnee {
                 try{
                     $sth = $db->prepare($sql);
                     //execute la requete
-                    $sth->execute();
-
+                    if(!$sth->execute()){
+                        return false;
+                    }
+                    
                     //transforme les occurences en liste d'objets
                     while(($result = $sth->fetch(PDO::FETCH_OBJ)) != null){
                         $resu[] = $result;
