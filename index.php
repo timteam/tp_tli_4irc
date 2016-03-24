@@ -1,7 +1,7 @@
 <?php
 
 //debug();
- 
+session_start();
 require_once 'lib/class/restafari.php';
 require_once 'lib/class/routifari.php';
 
@@ -15,10 +15,9 @@ try {
     //Les paramètres Get et post étant mergés pour plus de simplicité dans les controllers ($requestParameters),
     //Si un paramètre Post a la même clé qu'un paramètre Get,
     //Le paramètre Post écrase le paramètre Get
-    $safeGetParams = safeParametres($_GET);
-    $safePostParams = safeParametres($_POST);
+    $safeParams = safeParametres($_REQUEST);
     $routafari = new routifari();
-    $routafari->launch($requestContentType, $requestMethod, $safeGetParams['request_url'], $safeGetParams, $safePostParams);
+    $routafari->launch($requestContentType, $requestMethod, $safeParams['request_url'], $safeParams);
 } catch (Exception $exc) {
     $smarty = new Smarty();
     $smarty->template_dir = 'templates/';

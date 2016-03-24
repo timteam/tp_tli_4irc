@@ -55,8 +55,6 @@ class SessionController extends Controller{
         
         $parameters = $this->getRequestParametres();
         
-        print_r($parameters);
-        
         if($parameters == NULL){
             echo "TO FIX : Erreur dans la récupération des paramètres";
             return;
@@ -66,14 +64,14 @@ class SessionController extends Controller{
         $pass = $parameters['pass'];
         $email = $parameters['email'];
         
-        if(!isParametersUser($login, $pass, $email)){
+        if(!$this->isParametersUser($login, $pass, $email)){
             echo "Un ou plusieurs champs est (sont) vide(s) ou incorrect(s).";
             return;
         }
         
         $cryptedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
-        echo $DAO->insertUser($user, $cryptedPassword, $email)['message'];
+        echo $DAO->insertUser($login, $cryptedPassword, $email)['message'];
     }
     
     
@@ -85,7 +83,7 @@ class SessionController extends Controller{
      *          - 
      */
     private function isParametersUser($user, $pass, $email){
-        $verificationVide = empty($user) && empty($pass) && empty($email);
+        $verificationVide = !empty($user) && !empty($pass) && !empty($email);
         $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strstr($email, "'") == false;
         $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false && strstr($email, "\"") == false;
         $verificationEmail = strpos($email, "@") < strpos($email, ".");

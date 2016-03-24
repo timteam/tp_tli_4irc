@@ -18,14 +18,14 @@ abstract class Controller {
     private $requestParametres;
     private $urlParametres;
 
-    public function __construct($requestContentType, $getParametres, $postParametres) {
+    public function __construct($requestContentType, $parametres) {
         if ($requestContentType == 'text/html') {
             $this->initializeSmarty();
         }
         $this->requestContentType = $requestContentType;
         //Si même clé dans $getParametres et $postParametres
         //paramètre post écrase paramètre get
-        $this->requestParametres = array_merge($getParametres, $postParametres);
+        $this->requestParametres = $parametres;
     }
 
     /**

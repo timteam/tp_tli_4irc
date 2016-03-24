@@ -1,6 +1,6 @@
         <header>
             <div id="join" class="ajax-popup" data-href="sessions" data-titre="Connexion à Acupuntura">
-                Connection
+                Connexion
             </div>
             <div id="login" class="ajax-popup" data-href="users/register" data-titre="Inscription à Acupuntura">
                 Inscription

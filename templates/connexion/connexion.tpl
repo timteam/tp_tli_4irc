@@ -2,11 +2,11 @@
     <input type="hidden" name="_method" value="POST">
     <ul>
         <li>
-            <label for="login"> Pseudonyme :</label>
+            <label for="login"> Pseudonyme </label>
             <input id="login" name="login" type="text" />
         </li>
         <li>
-            <label for="pass"> Mots de passe :</label>
+            <label for="pass"> Mot de passe </label>
             <input id="pass" name="pass" type="password" />
         </li>
         <li>

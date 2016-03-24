@@ -34,16 +34,16 @@ class UserDAO extends DAO{
     
     public function insertUser($user, $password, $email){
         $array = array();
-        try {
-            $this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")");
-        } catch (Exception $ex) {
+        $result = $this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")");
+        if(!$result){
             $array["user"] = null;
             $array["message"] = "Erreur : Le pseudonyme est déjà utilisé";
-            return $array;
         }
+        else{    
+            $array["user"] = $user;
+            $array["message"] = "Inscription réussie.";
         
-        $array["user"] = $user;
-        $array["message"] = "Inscription réussie.";
+        }
         return $array;
         
     }
