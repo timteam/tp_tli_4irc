@@ -45,6 +45,7 @@ abstract class Controller {
      * @param type $methodDAO =  
      */
     protected function executeMethod($methodDAO, $template) {
+            //$_SESSION['user']
             $this->smarty->assign('argument', $methodDAO);
             $this->smarty->assign('module', $template);
             $this->smarty->display('site.tpl');
