@@ -13,6 +13,8 @@
  */
 
 require_once 'DAO.php';
+require_once 'MeridienDAO.php';
+require_once 'keywordsDAO.php';
 
 class PathologieDAO extends DAO{
     
