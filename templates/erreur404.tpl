@@ -1,8 +1,5 @@
 <div id="main">
-    <h1>ERREUR 404</h1>
+    <h1>Désolé, cette page est introuvable !</h1>
     </br>
-    <h2>Page introuvable, retourner à l'accueil grâce à ce lien :</h2>
-    </br>
-    <h2><a href="home">Accueil</a></h2>
-    </br>
+    <p>Vous pouvez consulter <a href="pathologies" >la liste des pathologies</a> ou <a href="home">retourner à l'accueil du site</a>.</p>
 </div>
