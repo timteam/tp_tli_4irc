@@ -1,4 +1,5 @@
-<form method="post" action="users" id="formConnexion">
+<form method="GET" action="users" id="formConnexion">
+    <input type="hidden" name="_method" value="POST"> 
     <ul>
         <li>
             <label for="login"> Pseudonyme :</label>
