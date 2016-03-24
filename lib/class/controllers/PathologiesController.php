@@ -15,9 +15,9 @@ require_once 'Controller.php';
 class PathologiesController extends Controller {
 
     public function pathologiesActionGet() {
-        include "lib/class/DAO/PathologieDAO.php";
+        require "lib/class/DAO/PathologieDAO.php";
         $DAO = new PathologieDAO();
-        print_r($DAO->selectAllforPathologies());
+        //print_r($DAO->selectAllforPathologies());
         $this->executeMethod($DAO->selectAllforPathologies(), 'pathologie.tpl');   
     }
 }

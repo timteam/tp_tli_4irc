@@ -13,6 +13,8 @@
  */
 
 require_once 'DAO.php';
+require_once 'MeridienDAO.php';
+require_once 'keywordsDAO.php';
 
 class PathologieDAO extends DAO{
     
@@ -71,11 +73,10 @@ class PathologieDAO extends DAO{
     }
     
     public function selectAllforPathologies(){
-        $patho = new PathologieDAO();
         $meridien = new MeridienDAO();
         $keywords = new keywordsDAO();
         $list = array(
-            "Pathologies" => $patho->selectAll(),
+            "Pathologies" => $this->selectAll(),
             "Keywords" => $keywords->selectAll(),
             "Meridiens" => $meridien->selectAll()
         );
