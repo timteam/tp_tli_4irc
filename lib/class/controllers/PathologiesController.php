@@ -61,6 +61,7 @@ class PathologiesController extends Controller {
          //print_r($allList);
         $allList['Keywords']= $list['Keywords'];
         $allList['Meridiens']= $list['Meridiens'];
+        $allList['Pathologies']= $list['Pathologies'];
         
         $this->executeMethod($allList, 'pathologie.tpl');   
     }
