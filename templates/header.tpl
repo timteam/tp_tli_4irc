@@ -8,7 +8,10 @@
                 </div>
             {else}
                 <div id="loginOn">
-                    Bonjour {$nom}
+                    Bonjour {$user}
+                </div>
+                <div id="logout" class="logout-class" data-href="sessions" data-titre="Déconnexion à Acupuntura">
+                    Déconexion
                 </div>
             {/if}
             <div id="titre">

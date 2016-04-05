@@ -27,7 +27,7 @@ class routifari {
             new route('GET',    'HTML',         '/home',            'home',         'home'), //shows homepage
             new route('GET',    'HTML',         '/sessions',        'session',      'session'), //shows login form
             new route('POST',   'HTML',         '/sessions',        'session',      'session'), //login
-            new route('DELETE', 'JSON',         '/sessions',        'session',      'session'), //logout & redirects to ''
+            new route('DELETE', 'HTML',         '/sessions',        'session',      'session'), //logout & redirects to ''
             new route('GET',    'HTML',         '/users/register',  'session',      'register'), //shows registration form
             new route('POST',   'HTML',         '/users',           'session',      'register'), //register user to DB
             new route('GET',    'HTML,JSON',    '/symptomes',       'symptomes',    'symptomes'), //shows symptoms

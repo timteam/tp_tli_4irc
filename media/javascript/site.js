@@ -61,4 +61,18 @@ $(document).ready(function () {
         });
         return false;
     });
+    
+    $('.logout-class').click(function (e) {
+        e.preventDefault(); 
+        element = $(this);
+        $.ajax({
+            url: element.data('href'),
+            type: "DELETE",
+            dataType: 'html',
+            contentType: 'text/html',
+            success: function (data) {
+                location.reload(true);
+            }
+        });
+    });
 });

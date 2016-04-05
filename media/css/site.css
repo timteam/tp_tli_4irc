@@ -188,9 +188,11 @@ nav ul li a:hover{
     color: white;
     width: 200px;
     height: 30px;
+    margin-left: 5px;
     padding: 5px 10px;
 }
-header #join,header #login{
+
+header #join,header #login, header #logout{
     border-radius: 0 0 5px 5px;
     float: right;
     background-color: #df020b;
