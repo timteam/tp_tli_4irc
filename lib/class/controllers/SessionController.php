@@ -49,6 +49,7 @@ class SessionController extends Controller{
                 echo "TO FIX : Problème modification \$_SESSION['user'] : " + $_SESSION['user'];
             } else {
                 $_SESSION['user'] = $login;
+                $_SESSION['LAST_ACTIVITY'] = time();
             }
             
             echo "Connexion réussie !";
@@ -59,7 +60,8 @@ class SessionController extends Controller{
     }
     
     public function sessionActionDelete() {
-        unset($_SESSION["user"]);
+        session_unset();     // unset $_SESSION variable for the run-time 
+        session_destroy();   // destroy session data in storage
     }
     
     public function registerActionGet() {

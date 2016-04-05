@@ -1,7 +1,7 @@
 <?php
 
 //debug();
-session_start();
+verifyTimeout();
 require_once 'lib/class/restafari.php';
 require_once 'lib/class/routifari.php';
 
@@ -52,4 +52,16 @@ function safeParametres($array){
 //    }
 //    return $return;
     return $array;
+}
+
+define('NB_MINUTES', '30');
+
+function verifyTimeout(){
+    session_start();
+    
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > NB_MINUTES*60)) {
+        session_unset();     // unset $_SESSION variable for the run-time 
+        session_destroy();   // destroy session data in storage
+    }
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 }

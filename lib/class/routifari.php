@@ -56,7 +56,7 @@ class routifari {
             $UpRequestMethod = strtoupper($requestMethod);
             $LowRequestContentType = strtolower($requestContentType);
             $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50)));
-
+            
             //La première route correspondante est exécutée
             $routeFound = false;
             foreach ($this->routes as $route) {
