@@ -1,10 +1,4 @@
 <div id="main">
-    <!--<h1>Accueil</h1>
-    </br>
-    <h2>Bienvenue sur le site ACUPUNTURA. </h2>
-    </br>
-    <h2><a href="pathologies" >Afficher la liste des pathologies</a></h2>
-    </br> -->
     <h1>L'Acupuncture</h1>
     <div id="contenuHome">
         <div>
@@ -13,13 +7,15 @@
             </div>
             <div class="summary">
                 <div>Sommaire</div>
-                <ul>
-                    <li><a href="#titre1" >Une premi&egrave;re approche</a></li>
-                    <li><a href="#titre2" >La premi&egrave;re consultation</a></li>
-                    <li><a href="#titre3" >Du picotement &agrave; la relaxation profonde</a></li>
-                    <li><a href="#titre4" >Il n&rsquo;y a pas que les aiguilles</a></li>
-                    <li><a href="#titre5" >Un long parcours vers l&rsquo;Occident</a></li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li><a href="#titre1" accesskey="1">Une premi&egrave;re approche</a></li>
+                        <li><a href="#titre2" accesskey="2">La premi&egrave;re consultation</a></li>
+                        <li><a href="#titre3" accesskey="3">Du picotement &agrave; la relaxation profonde</a></li>
+                        <li><a href="#titre4" accesskey="4">Il n&rsquo;y a pas que les aiguilles</a></li>
+                        <li><a href="#titre5" accesskey="5">Un long parcours vers l&rsquo;Occident</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <div class="clear">
@@ -27,13 +23,13 @@
                 Une premi&egrave;re approche
             </h2>
             <div class="contenuImage1">
-                <img src="media/images/acupuncture2.jpg">
+                <img src="media/images/acupuncture2.jpg" alt="Acupunture - Une première approche">
             </div>
             <p>
-                L&#39;<b>acupuncture</b> est l&#39;une des cinq branches de la <b>M&eacute;decine traditionnelle chinoise</b> (MTC), avec la di&eacute;t&eacute;tique chinoise, la pharmacop&eacute;e chinoise (herbes m&eacute;dicinales), le massage Tui Na et les exercices &eacute;nerg&eacute;tiques (Qi Gong et Tai-chi). L&rsquo;acupuncture se base sur une approche &eacute;nerg&eacute;tique et holistique. Selon la pens&eacute;e m&eacute;dicale orientale, elle agit sur le Qi (prononcer <i>tchi</i>) qui circule dans le corps par la voie des m&eacute;ridiens. Des aiguilles ins&eacute;r&eacute;es &agrave; la surface de la peau stimulent des points d&rsquo;acupuncture pr&eacute;cis afin de r&eacute;gulariser le Qi ainsi que des fonctions physiologiques, organiques et psychiques cibl&eacute;es. En termes occidentaux, on pourrait dire que cela permet de renforcer les processus d&rsquo;autor&eacute;gulation et de gu&eacute;rison qui se mettent normalement en branle lorsque l&rsquo;organisme subit une agression (caus&eacute;e par un virus, un stress, une blessure, etc.). Il existe une cartographie d&eacute;taill&eacute;e des <b>points d&rsquo;acupuncture</b> et des <b>m&eacute;ridiens</b> ainsi que de leurs r&ocirc;les pour r&eacute;tablir la sant&eacute; et l&rsquo;&eacute;quilibre du patient.
+                L&#39;<b>acupuncture</b> est l&#39;une des cinq branches de la <b>M&eacute;decine traditionnelle chinoise</b> (<abbr title="Médecine Traditionnelle Chinoise">MTC</abbr>), avec la di&eacute;t&eacute;tique chinoise, la pharmacop&eacute;e chinoise (herbes m&eacute;dicinales), le massage Tui Na et les exercices &eacute;nerg&eacute;tiques (Qi Gong et Tai-chi). L&rsquo;acupuncture se base sur une approche &eacute;nerg&eacute;tique et holistique. Selon la pens&eacute;e m&eacute;dicale orientale, elle agit sur le Qi (prononcer <i>tchi</i>) qui circule dans le corps par la voie des m&eacute;ridiens. Des aiguilles ins&eacute;r&eacute;es &agrave; la surface de la peau stimulent des points d&rsquo;acupuncture pr&eacute;cis afin de r&eacute;gulariser le Qi ainsi que des fonctions physiologiques, organiques et psychiques cibl&eacute;es. En termes occidentaux, on pourrait dire que cela permet de renforcer les processus d&rsquo;autor&eacute;gulation et de gu&eacute;rison qui se mettent normalement en branle lorsque l&rsquo;organisme subit une agression (caus&eacute;e par un virus, un stress, une blessure, etc.). Il existe une cartographie d&eacute;taill&eacute;e des <b>points d&rsquo;acupuncture</b> et des <b>m&eacute;ridiens</b> ainsi que de leurs r&ocirc;les pour r&eacute;tablir la sant&eacute; et l&rsquo;&eacute;quilibre du patient.
             </p>
             <p>
-                Selon la&nbsp;MTC, l&rsquo;<b>acupuncture</b> permet de traiter, souvent en compl&eacute;mentarit&eacute; avec d&rsquo;autres pratiques, une vari&eacute;t&eacute; de &laquo;&nbsp;d&eacute;s&eacute;quilibres&nbsp;&raquo; li&eacute;s, entre autres, aux syst&egrave;mes musculosquelettique (arthrite, tendinite, bursite), respiratoire (bronchite, asthme), gastro-intestinal (calculs, diarrh&eacute;e), nerveux (d&eacute;pression, stress), etc. Elle contribue aussi &agrave; soulager divers maux courants (mal de t&ecirc;te, rhume, naus&eacute;es), mais elle ne saurait gu&eacute;rir certaines maladies graves ni pallier des d&eacute;ficiences g&eacute;n&eacute;tiques.
+                Selon la <abbr title="Médecine Traditionnelle Chinoise">MTC</abbr>, l&rsquo;<b>acupuncture</b> permet de traiter, souvent en compl&eacute;mentarit&eacute; avec d&rsquo;autres pratiques, une vari&eacute;t&eacute; de &laquo;&nbsp;d&eacute;s&eacute;quilibres&nbsp;&raquo; li&eacute;s, entre autres, aux syst&egrave;mes musculosquelettique (arthrite, tendinite, bursite), respiratoire (bronchite, asthme), gastro-intestinal (calculs, diarrh&eacute;e), nerveux (d&eacute;pression, stress), etc. Elle contribue aussi &agrave; soulager divers maux courants (mal de t&ecirc;te, rhume, naus&eacute;es), mais elle ne saurait gu&eacute;rir certaines maladies graves ni pallier des d&eacute;ficiences g&eacute;n&eacute;tiques.
             </p>
             <p>
                 L&rsquo;<b>acupuncture</b> pourrait &eacute;galement jouer un r&ocirc;le important dans la <b>pr&eacute;vention</b> des maladies. En maximisant l&rsquo;activit&eacute; fonctionnelle des Visc&egrave;res ainsi que la circulation des Substances, elle permettrait d&rsquo;&eacute;quilibrer l&rsquo;ensemble des syst&egrave;mes de l&rsquo;organisme. Cela ferait en sorte d&rsquo;emp&ecirc;cher la maladie de trouver un terrain propice pour s&rsquo;implanter.
@@ -42,7 +38,7 @@
                 La premi&egrave;re consultation
             </h2>
             <p>
-                <img class="contenuImage2" src="http://www.passeportsante.net/DocumentsProteus/images/acupuncture_th-3.jpg" >&Agrave; la premi&egrave;re visite chez l&#39;<b>acupuncteur</b>, ne vous attendez pas &agrave; le voir appara&icirc;tre <b>aiguilles</b> en mains avec un petit sourire en coin... L&rsquo;acupuncture est une discipline hautement &eacute;labor&eacute;e et m&eacute;thodique, bas&eacute;e sur des milliers d&rsquo;ann&eacute;es de pratique. En premier lieu, le th&eacute;rapeute &eacute;value l&rsquo;&eacute;tat de sant&eacute; de la personne et d&eacute;tecte ses d&eacute;s&eacute;quilibres &eacute;nerg&eacute;tiques. Pour ce faire, il utilise l&rsquo;<b>observation</b>, les <b>palpations</b> et des <b>questionnaires</b> d&eacute;taill&eacute;s. Il se peut qu&rsquo;il vous interroge m&ecirc;me sur les climats ou les saveurs que vous pr&eacute;f&eacute;rez - des indices suppl&eacute;mentaires pour corroborer son &eacute;valuation. Il prend note de vos ant&eacute;c&eacute;dents m&eacute;dicaux et de vos caract&eacute;ristiques (taille, poids, teint, rythme de la respiration, son de la voix, mouvements, &eacute;tat &eacute;motif, etc.). Il examine le pouls et la langue, &eacute;coute les bruits de l&rsquo;estomac, rel&egrave;ve les odeurs corporelles et ausculte les endroits douloureux associ&eacute;s aux m&eacute;ridiens.
+                <img class="contenuImage2" src="http://www.passeportsante.net/DocumentsProteus/images/acupuncture_th-3.jpg" alt="Acupunture - La première consultation">&Agrave; la premi&egrave;re visite chez l&#39;<b>acupuncteur</b>, ne vous attendez pas &agrave; le voir appara&icirc;tre <b>aiguilles</b> en mains avec un petit sourire en coin... L&rsquo;acupuncture est une discipline hautement &eacute;labor&eacute;e et m&eacute;thodique, bas&eacute;e sur des milliers d&rsquo;ann&eacute;es de pratique. En premier lieu, le th&eacute;rapeute &eacute;value l&rsquo;&eacute;tat de sant&eacute; de la personne et d&eacute;tecte ses d&eacute;s&eacute;quilibres &eacute;nerg&eacute;tiques. Pour ce faire, il utilise l&rsquo;<b>observation</b>, les <b>palpations</b> et des <b>questionnaires</b> d&eacute;taill&eacute;s. Il se peut qu&rsquo;il vous interroge m&ecirc;me sur les climats ou les saveurs que vous pr&eacute;f&eacute;rez - des indices suppl&eacute;mentaires pour corroborer son &eacute;valuation. Il prend note de vos ant&eacute;c&eacute;dents m&eacute;dicaux et de vos caract&eacute;ristiques (taille, poids, teint, rythme de la respiration, son de la voix, mouvements, &eacute;tat &eacute;motif, etc.). Il examine le pouls et la langue, &eacute;coute les bruits de l&rsquo;estomac, rel&egrave;ve les odeurs corporelles et ausculte les endroits douloureux associ&eacute;s aux m&eacute;ridiens.
             </p>
             <h2 id="titre3">
                 Du picotement &agrave; la relaxation profonde
@@ -87,3 +83,4 @@
             </p>
         </div>
     </div>
+</div>
