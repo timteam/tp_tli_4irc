@@ -25,6 +25,7 @@ class routifari {
             new route('GET',    'HTML',         '/erreur404',       'erreur404',    'erreur404'), //shows error404 page
             new route('GET',    'HTML',         '/',                'home',         'home'), //shows homepage
             new route('GET',    'HTML',         '/home',            'home',         'home'), //shows homepage
+            new route('GET',    'HTML',         '/infos',            'infos',         'infos'), //shows info page
             new route('GET',    'HTML',         '/sessions',        'session',      'session'), //shows login form
             new route('POST',   'HTML',         '/sessions',        'session',      'session'), //login
             new route('DELETE', 'HTML',         '/sessions',        'session',      'session'), //logout & redirects to ''

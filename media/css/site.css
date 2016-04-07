@@ -341,3 +341,11 @@ h2.listeh2 {
 footer{
     padding:5px 20px 20px 20px;
 }
+
+img.img-rounded{
+    width:100px;
+    height:100px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+}
