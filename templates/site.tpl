@@ -14,7 +14,7 @@
   </head>
   <body>
         {include file='header.tpl' user=$user}
-        {include file="$module" argument=$argument}
+        {include file="$module" argument=$argument user=$user}
         {include file='footer.tpl'}
         <div id="popup"></div>
   </body>

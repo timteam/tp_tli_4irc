@@ -107,6 +107,9 @@ hr{
     color: #df020b;
     margin: 0 5px;
 }
+.hide{
+    display: none;
+}
 
 .clear{
     clear: both;
