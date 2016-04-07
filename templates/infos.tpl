@@ -16,6 +16,8 @@
         <li>Utilisation de la machine virtuelle Lubuntu : <a href="http://lubuntu.net" title="Lubuntu" accesskey="2">http://lubuntu.net</a></li>
         <li>Site PHP.net : <a href="http://php.net" title="PHP" accesskey="3">http://php.net</a></li>
         <li>Site JQuery.com : <a href="https://jquery.com" title="JQuery" accesskey="4">https://jquery.com</a></li>
-        <li>Site W3Schools.com : <a href="http://www.w3schools.com" title="JQuery" accesskey="5">http://www.w3schools.com</a></li>
+        <li>Site W3Schools.com : <a href="http://www.w3schools.com" title="W3Schools" accesskey="5">http://www.w3schools.com</a></li>
+        <li>Site passeportsante.net : <a href="http://www.passeportsante.net/" title="Passeport santé - inspiration css et texte" accesskey="5">http://www.passeportsante.net/</a></li>
+        <li>Site medecinechinoise.org : <a href="http://www.medecinechinoise.org/" title="Médecine chinoise - inspiration css et texte" accesskey="5">http://www.medecinechinoise.org/</a></li>
     </p>
 </div>

@@ -142,10 +142,6 @@ hr{
     color: #df020b;
     font-size: 17px;
 }
-
-#main table tr:nth-child(2n) td {
-    background-color: rgba(212, 221, 228, 0.25);
-}
 #main table td .separateur{
     color: #df020b;
 }

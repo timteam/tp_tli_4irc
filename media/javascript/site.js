@@ -85,6 +85,7 @@ $(document).ready(function () {
             contentType: 'text/html',
             data: element.serialize(), 
             success: function (data) {
+                $("#resultat").html(data);
             }
         });
     });
