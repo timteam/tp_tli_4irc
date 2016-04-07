@@ -79,6 +79,7 @@ class routifari {
             $this->smarty->config_dir = 'configs/';
             $this->smarty->cache_dir = 'cache/';
             $this->smarty->assign('argument', null);
+            $this->smarty->assign('user',false);
             $this->smarty->assign('module', 'erreur404.tpl');
             $this->smarty->display('site.tpl');      
         }
