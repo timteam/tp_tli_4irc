@@ -76,8 +76,7 @@ $(document).ready(function () {
         });
     });
     
-    $('#formPatho').change('input',function () {
-        alert('test');
+    $("#formPatho").change("input,select",function () {
         element = $(this);
         $.ajax({
             url: element.attr('action'),
