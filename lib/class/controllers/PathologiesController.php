@@ -71,29 +71,57 @@ class PathologiesController extends Controller {
      */
     public function listePathologiesActionGet($listeCodeMeridien, $listeTypePatho, $listeCaractPatho, $listeIdMotCles ){
         require "lib/class/DAO/PathologieDAO.php";
-        require "lib/class/DAO/SymptomeDAO.php";
-        require "lib/class/DAO/MeridienDAO.php";
-        require "lib/class/DAO/KeywordsDAO.php";
         
         $pathologieDAO = new PathologieDAO();
-        $meridienDAO = new MeridienDAO();
-        $keywordsDAO = new KeywordsDAO();
         
+        $argTypePatho = "";
         
+        $listType = array();
+        $i = 0;
+        foreach($listeTypePatho as $type){
+            //Si on a sélectionné des caractères on filtre
+            if(count($listeCaractPatho) > 0){
+                
+                foreach($listeCaractPatho as $carac){
+                    $listType[$i] = $type . $carac;
+                    $i++;
+                }
+                
+            //Sinon on récupère tous les champs.
+            }else{
+                $listTemp = $pathologieDAO->findByTypePatho($type);
+                foreach($listTemp as $temp){
+                    $listType[$i] = $temp;
+                    $i++;
+                }
+            } 
+            
+        }
+        $argCodeMeridien = $this->listToString($listeCodeMeridien);
+        $argTypePatho = $this->listToString($listType);
+        $argIdKeyWords = $this->listToString($listeIdMotCles);
         
         $listFiltred = array();
-        //$listFiltred['liste'] =  ;
         $listFiltred['Keywords']= $this->listForTable['Keywords'];
         $listFiltred['Meridiens']= $this->listForTable['Meridiens'];
         $listFiltred['Pathologies']= $this->listForTable['Pathologies'];
+        $listFiltred['liste']= $pathologieDAO->selectPathoByLists($argCodeMeridien,$argTypePatho,$argIdKeyWords);
         
         
-        $meridienDAO->selectByListCode($listeCodeMeridien);
-        foreach($listeCodeMeridien as $codeMeridien){
-            
+        $this->executeMethod($listFiltred, 'pathologie.tpl');   
+    }
+    
+    
+    public function listToString($list){
+        $listString = "";
+        foreach($code as $list){
+            if(listString == ""){
+                $listString = "'".$code."'";
+            }else{
+                $listString = $listString . ", '".$code."'";
+            }
         }
         
         
-        $this->executeMethod($allList, 'pathologie.tpl');   
     }
 }
