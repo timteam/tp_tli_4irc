@@ -1,4 +1,4 @@
-<table>
+<table id="tableauPatho">
     <thead>
         <tr>
             <th>Méridien</th>
@@ -6,7 +6,7 @@
             <th>Symptômes</th>
         </tr>
     </thead>   
-    <tfoot>  
+    <tbody>  
         {foreach from=$argument key=meridien item=objet}
         <tr>
             <td rowspan="{$objet|@count} ">
@@ -30,5 +30,5 @@
                 </tr>
             {/foreach}
         {/foreach}
-    </tfoot>
+    </tbody>
 </table>

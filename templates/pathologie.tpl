@@ -24,7 +24,7 @@
                 <option value="i">interne</option>
                 <option value="e">externe</option>
             </select> 
-            <select multiple name="keyword" id="keyword">
+            <select multiple name="keyword" {if $user == false} class="hide" {else} id="keyword" {/if}>
                 {foreach from=$argument.Keywords item=objet}
                     <option value="{$objet.idK}">{$objet.name}</option>
                 {/foreach}
