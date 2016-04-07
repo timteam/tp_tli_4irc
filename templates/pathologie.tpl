@@ -2,7 +2,7 @@
     <h1>Les pathologies</h1>
     <div class="moteur">
         <h2>Vous recherchez </h2>
-        <form id="formPatho">
+        <form id="formPatho" method="GET" action="liste-pathologies" >
             <select multiple name="meridien" id="meridien">
                 {foreach from=$argument.Meridiens item=objet}
                     <option value="{$objet->code}">{$objet->nom}</option>

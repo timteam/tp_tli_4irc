@@ -31,6 +31,7 @@ class routifari {
             new route('GET',    'HTML',         '/users/register',  'session',      'register'), //shows registration form
             new route('POST',   'HTML',         '/users',           'session',      'register'), //register user to DB
             new route('GET',    'HTML,JSON',    '/symptomes',       'symptomes',    'symptomes'), //shows symptoms
+            new route('GET',    'HTML,JSON',    '/liste-pathologies',     'pathologies',  'listePathologies'), //shows array of pathos
             new route('GET',    'HTML,JSON',    '/pathologies',     'pathologies',  'pathologies'), //shows pathos
             new route('GET',    'JSON',         '/meridiens',       'meridiens',    'meridiens'), //shows méridiens
         );

@@ -75,4 +75,18 @@ $(document).ready(function () {
             }
         });
     });
+    
+    $('#formPatho').change('input',function () {
+        alert('test');
+        element = $(this);
+        $.ajax({
+            url: element.attr('action'),
+            type: "GET",
+            dataType: 'html',
+            contentType: 'text/html',
+            data: element.serialize(), 
+            success: function (data) {
+            }
+        });
+    });
 });
