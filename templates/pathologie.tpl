@@ -33,6 +33,6 @@
     </div>
     <h2 class="listeh2">Liste des pathologies</h2>
     <div id="resultat">
-    {include file="pathologieTableau.tpl" argument=$argument.Pathologies}
+    {include file="pathologieTableau.tpl" argument=$argument.liste}
     </div>
 </div>

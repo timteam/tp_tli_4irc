@@ -3,24 +3,32 @@
         <tr>
             <th>Méridien</th>
             <th>Pathologies</th>
+            <th>Symptômes</th>
         </tr>
     </thead>   
     <tfoot>  
-        {foreach from=$argument item=objet}
+        {foreach from=$argument key=meridien item=objet}
         <tr>
-            <td>
-                {$objet->nom}
-                {$nom = $objet->nom}
+            <td rowspan="{$objet|@count} ">
+                {$meridien}
             </td>
-            <td>
-                {foreach from=$objet->desc item=pathologie name=loop}
-                    {if !$smarty.foreach.loop.first}
-                        <span class="separateur">, </span>
-                    {/if} 
-                        {$pathologie|capitalize:false}
-                {/foreach}
-            </td>
-        </tr>
+            {foreach from=$objet key=nom item=patho}
+                {if !$patho@first}
+                  <tr>
+                {/if}
+                    <td>
+                        {$nom}
+                    </td>
+                    <td>
+                        {foreach from=$patho item=symptome}
+                            {$symptome->desc}
+                            {if !$symptome@last}
+                              ,
+                            {/if}
+                        {/foreach}
+                    </td>
+                </tr>
+            {/foreach}
         {/foreach}
     </tfoot>
 </table>
