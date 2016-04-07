@@ -26,10 +26,10 @@ class PathologiesController extends Controller {
         
         
         $allList = array();
-        $meridiensListé = array();
+        $meridiensList = array();
         $listSymp = array();
         $name = null;
-        $i = 0;
+        //$i = 0;
         foreach ($list['Pathologies'] as $value) {
             if($name == null){
                 $name = $value->nom;
@@ -38,31 +38,45 @@ class PathologiesController extends Controller {
                 $allList[$name]= $meridiensList;
                 $name = $value->nom;
                 $meridiensList = array();
-                $i=0;
-                echo('</br>------ Initialisation : ');
+                //$i=0;
+                //echo('</br>------ Initialisation : ');
                 //print($meridiensList);
-                echo(' ---------</br>');
-                echo('</br>------ nom : '.$name.' ---------</br>');
+                //echo(' ---------</br>');
+                //echo('</br>------ nom : '.$name.' ---------</br>');
             }
             
             $idP = $value->idP;
-            echo (' <br> '.$idP.' <br> ');
+            //echo (' <br> '.$idP.' <br> ');
             $listSymp = $DAOS->selectSymptonesByPatho($idP);
-            echo('</br>------ OBJET : ');
-            print_r($listSymp);
-            echo(' ---------</br>');
+            //echo('</br>------ OBJET : ');
+            //print_r($listSymp);
+            //echo(' ---------</br>');
             if($listSymp != null){
                 $meridiensList[$value->idP]= $listSymp;
             }
             
             //print_r($meridiensList);
-            $i++;
+            //$i++;
         }
-         //print_r($allList);
+        
         $allList['Keywords']= $list['Keywords'];
         $allList['Meridiens']= $list['Meridiens'];
         $allList['Pathologies']= $list['Pathologies'];
-        
+        //echo '<br> ----------------- COUCOU ---------------</br> ';
+        //print_r($allList);
         $this->executeMethod($allList, 'pathologie.tpl');   
+    }
+    
+    
+    
+    /**
+     * Pour filtrer la liste des pathos
+     * @param type $listeCodeMeridien
+     * @param type $listeTypePatho
+     * @param type $listeCaractPatho
+     * @param type $listeIdMotCles
+     */
+    public function filtreBy($listeCodeMeridien, $listeTypePatho, $listeCaractPatho, $listeIdMotCles ){
+        
     }
 }
