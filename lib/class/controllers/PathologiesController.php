@@ -14,6 +14,9 @@
 require_once 'Controller.php';
 class PathologiesController extends Controller {
 
+    
+    public $listForTable; 
+    
     public function pathologiesActionGet() {
         require "lib/class/DAO/PathologieDAO.php";
         require "lib/class/DAO/SymptomeDAO.php";
@@ -35,7 +38,7 @@ class PathologiesController extends Controller {
                 $name = $value->nom;
             }
             if(strcmp($name, $value->nom) != 0){
-                $allList[$name]= $meridiensList;
+                $allList['liste'][$name]= $meridiensList;
                 $name = $value->nom;
                 $meridiensList = array();
                 //$i=0;
@@ -64,6 +67,7 @@ class PathologiesController extends Controller {
         $allList['Pathologies']= $list['Pathologies'];
         //echo '<br> ----------------- COUCOU ---------------</br> ';
         //print_r($allList);
+        $this->listForTable = $allList;
         $this->executeMethod($allList, 'pathologie.tpl');   
     }
     
@@ -76,7 +80,20 @@ class PathologiesController extends Controller {
      * @param type $listeCaractPatho
      * @param type $listeIdMotCles
      */
-    public function filtreBy($listeCodeMeridien, $listeTypePatho, $listeCaractPatho, $listeIdMotCles ){
+    public function listePathologiesActionGet($listeCodeMeridien, $listeTypePatho, $listeCaractPatho, $listeIdMotCles ){
+        require "lib/class/DAO/PathologieDAO.php";
+        require "lib/class/DAO/SymptomeDAO.php";
+        require "lib/class/DAO/MeridienDAO.php";
+        require "lib/class/DAO/KeywordsDAO.php";
         
+        $DAO = new PathologieDAO();
+        
+        $listFiltred = array();
+        foreach($listeCodeMeridien as $codeMeridien){
+            
+        }
+        
+        
+        $this->executeMethod($allList, 'pathologie.tpl');   
     }
 }
