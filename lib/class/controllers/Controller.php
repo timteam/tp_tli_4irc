@@ -51,6 +51,9 @@ abstract class Controller {
             }  else {
                 $this->smarty->assign('user',false);
             }
+            $php_self = $_SERVER['PHP_SELF'];
+            $array = explode("index.php", $php_self);
+            $this->smarty->assign('route', $array[0]);
             $this->smarty->assign('argument', $methodDAO);
             $this->smarty->assign('module', $template);
             $this->smarty->display('site.tpl');

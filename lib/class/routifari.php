@@ -72,12 +72,16 @@ class routifari {
                 throw new Exception("aucune route de correspond");
             }
         }catch(Exception $e){
+            
             require_once(SMARTY_DIR . 'Smarty.class.php');
+            $php_self = $_SERVER['PHP_SELF'];
+            $array = explode("index.php", $php_self);
             $this->smarty = new Smarty();
             $this->smarty->template_dir = 'templates/';
             $this->smarty->compile_dir = 'templates_c/';
             $this->smarty->config_dir = 'configs/';
             $this->smarty->cache_dir = 'cache/';
+            $this->smarty->assign('route', $array[0]);
             $this->smarty->assign('argument', null);
             $this->smarty->assign('user',false);
             $this->smarty->assign('module', 'erreur404.tpl');
