@@ -108,11 +108,12 @@ class SessionController extends Controller{
      */
     private function isParametersUserInscription($user, $pass, $email){
         $verificationVide = !empty($user) && !empty($pass) && !empty($email);
-        $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strstr($email, "'") == false;
-        $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false && strstr($email, "\"") == false;
+        $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false && strpos($email, "'") == false;
+        $verificationDoubleCote = strpos($user, "\"") == false && strpos($pass, "\"") == false && strpos($email, "\"") == false;
+        $verificationEspace = strpos($user, "\"") == false && strpos($pass, "\"") == false && strpos($email, "\"") == false;
         $verificationEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
         
-        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail;
+        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEmail && $verificationEspace;
     }
     
     /* Permet de vérifier les paramètres avant la connexion de l'utilisateur
@@ -123,8 +124,9 @@ class SessionController extends Controller{
     private function isParametersUserConnection($user, $pass){
         $verificationVide = !empty($user) && !empty($pass);
         $verificationSimpleCote = strpos($user, "'") == false && strpos($pass, "'") == false;
-        $verificationDoubleCote = strpos($user, "\"") == false && strstr($pass, "\"") == false;
+        $verificationDoubleCote = strpos($user, "\"") == false && strpos($pass, "\"") == false;
+        $verificationEspace = strpos($user, " ") == false && strpos($pass, " ") == false;
         
-        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote;
+        return $verificationVide && $verificationSimpleCote && $verificationDoubleCote && $verificationEspace;
     }
 }

@@ -2,7 +2,7 @@
     <h1>Les pathologies</h1>
     <div class="moteur">
         <h2>Vous recherchez </h2>
-        <form id="formPatho">
+        <form id="formPatho" method="GET" action="liste-pathologies" >
             <select multiple name="meridien" id="meridien">
                 {foreach from=$argument.Meridiens item=objet}
                     <option value="{$objet->code}">{$objet->nom}</option>
@@ -24,7 +24,7 @@
                 <option value="i">interne</option>
                 <option value="e">externe</option>
             </select> 
-            <select multiple name="keyword" id="keyword">
+            <select multiple name="keyword" {if $user == false} class="hide" {else} id="keyword" {/if}>
                 {foreach from=$argument.Keywords item=objet}
                     <option value="{$objet.idK}">{$objet.name}</option>
                 {/foreach}
@@ -33,6 +33,6 @@
     </div>
     <h2 class="listeh2">Liste des pathologies</h2>
     <div id="resultat">
-    {include file="pathologieTableau.tpl" argument=$argument.Pathologies}
+    {include file="pathologieTableau.tpl" argument=$argument.liste}
     </div>
 </div>

@@ -25,32 +25,21 @@ class routifari {
         $this->routes[] = new route('GET', 'HTML', '/erreur404', 'erreur404', 'erreur404'); //shows error404 page
         $this->routes[] = new route('GET', 'HTML', '/', 'home', 'home'); //shows homepage
         $this->routes[] = new route('GET', 'HTML', '/home', 'home', 'home'); //shows homepage
+        $this->routes[] = new route('GET', 'HTML', '/infos', 'infos', 'infos'); //shows info page
         $this->routes[] = new route('GET', 'HTML', '/sessions', 'session', 'session'); //shows login form
         $this->routes[] = new route('POST', 'HTML', '/sessions', 'session', 'session'); //login
         $this->routes[] = new route('DELETE', 'HTML', '/sessions', 'session', 'session'); //logout & redirects to ''
         $this->routes[] = new route('GET', 'HTML', '/users/register', 'session', 'register'); //shows registration form
         $this->routes[] = new route('POST', 'HTML', '/users', 'session', 'register'); //register user to DB
         $this->routes[] = new route('GET', 'HTML,JSON', '/symptomes', 'symptomes', 'symptomes'); //shows symptoms
+        $this->routes[] = new route('GET', 'HTML,JSON', '/liste-pathologies', 'pathologies', 'listePathologies'); //shows array of pathos
         $this->routes[] = new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'); //shows pathos
         $this->routes[] = new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'); //shows méridiens
         $route = new route('GET', 'HTML', '/{number}', 'home', 'home_number'); //shows homepage with a parameter
         $route->addParameterRule('number', '/^[1-9][0-9]*$/'); //integer avec au moins un nombre et ne commencant pas par 0
-        $this->routes[] = $route;
 
-        /**
-         * @Route(
-         *     "articles/{nb=int}/comments",
-         *     defaults={"_format": "html"},
-         *     requirements={
-         *         "_locale": "en|fr",
-         *         "_format": "html|rss",
-         *         "year": "\d+"
-         *     }
-         * )
-         * //GET  /users/xxx                                                      gets and renders current user data in a profile view
-         * //PUT /users/xxx                                                       updates new information about user
-         */
-        //tester que chaque paramètre d'url ait une regex;
+
+        $this->routes[] = $route;
     }
 
     public function launch($requestContentType, $requestMethod, $requestUrl, $parametres) {
@@ -67,12 +56,16 @@ class routifari {
             }
         } catch (Exception $e) {
             require_once(SMARTY_DIR . 'Smarty.class.php');
+            $php_self = $_SERVER['PHP_SELF'];
+            $array = explode("index.php", $php_self);
             $this->smarty = new Smarty();
             $this->smarty->template_dir = 'templates/';
             $this->smarty->compile_dir = 'templates_c/';
             $this->smarty->config_dir = 'configs/';
             $this->smarty->cache_dir = 'cache/';
+            $this->smarty->assign('route', $array[0]);
             $this->smarty->assign('argument', null);
+            $this->smarty->assign('user', false);
             $this->smarty->assign('module', 'erreur404.tpl');
             $this->smarty->display('site.tpl');
         }
@@ -204,9 +197,9 @@ class route {
         //l'url parsée matche parfaitement
         if ($parsedURL == $this->route) {
             return true;
-        } else if(count($parsedURL) != count($this->urlParameters)){
+        } else if (count($parsedURL) != count($this->urlParameters)) {
             return false;
-        }else{
+        } else {
             foreach ($this->urlParameters as $paramPlace => $paramName) {
                 if (isset($parsedURL[$paramPlace])) {
                     foreach ($this->urlParametersRules[$paramPlace][1] as $regex) {

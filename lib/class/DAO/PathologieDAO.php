@@ -85,5 +85,20 @@ class PathologieDAO extends DAO{
     }
     
     
-
+    
+    public function selectPathoByLists($argCodeMeridien, $argTypePatho, $argIdKeyWords) {
+        return ($this->connexion->requeteObjet("SELECT patho.idP, patho.desc, patho.type , meridien.nom FROM acu.patho"
+                                            . " JOIN acu.meridien ON  patho.mer = meridien.code"
+                                            . " JOIN acu.symptPatho ON symptPatho.idP = patho.idP"
+                                            . " JOIN acu.keySympt ON keySympt.idS = symptPatho.idS"
+                                            . " WHERE meridien.code IN (".$argCodeMeridien.")"
+                                            . " OR patho.type IN (".$argTypePatho.")"
+                                            . " OR keySympt.idK IN (".$argIdKeyWords.")"
+                                            . " ORDER BY meridien.nom"));
+    }
+    
+    
+    public function findByTypePatho($arg){
+        return ($this->connexion->requeteObjet("SELECT patho.type FROM acu.patho WHERE patho.type like '" . $arg . "%'"));
+    }
 }

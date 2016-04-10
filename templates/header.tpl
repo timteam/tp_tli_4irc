@@ -11,7 +11,7 @@
                     Bonjour {$user}
                 </div>
                 <div id="logout" class="logout-class" data-href="sessions" data-titre="Déconnexion à Acupuntura">
-                    Déconexion
+                    Déconnexion
                 </div>
             {/if}
             <div id="titre">

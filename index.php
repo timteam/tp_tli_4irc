@@ -1,5 +1,4 @@
 <?php
-define('NB_MINUTES', '30');
 
 debug();
 verifyTimeout();
@@ -55,9 +54,9 @@ function safeParametres($array){
     return $array;
 }
 
-
-
 function verifyTimeout(){
+    define('NB_MINUTES', '30');
+    
     session_start();
     
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > NB_MINUTES*60)) {

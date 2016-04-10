@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Acupunctura - Medecine chinoise millénaire</title>
+    <base href="{$route}" />
     <meta content="Acupunctura - Medecine chinoise millénaire" name="description">
     <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/jquery-ui-git.css">
     <link type="text/css" rel="stylesheet" href="/media/css/select2.min.css">
@@ -14,7 +15,7 @@
   </head>
   <body>
         {include file='header.tpl' user=$user}
-        {include file="$module" argument=$argument}
+        {include file="$module" argument=$argument user=$user}
         {include file='footer.tpl'}
         <div id="popup"></div>
   </body>

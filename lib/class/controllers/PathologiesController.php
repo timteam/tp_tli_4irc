@@ -14,55 +14,114 @@
 require_once 'Controller.php';
 class PathologiesController extends Controller {
 
+    
+    public $listForTable; 
+    
     public function pathologiesActionGet() {
         require "lib/class/DAO/PathologieDAO.php";
-        require "lib/class/DAO/SymptomeDAO.php";
-        $DAO = new PathologieDAO();
-        //print_r($DAO->selectAllforPathologies());
         
+        $DAO = new PathologieDAO();
         $list = $DAO->selectAllforPathologies();
         
+        $allList = array();
+        
+        $allList['liste']= $this->traitement($list['Pathologies']);
+        $allList['Keywords']= $list['Keywords'];
+        $allList['Meridiens']= $list['Meridiens'];
+        $allList['Pathologies']= $list['Pathologies'];
+        $this->listForTable = $allList;
+        $this->executeMethod($allList, 'pathologie.tpl');   
+    }
+    
+    
+    private function traitement($list){
+        require "lib/class/DAO/SymptomeDAO.php";
         $DAOS = new SymptomeDAO();
         
-        
-        $allList = array();
-        $meridiensListé = array();
+        $finalList = array();
+        $meridiensList = array();
         $listSymp = array();
         $name = null;
-        $i = 0;
-        foreach ($list['Pathologies'] as $value) {
+        foreach ($list as $value) {
             if($name == null){
                 $name = $value->nom;
             }
             if(strcmp($name, $value->nom) != 0){
-                $allList[$name]= $meridiensList;
+                $finalList[$name]= $meridiensList;
                 $name = $value->nom;
                 $meridiensList = array();
-                $i=0;
-                echo('</br>------ Initialisation : ');
-                //print($meridiensList);
-                echo(' ---------</br>');
-                echo('</br>------ nom : '.$name.' ---------</br>');
             }
             
             $idP = $value->idP;
-            echo (' <br> '.$idP.' <br> ');
             $listSymp = $DAOS->selectSymptonesByPatho($idP);
-            echo('</br>------ OBJET : ');
-            print_r($listSymp);
-            echo(' ---------</br>');
             if($listSymp != null){
-                $meridiensList[$value->idP]= $listSymp;
+                $meridiensList[$value->desc]= $listSymp;
             }
             
-            //print_r($meridiensList);
-            $i++;
         }
-         //print_r($allList);
-        $allList['Keywords']= $list['Keywords'];
-        $allList['Meridiens']= $list['Meridiens'];
-        $allList['Pathologies']= $list['Pathologies'];
+        return $finalList;
+    }
+    
+    /**
+     * Pour filtrer la liste des pathos
+     * @param type $listeCodeMeridien
+     * @param type $listeTypePatho
+     * @param type $listeCaractPatho
+     * @param type $listeIdMotCles
+     */
+    public function listePathologiesActionGet($listeCodeMeridien, $listeTypePatho, $listeCaractPatho, $listeIdMotCles ){
+        require "lib/class/DAO/PathologieDAO.php";
         
-        $this->executeMethod($allList, 'pathologie.tpl');   
+        $pathologieDAO = new PathologieDAO();
+        
+        $argTypePatho = "";
+        
+        $listType = array();
+        $i = 0;
+        foreach($listeTypePatho as $type){
+            //Si on a sélectionné des caractères on filtre
+            if(count($listeCaractPatho) > 0){
+                
+                foreach($listeCaractPatho as $carac){
+                    $listType[$i] = $type . $carac;
+                    $i++;
+                }
+                
+            //Sinon on récupère tous les champs.
+            }else{
+                $listTemp = $pathologieDAO->findByTypePatho($type);
+                foreach($listTemp as $temp){
+                    $listType[$i] = $temp;
+                    $i++;
+                }
+            } 
+            
+        }
+        $argCodeMeridien = $this->listToString($listeCodeMeridien);
+        $argTypePatho = $this->listToString($listType);
+        $argIdKeyWords = $this->listToString($listeIdMotCles);
+        
+        $listFiltred = array();
+        $listFiltred['Keywords']= $this->listForTable['Keywords'];
+        $listFiltred['Meridiens']= $this->listForTable['Meridiens'];
+        $listFiltred['Pathologies']= $this->listForTable['Pathologies'];
+        $listFiltred['liste']= $pathologieDAO->selectPathoByLists($argCodeMeridien,$argTypePatho,$argIdKeyWords);
+        
+        
+        $this->executeMethod($listFiltred, 'pathologie.tpl');   
+    }
+    
+    
+    public function listToString($list){
+        $listString = "";
+        foreach($code as $list){
+            if(listString == ""){
+                $listString = "'".$code."'";
+            }else{
+                $listString = $listString . ", '".$code."'";
+            }
+        }
+        
+        
     }
 }
