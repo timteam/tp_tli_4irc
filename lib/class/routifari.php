@@ -124,6 +124,8 @@ class route {
                     break;
                 case 'JSON': $this->contentTypes[$key] = 'application/json';
                     break;
+                case 'XML':  $this->contentTypes[$key] = 'text/xml';
+                    break;
                 default:throw new Exception("Format invalide dans la définition des routes");
             }
         }
