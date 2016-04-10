@@ -3,7 +3,7 @@
     <div id="contenuHome">
         <div>
             <div id="imgHomeSommaire">
-                <img src="media/images/acupuncture_th-1.jpg" alt="Acupuncture - sommaire">
+                <img src="/media/images/acupuncture_th-1.jpg" alt="Acupuncture - sommaire">
             </div>
             <div class="summary">
                 <div>Sommaire</div>
@@ -23,7 +23,7 @@
                 Une premi&egrave;re approche
             </h2>
             <div class="contenuImage1">
-                <img src="media/images/acupuncture2.jpg" alt="Acupunture - Une première approche">
+                <img src="/media/images/acupuncture2.jpg" alt="Acupunture - Une première approche">
             </div>
             <p>
                 L&#39;<b>acupuncture</b> est l&#39;une des cinq branches de la <b>M&eacute;decine traditionnelle chinoise</b> (<abbr title="Médecine Traditionnelle Chinoise">MTC</abbr>), avec la di&eacute;t&eacute;tique chinoise, la pharmacop&eacute;e chinoise (herbes m&eacute;dicinales), le massage Tui Na et les exercices &eacute;nerg&eacute;tiques (Qi Gong et Tai-chi). L&rsquo;acupuncture se base sur une approche &eacute;nerg&eacute;tique et holistique. Selon la pens&eacute;e m&eacute;dicale orientale, elle agit sur le Qi (prononcer <i>tchi</i>) qui circule dans le corps par la voie des m&eacute;ridiens. Des aiguilles ins&eacute;r&eacute;es &agrave; la surface de la peau stimulent des points d&rsquo;acupuncture pr&eacute;cis afin de r&eacute;gulariser le Qi ainsi que des fonctions physiologiques, organiques et psychiques cibl&eacute;es. En termes occidentaux, on pourrait dire que cela permet de renforcer les processus d&rsquo;autor&eacute;gulation et de gu&eacute;rison qui se mettent normalement en branle lorsque l&rsquo;organisme subit une agression (caus&eacute;e par un virus, un stress, une blessure, etc.). Il existe une cartographie d&eacute;taill&eacute;e des <b>points d&rsquo;acupuncture</b> et des <b>m&eacute;ridiens</b> ainsi que de leurs r&ocirc;les pour r&eacute;tablir la sant&eacute; et l&rsquo;&eacute;quilibre du patient.

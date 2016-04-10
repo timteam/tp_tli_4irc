@@ -1,6 +1,7 @@
 <?php
+define('NB_MINUTES', '30');
 
-//debug();
+debug();
 verifyTimeout();
 require_once 'lib/class/restafari.php';
 require_once 'lib/class/routifari.php';
@@ -54,7 +55,7 @@ function safeParametres($array){
     return $array;
 }
 
-define('NB_MINUTES', '30');
+
 
 function verifyTimeout(){
     session_start();

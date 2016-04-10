@@ -18,7 +18,7 @@ abstract class Controller {
     private $requestParametres;
     private $urlParametres;
 
-    public function __construct($requestContentType, $parametres) {
+    public function __construct($requestContentType, $parametres, $urlParams) {
         if ($requestContentType == 'text/html') {
             $this->initializeSmarty();
         }
@@ -26,6 +26,7 @@ abstract class Controller {
         //Si même clé dans $getParametres et $postParametres
         //paramètre post écrase paramètre get
         $this->requestParametres = $parametres;
+        $this->urlParametres = $urlParams;
     }
 
     /**
@@ -56,18 +57,17 @@ abstract class Controller {
             $this->smarty->display('site.tpl');
     }
     
-    function getSmarty() {
+    protected function getSmarty() {
         return $this->smarty;
     }
 
-    function getRequestContentType() {
+    protected function getRequestContentType() {
         return $this->requestContentType;
     }
-    function getRequestParametres() {
+    protected function getRequestParametres() {
         return $this->requestParametres;
     }
-
-    function getUrlParametres() {
+    protected function getUrlParametres() {
         return $this->urlParametres;
     }
 }
