@@ -35,10 +35,9 @@ class routifari {
         $this->routes[] = new route('GET', 'HTML,JSON', '/liste-pathologies', 'pathologies', 'listePathologies'); //shows array of pathos
         $this->routes[] = new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'); //shows pathos
         $this->routes[] = new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'); //shows méridiens
-        $route = new route('GET', 'HTML', '/{number}', 'home', 'home_number'); //shows homepage with a parameter
-        $route->addParameterRule('number', '/^[1-9][0-9]*$/'); //integer avec au moins un nombre et ne commencant pas par 0
-
-
+        $route = new route('GET', 'HTML', '/test/{number1}/test/{number2}', 'home', 'home_numbers'); //shows homepage with a parameter
+        $route->addParameterRule('number1', '/^[1-9][0-9]*$/'); //integer avec au moins un nombre et ne commencant pas par 0
+        $route->addParameterRule('number2', '/^[1-9][0-9]*$/');
         $this->routes[] = $route;
     }
 
@@ -106,7 +105,7 @@ class route {
     private $controller; // target controller filename
     private $controllerActionName; // target method name of target controller
     private $urlParametersRules; // associative array: array (parameterName => array(parameterRule))
-    private $urlParameters; // array of url parameters defined between {}. The array key is the place of parameter in url
+    private $urlParametersName; // array of url parameters defined between {}. The array key is the place of parameter in url
     private $urlReqParamsValues; // Url parameters values to return to controllers
 
     public function __construct($method, $contentTypes, $route, $controller, $controllerActionName) {
@@ -136,7 +135,7 @@ class route {
 
     //vient ajouter à la liste des paramètres (urlParameters) l'ensemble des paramètres trouvés entre {}
     private function prepareUrlParameters() {
-        $this->urlParameters = array();
+        $this->urlParametersName = array();
         $parametreName = array();
         //key contient la position du paramètre dans l'url
         foreach ($this->route as $key => $routeElement) {
@@ -144,12 +143,12 @@ class route {
             if (!empty($parametreName[1])) {
                 $this->urlParametersRules[$key] = array($parametreName[1][0], array());
                 //             indice param url     nom paramètre        tableau des regex
-                $this->urlParameters[$key] = $parametreName[1][0];
+                $this->urlParametersName[$key] = $parametreName[1][0];
                 //tableau des noms de paramètres
             }
         }
         //On teste s'il y a des paramètres dupliqués
-        if (!(count($this->urlParameters) == count(array_count_values($this->urlParameters)))) {
+        if (!(count($this->urlParametersName) == count(array_count_values($this->urlParametersName)))) {
             //un des noms de paramètres d'url est dupliqué
             throw new Exception("Au moins un des noms de paramètres d'url est dupliqué dans la définition des routes");
         }
@@ -176,7 +175,7 @@ class route {
     }
 
     public function addParameterRule($parameterName, $regex) {
-        if (!in_array($parameterName, $this->urlParameters)) {
+        if (!in_array($parameterName, $this->urlParametersName)) {
             throw new Exception("Ajout de règle de paramètre impossible: Le nom de la contrainte sur paramètre d'url ne correspond à aucun nom de paramètre d'url");
         }
         foreach ($this->urlParametersRules as $elementPos => $arrayParam) {
@@ -194,31 +193,38 @@ class route {
     }
 
     public function urlMatchesRoute($parsedURL) {
-        //l'url parsée matche parfaitement
-        if ($parsedURL == $this->route) {
-            return true;
-        } else if (count($parsedURL) != count($this->urlParameters)) {
+        if (count($parsedURL) != count($this->route)) {
             return false;
         } else {
-            foreach ($this->urlParameters as $paramPlace => $paramName) {
-                if (isset($parsedURL[$paramPlace])) {
-                    foreach ($this->urlParametersRules[$paramPlace][1] as $regex) {
-                        if (!preg_match($regex, $parsedURL[$paramPlace])) {
+            $this->urlReqParamsValues = array();
+            foreach ($this->route as $pathPlace => $pathElement) {
+                if ($this->routeElementAtPosIsParameter($pathPlace)) {
+                    foreach ($this->urlParametersRules[$pathPlace][1] as $regex) {
+                        if (!preg_match($regex, $parsedURL[$pathPlace])) {
                             return false;
                         }
-                        $this->urlReqParamsValues[$paramName] = $parsedURL[$paramPlace];
                     }
-                    return true;
+                    $this->urlReqParamsValues[$this->urlParametersName[$pathPlace]] = $parsedURL[$pathPlace];
                 } else {
-                    return false;
+                    if (!isset($parsedURL[$pathPlace]) || $pathElement != $parsedURL[$pathPlace]) {
+                        return false;
+                    }
                 }
             }
-            return false;
+            return true;
         }
     }
 
     function getUrlReqParamsValues() {
         return $this->urlReqParamsValues;
+    }
+
+    private function routeElementAtPosIsParameter($pos) {
+        if (isset($this->urlParametersName[$pos]) && $this->urlParametersName[$pos] != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
