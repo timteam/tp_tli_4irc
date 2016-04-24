@@ -18,10 +18,4 @@ class HomeController extends Controller{
         $this->executeMethod(null, 'home.tpl');   
     }
     
-    public function home_numbersActionGet(){
-        $urlParams = $this->getUrlParametres();
-        print_r($urlParams);
-        //$this->executeMethod(null, 'home.tpl'); 
-    }
-    
 }

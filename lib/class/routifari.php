@@ -35,17 +35,37 @@ class routifari {
         $this->routes[] = new route('GET', 'HTML,JSON', '/liste-pathologies', 'pathologies', 'listePathologies'); //shows array of pathos
         $this->routes[] = new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'); //shows pathos
         $this->routes[] = new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'); //shows méridiens
-        $route = new route('GET', 'HTML', '/test/{number1}/test/{number2}', 'home', 'home_numbers'); //shows homepage with a parameter
-        $route->addParameterRule('number1', '/^[1-9][0-9]*$/'); //integer avec au moins un nombre et ne commencant pas par 0
-        $route->addParameterRule('number2', '/^[1-9][0-9]*$/');
+        //addition
+        $route = new route('GET', 'HTML,JSON', '/calculatrice/addition/{number1}/{number2}', 'calculatrice', 'addition');
+        $route->addParameterRule('number1', '/^-?\d{1,15}$/');
+        $route->addParameterRule('number2', '/^-?\d{1,15}$/');
         $this->routes[] = $route;
+        //end addition
+        //soustraction
+        $route = new route('GET', 'HTML,JSON', '/calculatrice/soustraction/{number1}/{number2}', 'calculatrice', 'soustraction');
+        $route->addParameterRule('number1', '/^-?\d{1,15}$/');
+        $route->addParameterRule('number2', '/^-?\d{1,15}$/');
+        $this->routes[] = $route;
+        //end soustraction
+        //multiplication
+        $route = new route('GET', 'HTML,JSON', '/calculatrice/multiplication/{number1}/{number2}', 'calculatrice', 'multiplication');
+        $route->addParameterRule('number1', '/^-?\d{1,15}$/');
+        $route->addParameterRule('number2', '/^-?\d{1,15}$/');
+        $this->routes[] = $route;
+        //end multiplication
+        //division
+        $route = new route('GET', 'HTML,JSON', '/calculatrice/division/{number1}/{number2}', 'calculatrice', 'division');
+        $route->addParameterRule('number1', '/^-?\d{1,15}$/');
+        $route->addParameterRule('number2', '/^-?[1-9]\d{0,15}$/');
+        $this->routes[] = $route;
+        //end division
     }
 
     public function launch($requestContentType, $requestMethod, $requestUrl, $parametres) {
         try {
             $UpRequestMethod = strtoupper($requestMethod);
             $LowRequestContentType = strtolower($requestContentType);
-            $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50)));
+            $parsedURL = array_values(array_filter(explode('/', $requestUrl, 50), 'strlen'));
             $foundRoute = $this->getFirstMatchingRoute($LowRequestContentType, $UpRequestMethod, $parsedURL);
             //La première route correspondante est exécutée
             if (is_null($foundRoute)) {
@@ -124,7 +144,7 @@ class route {
                     break;
                 case 'JSON': $this->contentTypes[$key] = 'application/json';
                     break;
-                case 'XML':  $this->contentTypes[$key] = 'text/xml';
+                case 'XML': $this->contentTypes[$key] = 'text/xml';
                     break;
                 default:throw new Exception("Format invalide dans la définition des routes");
             }
