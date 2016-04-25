@@ -7,6 +7,6 @@
  */
 
 $appConfig = array(
-    "DBPassword" => "",
+    "DBPassword" => "TP-TLI-4IRC",
     "DBport" => "3306"
     );
