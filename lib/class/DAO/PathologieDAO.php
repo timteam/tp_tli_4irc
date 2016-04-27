@@ -98,21 +98,66 @@ class PathologieDAO extends DAO{
     }
     
     
-    public function findByParameters($meridien, $type, $carac, $keyWords){
+    public function findByParameters($meridiens, $types, $caracs, $keyWords){
+        
         $sql = "SELECT patho.idP, patho.desc, patho.type , meridien.nom "
                                         . " FROM acu.patho"
                                         . " JOIN acu.meridien on  patho.mer = meridien.code"
                                         . " JOIN acu.symptPatho ON symptPatho.idP = patho.idP"
                                         . " JOIN acu.keySympt ON keySympt.idS = symptPatho.idS";
+        $sql .= " WHERE 1";
+        if(!empty($meridiens)){
+            $sql .= " and ("; $i = 0;
+            foreach  ($meridiens as $meridien) {
+                if($i != 0)
+                        $sql .= " OR";
+                    
+                $sql .= " patho.mer like '".$meridien."'";
+                $i++;
+            }
+            $sql .= ") ";
+        }
+        
+        if(!empty($types)){
+            $sql .= " and ("; $i = 0;
+            foreach  ($types as $type) {
+                if($i != 0)
+                        $sql .= " OR";
+                    
+                $sql .= " patho.type like '".$type."%'";
+                $i++;
+            }
+            $sql .= ") ";
+        }
+        
+        if(!empty($caracs)){
+            $sql .= " and ("; $i = 0;
+            foreach  ($caracs as $carac) {
+                if($i != 0)
+                        $sql .= " OR";
+                    
+                $sql .= " (patho.type like '%".$carac."%' and patho.type not like '".$carac."%' )";
+                $i++;
+            }
+            $sql .= ") ";
+        }
+        
+        if(!empty($keyWords)){
+            $sql .= " and ("; $i = 0;
+            foreach  ($keyWords as $keyWord) {
+                if($i != 0)
+                        $sql .= " OR";
+                    
+                $sql .= " keySympt.idK = ".$keyWord;
+                $i++;
+            }
+            $sql .= ") ";
+        }
         
         
+        $sql .= " order by meridien.nom";
         
-        $sql = " order by meridien.nom";
-        return ($this->connexion->requeteObjet("SELECT patho.idP, patho.desc, patho.type , meridien.nom "
-                                        . " FROM acu.patho"
-                                        . " JOIN acu.meridien on  patho.mer = meridien.code"
-                                        . " WHERE patho.type like '" . $arg . "%'"
-                                        . " order by meridien.nom"));
+        return ($this->connexion->requeteObjet($sql));
     }
     
 }

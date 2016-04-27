@@ -57,6 +57,7 @@ class PathologiesController extends Controller {
                 $meridiensList[$value->desc] = $listSymp;
             }
         }
+        $finalList[$name] = $meridiensList;
         return $finalList;
     }
 
@@ -112,14 +113,18 @@ class PathologiesController extends Controller {
         }
         
         $retourRequete = $pathologieDAO->findByParameters($listeCodeMeridien, $listeType, $listeCaracteristiques, $listeKeyWords);
-        
+
         $liste = array();
         if(is_array($retourRequete)){
             $liste = $retourRequete;
         }else{
             $liste[0] = $retourRequete;
         }
-        $this->executeMethod($this->traitement($liste), 'pathologieTableau.tpl');
+        if(empty($liste[0])){
+            echo "<p>Aucune photologie ne correspond à votre recherche.</p>";
+        }else{
+            $this->executeAjax($this->traitement($liste), 'pathologieTableau.tpl');
+        }
     }
 
     public function listToString($list) {

@@ -78,6 +78,11 @@ $(document).ready(function () {
     
     $("#formPatho").change("input,select",function () {
         element = $(this);
+        var loader = "<div id='loader'><img src='/media/images/ring.gif' alt='loader'></div>";
+        $("#resultat").fadeOut(function () {
+            $("#resultat").html(loader);
+        });
+        $("#resultat").fadeIn();
         $.ajax({
             url: element.attr('action'),
             type: "GET",
@@ -85,7 +90,10 @@ $(document).ready(function () {
             contentType: 'text/html',
             data: element.serialize(), 
             success: function (data) {
-                $("#resultat").html(data);
+                $("#resultat").fadeOut(function () {
+                    $("#resultat").html(data);
+                    $("#resultat").fadeIn();
+                });
             }
         });
     });

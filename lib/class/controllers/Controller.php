@@ -59,6 +59,15 @@ abstract class Controller {
             $this->smarty->assign('module', $template);
             $this->smarty->display('site.tpl');
     }
+
+    /**
+     * Execute la méthode choisit
+     * @param type $methodDAO =  
+     */
+    protected function executeAjax($argument, $template) {
+            $this->smarty->assign('argument', $argument);
+            $this->smarty->display($template);
+    }
     
     protected function getSmarty() {
         return $this->smarty;
