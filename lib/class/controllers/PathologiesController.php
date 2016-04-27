@@ -69,166 +69,57 @@ class PathologiesController extends Controller {
      */
     public function listePathologiesActionGet() {
         require "lib/class/DAO/PathologieDAO.php";
-        //index pour ajouter des éléments 
-        $index = 0;
-        //Liste à retourner
-        $liste = array();
         //Initialiser base
         $pathologieDAO = new PathologieDAO();
         
         $requestParametres = $this->getRequestParametres();
-        $listTemp = array();
+        $listeCodeMeridien = array();
         if (isset($requestParametres['meridien'])){
-            $listeCodeMeridien = $requestParametres['meridien'];
-            
-            
-        }
-        
-        
-        //Pour les types
-        
-        
-        if(isset($requestParametres['type'])){
-            $retourTypePatho = $requestParametres['type'];
-            //S'il y a des caractéristiques.
-            if(isset($requestParametres['caracteristique'])){
-                $retourCaractPatho = $requestParametres['caracteristique'];
-                //S'il n'y a qu'un seul type 
-                if(!is_array($retourTypePatho)){
-                    $listeTypePatho = array();
-                    $listeTypePatho[0] = $retourTypePatho;
-                //Sinon
-                }else{
-                    $listeTypePatho = $retourTypePatho;
-                }
-                
-                //S'il n'y a qu'une seule caracteristique
-                if(!is_array($retourCaractPatho)){
-                    $listeCaractPatho = array();
-                    $listeCaractPatho[0] = $retourCaractPatho;
-                //Sinon
-                }else{
-                    $listeCaractPatho = $retourCaractPatho;
-                }
-                
-                // Traitement pour fusionner les 2 chaines
-                foreach ($listeTypePatho as $type) {
-                    foreach ($listeCaractPatho as $carac) {
-                        $listType[$i] = $type . $carac;
-                        $i++;
-                    }
-                }
-                
-                //Traitement SQL
-                foreach ($listType as $typeComplet) {
-                    $retourRequete = $pathologieDAO->findByTypePatho($typeComplet);
-                    $listTemp = array();
-                    if(is_array($retourRequete)){
-                        $listTemp = $retourRequete;
-                    }else{
-                        $listTemp[0] = $retourRequete;
-                    }
-                    
-                    foreach ($listTemp as $t){
-                        //Ajoute mon élément
-                        $liste[$index] = $t;
-                        $index++;
-                    }
-                }
-                
-            //Ou non
+            $retourRequete = $requestParametres['meridien'];
+            if(is_array($retourRequete)){
+                $listeCodeMeridien = $retourRequete;
             }else{
-                //S'il n'y a qu'un seul type 
-                if(!is_array($retourTypePatho)){
-                    $listeTypePatho = array();
-                    $listeTypePatho[0] = $retourTypePatho;
-                //Sinon
-                }else{
-                    $listeTypePatho = $retourTypePatho;
-                }
-                foreach ($listeTypePatho as $typeTemp) {
-                    $retourRequete = $pathologieDAO->findByTypePatho($typeTemp);
-                    if(!is_array($retourRequete)){
-                        $listTemp[0] = $retourRequete;
-                    }else{
-                        $listTemp = $retourRequete;
-                    }
-                    
-                    foreach ($listTemp as $temp) {
-                        $liste[$index] = $temp;
-                        $index++;
-                    }
-                    
-                }
+                $listeCodeMeridien[0] = $retourRequete;
             }
         }
-        elseif(isset($requestParametres['caracteristique'])){
-            $retourCaractPatho = $requestParametres['caracteristique'];
-            //S'il n'y a qu'une seule caracteristique
-            if(!is_array($retourCaractPatho)){
-                $listeCaractPatho = array();
-                $listeCaractPatho[0] = $retourCaractPatho;
-            //Sinon
+        
+        $listeType = array();
+        if (isset($requestParametres['type'])){
+            $retourRequete = $requestParametres['type'];
+            if(is_array($retourRequete)){
+                $listeType = $retourRequete;
             }else{
-                $listeCaractPatho = $retourCaractPatho;
-            }
-            
-            foreach ($listeCaractPatho as $carac) {
-                $retourRequete = $pathologieDAO->findByTypePatho($type);
-                if(is_array($retourRequete)){
-                    $listType[$i] = $retourRequete;
-                }else{
-                   foreach ($listTemp as $temp) {
-                    $listType[$i] = $temp;
-                    $i++;
-                   }
-                } 
+                $listeType[0] = $retourRequete;
             }
         }
-        
-        
-        
-        if(isset($requestParametres['caracteristique'])){
-            $listeCaractPatho = $requestParametres['caracteristique'];
-        }
-        if(isset($requestParametres['keyword'])){
-            $listeIdMotCles = $requestParametres['keyword'];
-        }
-        
-/*
-        $argTypePatho = "";
-
-        $listType = array();
-        $i = 0;
-        
-        foreach ($listeTypePatho as $type) {
-            
-            //Si on a sélectionné des caractères on filtre
-            if (count($listeCaractPatho) > 0) {
-
-                foreach ($listeCaractPatho as $carac) {
-                    $listType[$i] = $type . $carac;
-                    $i++;
-                }
-
-                //Sinon on récupère tous les champs.
-            } else {
-                $listTemp = $pathologieDAO->findByTypePatho($type);
-                foreach ($listTemp as $temp) {
-                    $listType[$i] = $temp;
-                    $i++;
-                }
+        $listeCaracteristiques= array();
+        if (isset($requestParametres['caracteristique'])){
+            $retourRequete = $requestParametres['caracteristique'];
+            if(is_array($retourRequete)){
+                $listeCaracteristiques = $retourRequete;
+            }else{
+                $listeCaracteristiques[0] = $retourRequete;
             }
         }
-        $argCodeMeridien = $this->listToString($listeCodeMeridien);
-        $argTypePatho = $this->listToString($listType);
-        $argIdKeyWords = $this->listToString($listeIdMotCles);
-
-        $listFiltred = array();
-        $listFiltred['liste'] = $pathologieDAO->selectPathoByLists($argCodeMeridien, $argTypePatho, $argIdKeyWords);
-
-*/
-        $this->executeMethod(traitement($liste), 'pathologieTableau.tpl');
+        $listeKeyWords = array();
+        if (isset($requestParametres['keyword'])){
+            $retourRequete = $requestParametres['keyword'];
+            if(is_array($retourRequete)){
+                $listeKeyWords = $retourRequete;
+            }else{
+                $listeKeyWords[0] = $retourRequete;
+            }
+        }
+        
+        $retourRequete = $pathologieDAO->findByParameters($listeCodeMeridien, $listeType, $listeCaracteristiques, $listeKeyWords);
+        
+        $liste = array();
+        if(is_array($retourRequete)){
+            $liste = $retourRequete;
+        }else{
+            $liste[0] = $retourRequete;
+        }
+        $this->executeMethod($this->traitement($liste), 'pathologieTableau.tpl');
     }
 
     public function listToString($list) {
