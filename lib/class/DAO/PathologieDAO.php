@@ -99,6 +99,15 @@ class PathologieDAO extends DAO{
     
     
     public function findByParameters($meridien, $type, $carac, $keyWords){
+        $sql = "SELECT patho.idP, patho.desc, patho.type , meridien.nom "
+                                        . " FROM acu.patho"
+                                        . " JOIN acu.meridien on  patho.mer = meridien.code"
+                                        . " JOIN acu.symptPatho ON symptPatho.idP = patho.idP"
+                                        . " JOIN acu.keySympt ON keySympt.idS = symptPatho.idS";
+        
+        
+        
+        $sql = " order by meridien.nom";
         return ($this->connexion->requeteObjet("SELECT patho.idP, patho.desc, patho.type , meridien.nom "
                                         . " FROM acu.patho"
                                         . " JOIN acu.meridien on  patho.mer = meridien.code"
