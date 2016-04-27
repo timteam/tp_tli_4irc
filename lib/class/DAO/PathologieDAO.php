@@ -98,7 +98,12 @@ class PathologieDAO extends DAO{
     }
     
     
-    public function findByTypePatho($arg){
-        return ($this->connexion->requeteObjet("SELECT patho.type FROM acu.patho WHERE patho.type like '" . $arg . "%'"));
+    public function findByParameters($meridien, $type, $carac, $keyWords){
+        return ($this->connexion->requeteObjet("SELECT patho.idP, patho.desc, patho.type , meridien.nom "
+                                        . " FROM acu.patho"
+                                        . " JOIN acu.meridien on  patho.mer = meridien.code"
+                                        . " WHERE patho.type like '" . $arg . "%'"
+                                        . " order by meridien.nom"));
     }
+    
 }
