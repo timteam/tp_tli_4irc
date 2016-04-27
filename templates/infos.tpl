@@ -18,7 +18,6 @@
 
     <div id="webographie">
         <ul>
-            <li>Page Wikipédia de l'acupunture : <a href="http://www.passeportsante.net/fr/Therapies/Guide/Fiche.aspx?doc=acupuncture_th" title="PasseportSante.net" accesskey="&">http://passeportsante.net/</a></li>
             <li>Utilisation des champs Select2 de JQuery : <a href="https://select2.github.io/" title="Select2" accesskey="2">https://select2.github.io/</a></li>
             <li>Utilisation de la machine virtuelle Lubuntu : <a href="http://lubuntu.net" title="Lubuntu" accesskey="3">http://lubuntu.net</a></li>
             <li>Site PHP.net : <a href="http://php.net" title="PHP" accesskey="5">http://php.net</a></li>
