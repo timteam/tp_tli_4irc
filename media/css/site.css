@@ -172,7 +172,7 @@ hr{
 #popup{
     display: none;
 }
- .ui-widget-header  {
+.ui-widget-header  {
     background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #df020b 0%, #e00707 51%) repeat scroll 0 0;
     border: medium none #941818;
 }
@@ -255,7 +255,7 @@ header #join,header #login, header #logout{
     border-radius: 20px;
     height: 33px;
     width: 220px;
-    
+
 }
 
 
@@ -286,7 +286,7 @@ header #join,header #login, header #logout{
     background-color: #EDD0D3;
     list-style-type: square;
     list-style-position: inside;
-    padding: 8px 20px 30px 10px;
+    padding: 8px 20px 20px 10px;
 }
 #contenuHome .summary ul li {
     margin: 0;
@@ -382,7 +382,7 @@ img.img-rounded{
     border-radius: 150px;
     -webkit-border-radius: 150px;
     -moz-border-radius: 150px;
-    
+
 }
 
 #auteurs{
@@ -410,11 +410,76 @@ img.img-rounded{
 /* Media Queries */
 
 @media print {
-  header, footer, #imgHomeSommaire, .ui-dialog {
-    display:none !important;
-  }
-  body {
-    font-size:100%;
-    color:black;
-  }
+    header, footer, #imgHomeSommaire, .ui-dialog {
+        display:none !important;
+    }
+    body {
+        font-size:100%;
+        color:black;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    header{
+        background-image:none;
+        background-size: 100% auto;
+        height: auto;
+        position: relative;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    header>*{
+        margin-left: 0px;
+        display: block;
+        clear:both;
+    }
+    
+    #navigation{
+        padding-bottom: 8px;
+    }
+    #navigation img{
+        display: none;
+    }
+    .contenuImage1{
+            width:50%;
+    height:50%;
+    }
+#contenuHome .summary {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+    #titre{
+        display: block;
+    }
+    header #login, header #join,header #logout,header #loginOn{
+        display:block;
+        clear:both;
+        width: 100%;
+        border-radius: 5px 5px 5px 5px;
+        margin: 1px;
+    }
+
+    #navigation nav ul li{
+        padding: 15px 10px 0;
+        display: block;
+    }
+
+    #navigation nav ul li a{
+        margin: 0 10px;
+        color: #000;
+        border-bottom: #df020b solid medium;
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    #navigation nav ul li a:hover{
+        color: #df020b;
+    }
+    
+    #imgHomeSommaire{
+        display: none;
+    }
+
 }
