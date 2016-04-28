@@ -188,6 +188,21 @@ h2{
     margin-bottom:15px;
 }
 
+[role="tooltip"] {
+    display: none;
+    padding: 0.25em;
+    margin: 0;
+    border-style:solid;
+    border-color: #df020b;
+    color: #df020b;
+    width: 100%;
+}
+
+input:focus + [role="tooltip"] {
+	display: block;
+	top: 100%;
+}
+
 #loader{
     width: 100%;
 }
