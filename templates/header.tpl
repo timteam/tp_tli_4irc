@@ -1,4 +1,5 @@
        <header>
+           <div id="loginBlock">
             {if $user == false}
                 <div id="join" class="ajax-popup" data-href="sessions" data-titre="Connexion à Acupuntura">
                     Connexion
@@ -14,6 +15,7 @@
                     Déconnexion
                 </div>
             {/if}
+           </div>
             <div id="titre">
                 ACUPUNTURA
             </div>
