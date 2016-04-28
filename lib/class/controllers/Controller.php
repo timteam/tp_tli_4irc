@@ -46,18 +46,18 @@ abstract class Controller {
      * @param type $methodDAO =  
      */
     protected function executeMethod($methodDAO, $template) {
-            //$_SESSION['user']
-            if(isset($_SESSION['user'])){
-                $this->smarty->assign('user', $_SESSION['user']);
-            }  else {
-                $this->smarty->assign('user',false);
-            }
-            $php_self = $_SERVER['PHP_SELF'];
-            $array = explode("index.php", $php_self);
-            $this->smarty->assign('route', $array[0]);
-            $this->smarty->assign('argument', $methodDAO);
-            $this->smarty->assign('module', $template);
-            $this->smarty->display('site.tpl');
+        //$_SESSION['user']
+        if (isset($_SESSION['user'])) {
+            $this->smarty->assign('user', $_SESSION['user']);
+        } else {
+            $this->smarty->assign('user', false);
+        }
+        $php_self = $_SERVER['PHP_SELF'];
+        $array = explode("index.php", $php_self);
+        $this->smarty->assign('route', $array[0]);
+        $this->smarty->assign('argument', $methodDAO);
+        $this->smarty->assign('module', $template);
+        $this->smarty->display('site.tpl');
     }
 
     /**
@@ -65,10 +65,10 @@ abstract class Controller {
      * @param type $methodDAO =  
      */
     protected function executeAjax($argument, $template) {
-            $this->smarty->assign('argument', $argument);
-            $this->smarty->display($template);
+        $this->smarty->assign('argument', $argument);
+        $this->smarty->display($template);
     }
-    
+
     protected function getSmarty() {
         return $this->smarty;
     }
@@ -76,10 +76,13 @@ abstract class Controller {
     protected function getRequestContentType() {
         return $this->requestContentType;
     }
+
     protected function getRequestParametres() {
         return $this->requestParametres;
     }
+
     protected function getUrlParametres() {
         return $this->urlParametres;
     }
+
 }

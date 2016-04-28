@@ -32,8 +32,8 @@ class routifari {
         $this->routes[] = new route('GET', 'HTML', '/users/register', 'session', 'register'); //shows registration form
         $this->routes[] = new route('POST', 'HTML', '/users', 'session', 'register'); //register user to DB
         $this->routes[] = new route('GET', 'HTML,JSON', '/symptomes', 'symptomes', 'symptomes'); //shows symptoms
-        $this->routes[] = new route('GET', 'HTML,JSON', '/liste-pathologies', 'pathologies', 'listePathologies'); //shows array of pathos
-        $this->routes[] = new route('GET', 'HTML,JSON', '/pathologies', 'pathologies', 'pathologies'); //shows pathos
+        $this->routes[] = new route('GET', 'HTML,XML,JSON', '/liste-pathologies', 'pathologies', 'listePathologies'); //shows array of pathos
+        $this->routes[] = new route('GET', 'HTML,XML,JSON', '/pathologies', 'pathologies', 'pathologies'); //shows pathos
         $this->routes[] = new route('GET', 'JSON', '/meridiens', 'meridiens', 'meridiens'); //shows méridiens
         //addition
         $route = new route('GET', 'HTML,JSON', '/calculatrice/addition/{number1}/{number2}', 'calculatrice', 'addition');

@@ -30,7 +30,25 @@ class PathologiesController extends Controller {
         $allList['Meridiens'] = $list['Meridiens'];
         $allList['Pathologies'] = $list['Pathologies'];
         $this->listForTable = $allList;
-        $this->executeMethod($allList, 'pathologie.tpl');
+        if ($this->getRequestContentType() == "text/xml") {
+            $this->pathosToXml($allList['Pathologies']);
+            // return XML representation
+        } else {
+            $this->executeMethod($allList, 'pathologie.tpl');
+        }
+    }
+
+    private function pathosToXml($pathosList) {
+        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><pathologies/>');
+
+        foreach ($pathosList as $key1 => $value1) {
+            $patho = $xml->addChild('patho');
+            foreach($value1 as $key2 => $value2){
+                $patho->addChild($key2, htmlspecialchars($value2));
+            }
+        }
+        Header('Content-type: text/xml');
+        print($xml->asXML());
     }
 
     private function traitement($list) {
@@ -72,57 +90,57 @@ class PathologiesController extends Controller {
         require "lib/class/DAO/PathologieDAO.php";
         //Initialiser base
         $pathologieDAO = new PathologieDAO();
-        
+
         $requestParametres = $this->getRequestParametres();
         $listeCodeMeridien = array();
-        if (isset($requestParametres['meridien'])){
+        if (isset($requestParametres['meridien'])) {
             $retourRequete = $requestParametres['meridien'];
-            if(is_array($retourRequete)){
+            if (is_array($retourRequete)) {
                 $listeCodeMeridien = $retourRequete;
-            }else{
+            } else {
                 $listeCodeMeridien[0] = $retourRequete;
             }
         }
-        
+
         $listeType = array();
-        if (isset($requestParametres['type'])){
+        if (isset($requestParametres['type'])) {
             $retourRequete = $requestParametres['type'];
-            if(is_array($retourRequete)){
+            if (is_array($retourRequete)) {
                 $listeType = $retourRequete;
-            }else{
+            } else {
                 $listeType[0] = $retourRequete;
             }
         }
-        $listeCaracteristiques= array();
-        if (isset($requestParametres['caracteristique'])){
+        $listeCaracteristiques = array();
+        if (isset($requestParametres['caracteristique'])) {
             $retourRequete = $requestParametres['caracteristique'];
-            if(is_array($retourRequete)){
+            if (is_array($retourRequete)) {
                 $listeCaracteristiques = $retourRequete;
-            }else{
+            } else {
                 $listeCaracteristiques[0] = $retourRequete;
             }
         }
         $listeKeyWords = array();
-        if (isset($requestParametres['keyword'])){
+        if (isset($requestParametres['keyword'])) {
             $retourRequete = $requestParametres['keyword'];
-            if(is_array($retourRequete)){
+            if (is_array($retourRequete)) {
                 $listeKeyWords = $retourRequete;
-            }else{
+            } else {
                 $listeKeyWords[0] = $retourRequete;
             }
         }
-        
+
         $retourRequete = $pathologieDAO->findByParameters($listeCodeMeridien, $listeType, $listeCaracteristiques, $listeKeyWords);
 
         $liste = array();
-        if(is_array($retourRequete)){
+        if (is_array($retourRequete)) {
             $liste = $retourRequete;
-        }else{
+        } else {
             $liste[0] = $retourRequete;
         }
-        if(empty($liste[0])){
+        if (empty($liste[0])) {
             echo "<p>Aucune photologie ne correspond à votre recherche.</p>";
-        }else{
+        } else {
             $this->executeAjax($this->traitement($liste), 'pathologieTableau.tpl');
         }
     }

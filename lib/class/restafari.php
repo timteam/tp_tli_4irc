@@ -22,13 +22,17 @@ class restafari {
         if (!isset($_SERVER["CONTENT_TYPE"])) {
             return $defaultValue;
         }
-        $contentType = strtolower(filter_input(INPUT_SERVER, 'CONTENT_TYPE', FILTER_SANITIZE_ENCODED));
+        $contentType = strtolower($_SERVER["CONTENT_TYPE"]);
 
         switch ($contentType) {
             case 'text/html':
                 return $contentType;
             case 'application/json':
                 return $contentType;
+            case 'text/xml':
+                return $contentType;
+            case 'application/xml':
+                return 'text/xml';
             default:
                 return $defaultValue;
         }
