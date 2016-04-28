@@ -8,9 +8,11 @@
     <link type="text/css" rel="stylesheet" href="/media/css/jquery-ui-git.css">
     <link type="text/css" rel="stylesheet" href="/media/css/select2.min.css">
     <link type="text/css" rel="stylesheet" href="/media/css/site.css">
+    <link type="text/css" rel="stylesheet" href="/media/css/jquery.dataTables.min.css">
     <script  type="text/javascript" charset="UTF-8" src="/media/javascript/jquery-1.12.0.min.js"></script>
     <script  type="text/javascript" charset="UTF-8" src="/media/javascript/jquery-ui.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/media/javascript/select2.full.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/media/javascript/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/media/javascript/site.js"></script>
   </head>
   <body>
