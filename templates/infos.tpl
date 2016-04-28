@@ -30,6 +30,6 @@
 
     <h2>Sources</h2>
     <p>
-        <a href="media/sources/sources.zip">Sources.zip</a>
+        <a href="media/sources/sources.zip" title="Source du site">Sources.zip</a>
     </p>
 </div>

@@ -8,12 +8,12 @@
             <div class="summary">
                 <div>Sommaire</div>
                 
-                    <ul>
-                        <li><a href="#titre1" accesskey="1">Une premi&egrave;re approche</a></li>
-                        <li><a href="#titre2" accesskey="2">La premi&egrave;re consultation</a></li>
-                        <li><a href="#titre3" accesskey="3">Du picotement &agrave; la relaxation profonde</a></li>
-                        <li><a href="#titre4" accesskey="4">Il n&rsquo;y a pas que les aiguilles</a></li>
-                        <li><a href="#titre5" accesskey="5">Un long parcours vers l&rsquo;Occident</a></li>
+                    <ul role="menubar">
+                        <li><a href="#titre1" accesskey="1"  role="menuitem" title="Une première approche">Une premi&egrave;re approche</a></li>
+                        <li><a href="#titre2" accesskey="2"  role="menuitem" title="La premi&egrave;re consultation">La premi&egrave;re consultation</a></li>
+                        <li><a href="#titre3" accesskey="3"  role="menuitem" title="Du picotement &agrave; la relaxation profonde">Du picotement &agrave; la relaxation profonde</a></li>
+                        <li><a href="#titre4" accesskey="4"  role="menuitem" title="Il n&rsquo;y a pas que les aiguilles">Il n&rsquo;y a pas que les aiguilles</a></li>
+                        <li><a href="#titre5" accesskey="5"  role="menuitem" title="Un long parcours vers l&rsquo;Occident">Un long parcours vers l&rsquo;Occident</a></li>
                     </ul>
                 
             </div>
@@ -79,7 +79,7 @@
                 La <b>m&eacute;decine chinoise</b> aurait vu le jour il y a 6&nbsp;000&nbsp;ans. Ce sont les J&eacute;suites qui, les premiers, ont ramen&eacute; de Chine des &eacute;crits sur l&#39;<b>acupuncture</b> &agrave; la fin du XVII<sup>e</sup>&nbsp;si&egrave;cle. Au d&eacute;but du XIX<sup>e</sup>&nbsp;si&egrave;cle, en France, de grands noms de la m&eacute;decine s&#39;y int&eacute;ress&egrave;rent. C&rsquo;est toutefois sous l&#39;impulsion de Georges Souli&eacute; de Morant (1878-1955), consul de France &agrave; P&eacute;kin pendant plus de 12&nbsp;ans, que l&#39;acupuncture prit un essor consid&eacute;rable en Europe &agrave; partir des ann&eacute;es&nbsp;1920.
             </p>
             <p>
-                Au Qu&eacute;bec, l&rsquo;acupuncture a graduellement &eacute;t&eacute; introduite par l&#39;interm&eacute;diaire de praticiens europ&eacute;ens. Elle y est une profession officiellement reconnue depuis&nbsp;1985. Aux &Eacute;tats-Unis ce n&rsquo;est qu&rsquo;en&nbsp;1972 que l&#39;approche a retenu l&rsquo;attention du public &agrave; la suite du voyage historique du pr&eacute;sident Nixon en Chine. En&nbsp;1997, l&rsquo;acupuncture a &eacute;t&eacute; officiellement reconnue comme une option th&eacute;rapeutique <b>s&eacute;curitaire</b> et <b>efficace</b> dans le traitement de certaines affections lors d&rsquo;une conf&eacute;rence organis&eacute;e par les National Institutes of Health<sup>1,2</sup> am&eacute;ricains.
+                Au Qu&eacute;bec, l&rsquo;acupuncture a graduellement &eacute;t&eacute; introduite par l&#39;interm&eacute;diaire de praticiens europ&eacute;ens. Elle y est une profession officiellement reconnue depuis&nbsp;1985. Aux &Eacute;tats-Unis ce n&rsquo;est qu&rsquo;en&nbsp;1972 que l&#39;approche a retenu l&rsquo;attention du public &agrave; la suite du voyage historique du pr&eacute;sident Nixon en Chine. En&nbsp;1997, l&rsquo;acupuncture a &eacute;t&eacute; officiellement reconnue comme une option th&eacute;rapeutique <b>s&eacute;curitaire</b> et <b>efficace</b> dans le traitement de certaines affections lors d&rsquo;une conf&eacute;rence organis&eacute;e par les National Institutes of Health am&eacute;ricains.
             </p>
         </div>
     </div>

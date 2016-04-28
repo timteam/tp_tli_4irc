@@ -13,49 +13,49 @@ and open the template in the editor.
     font-family: "Lato";
     font-style: normal;
     font-weight: 300;
-    src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+    src: local("Lato Light"), local("Lato-Light"), url("../css/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 300;
-    src: local("Lato Light"), local("Lato-Light"), url("https://fonts.gstatic.com/s/lato/v11/EsvMC5un3kjyUhB9ZEPPwg.woff2") format("woff2");
+    src: local("Lato Light"), local("Lato-Light"), url("../css/font/EsvMC5un3kjyUhB9ZEPPwg.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
-    src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/UyBMtLsHKBKXelqf4x7VRQ.woff2") format("woff2");
+    src: local("Lato Regular"), local("Lato-Regular"), url("../css/font/UyBMtLsHKBKXelqf4x7VRQ.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
-    src: local("Lato Regular"), local("Lato-Regular"), url("https://fonts.gstatic.com/s/lato/v11/1YwB1sO8YE1Lyjf12WNiUA.woff2") format("woff2");
+    src: local("Lato Regular"), local("Lato-Regular"), url("../css/font/1YwB1sO8YE1Lyjf12WNiUA.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 700;
-    src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+    src: local("Lato Bold"), local("Lato-Bold"), url("../css/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 700;
-    src: local("Lato Bold"), local("Lato-Bold"), url("https://fonts.gstatic.com/s/lato/v11/H2DMvhDLycM56KNuAtbJYA.woff2") format("woff2");
+    src: local("Lato Bold"), local("Lato-Bold"), url("../css/font/H2DMvhDLycM56KNuAtbJYA.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 900;
-    src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/R4a6fty3waPci7C44H8AjvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
+    src: local("Lato Black"), local("Lato-Black"), url("../css/font/R4a6fty3waPci7C44H8AjvY6323mHUZFJMgTvxaG2iE.woff2") format("woff2");
 }
 @font-face {
     font-family: "Lato";
     font-style: normal;
     font-weight: 900;
-    src: local("Lato Black"), local("Lato-Black"), url("https://fonts.gstatic.com/s/lato/v11/tI4j516nok_GrVf4dhunkg.woff2") format("woff2");
+    src: local("Lato Black"), local("Lato-Black"), url("../css/font/tI4j516nok_GrVf4dhunkg.woff2") format("woff2");
 }
 
 *, *::after, *::before {
@@ -77,7 +77,7 @@ body{
 body>*{
 }
 header{
-    background-image: url("../images/test2.jpg");
+    background-image: url("../images/header.jpg");
     background-position: center top;
     background-size: 100% auto;
     height: 175px;
@@ -394,8 +394,8 @@ img.img-rounded{
 }
 
 #auteurs ul li{
-    margin:0px 40px 20px 40px;
-    width:150px;
+    margin:0px 20px 20px 40px;
+    width:180px;
     padding: 15px 10px 0px 10px;
     display: inline-block;
     list-style:none;

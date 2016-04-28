@@ -19,13 +19,16 @@ class BaseDonnee {
         private $user = "root"; //donnez le nom d'utilisateur de la bd (probablement "root")
         private $port;
         
+        private $db;
+        
+        
+        
         public function __construct(){
             include 'configs/config.php';
             $this->pass = $appConfig['DBPassword'];
             $this->port = $appConfig['DBport'];
         }
         
-
         public function getDB(){
                 $db = null;
                 try{
@@ -65,6 +68,31 @@ class BaseDonnee {
                 //prepare la requete
                 try{
                     $sth = $db->prepare($sql);
+                    //execute la requete
+                    if(!$sth->execute()){
+                        return false;
+                    }
+                    
+                    //transforme les occurences en liste d'objets
+                    while(($result = $sth->fetch(PDO::FETCH_OBJ)) != null){
+                        $resu[] = $result;
+                    }
+                }
+                catch(Exception $e){
+                    die('Erreur : ' . $e->getMessage());
+                }
+                return $resu;
+        }
+        
+        /**
+         * 
+         * @param type $sth
+         * @return boolean
+         */
+        public function requeteObjetPrepare($sth){
+                $resu = null;
+                //prepare la requete
+                try{
                     //execute la requete
                     if(!$sth->execute()){
                         return false;
