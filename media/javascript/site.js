@@ -11,6 +11,7 @@ $(document).ready(function () {
     $("#caracteristique").select2({
         placeholder: "Caractéristiques"
     });
+    //$("#tableauPatho").DataTable();
     
     $("#popup").dialog({
         autoOpen: false,
