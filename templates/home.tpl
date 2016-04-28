@@ -7,7 +7,7 @@
             </div>
             <div class="summary">
                 <div>Sommaire</div>
-                <nav>
+                
                     <ul>
                         <li><a href="#titre1" accesskey="1">Une premi&egrave;re approche</a></li>
                         <li><a href="#titre2" accesskey="2">La premi&egrave;re consultation</a></li>
@@ -15,7 +15,7 @@
                         <li><a href="#titre4" accesskey="4">Il n&rsquo;y a pas que les aiguilles</a></li>
                         <li><a href="#titre5" accesskey="5">Un long parcours vers l&rsquo;Occident</a></li>
                     </ul>
-                </nav>
+                
             </div>
         </div>
         <div class="clear">
