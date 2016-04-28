@@ -81,8 +81,9 @@ $(document).ready(function () {
         var loader = "<div id='loader'><img src='media/images/ring.gif' alt='loader'></div>";
         $("#resultat").fadeOut(function () {
             $("#resultat").html(loader);
+            $("#resultat").fadeIn();
         });
-        $("#resultat").fadeIn();
+        
         $.ajax({
             url: element.attr('action'),
             type: "GET",
