@@ -44,7 +44,7 @@ class SessionController extends Controller{
         $array = $DAO->selectUserWithName($login);
         if ($array == null) {
             echo "Le pseudonyme n'existe pas.";
-        } else if (password_verify($pass, $array[0]["password"])) {
+        } else if (password_verify($pass, $array[0]->password)) {
             if (!isset($_SESSION['user']) && !empty($_SESSION['user'])) {
                 echo "TO FIX : Problème modification \$_SESSION['user'] : " + $_SESSION['user'];
             } else {

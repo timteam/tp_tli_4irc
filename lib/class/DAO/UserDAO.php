@@ -25,17 +25,26 @@ class UserDAO extends DAO{
     }
     
     public function selectAll() {
-        return ($connexion->requete("SELECT * FROM acu.user"));
+        return ($this->connexion->requete("SELECT * FROM acu.user"));
     }
 
     public function selectById($id) {
-        return ($this->connexion->requete("SELECT * FROM acu.user WHERE idU = $id"));
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("SELECT * FROM acu.user WHERE idU = :id");
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
     
     public function insertUser($user, $password, $email){
         $array = array();
-        $result = $this->connexion->requeteObjet("INSERT INTO acu.user (name, password, email) VALUES (\"$user\", \"$password\", \"$email\")");
-        if(!$result){
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("INSERT INTO acu.user (name, password, email) VALUES ( :user, :password, :email)");
+        $sth->bindParam(':user', $user, PDO::PARAM_STR, 20);
+        $sth->bindParam(':password', $password, PDO::PARAM_STR, 255);
+        $sth->bindParam(':email', $email, PDO::PARAM_STR, 50);
+        $result = $this->connexion->requeteObjetPrepare($sth);
+        
+        if(isset($result) && !$result){
             $array["user"] = null;
             $array["message"] = "Erreur : Le pseudonyme est déjà utilisé";
         }
@@ -49,6 +58,9 @@ class UserDAO extends DAO{
     }
     
     public function selectUserWithName($user){
-        return ($this->connexion->requete("SELECT * FROM acu.user WHERE name = \"$user\""));
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("SELECT * FROM acu.user WHERE name = :user");
+        $sth->bindParam(':user', $user, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
 }

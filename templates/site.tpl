@@ -2,9 +2,9 @@
 <html lang="fr">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Acupunctura - Medecine chinoise millénaire</title>
+    <title>Acupunctura - Médecine chinoise millénaire</title>
     <base href="{$route}" />
-    <meta content="Acupunctura - Medecine chinoise millénaire" name="description">
+    <meta content="Acupunctura - Médecine chinoise millénaire" name="description">
     <link type="text/css" rel="stylesheet" href="/media/css/jquery-ui-git.css">
     <link type="text/css" rel="stylesheet" href="/media/css/select2.min.css">
     <link type="text/css" rel="stylesheet" href="/media/css/site.css">
