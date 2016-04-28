@@ -15,7 +15,11 @@ class KeywordsDAO extends DAO{
     }
 
     public function selectById($id) {
-        return ($this->connexion->requete("SELECT * FROM acu.keywords WHERE idK = "+$id));
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("SELECT * FROM acu.keywords WHERE idK = :id");
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
+    
 
 }

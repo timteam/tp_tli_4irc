@@ -17,7 +17,6 @@ require_once 'MeridienDAO.php';
 require_once 'KeywordsDAO.php';
 
 class PathologieDAO extends DAO{
-    
     function __construct() {
         try {
             
@@ -33,7 +32,10 @@ class PathologieDAO extends DAO{
     }
 
     public function selectById($id) {
-        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho WHERE idP = $id"));
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("SELECT * FROM acu.patho WHERE idP = :id");
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
     
     /**
@@ -42,9 +44,11 @@ class PathologieDAO extends DAO{
      * @return type liste de symptones qui est en générale unique
      */
     public function selectPathoByIdSymptome($id){
-        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho p where p.idP in (
-                                        select idP from acu.symptPatho sp where sp.idS = "
-                                        + $id +")"));
+        $db = $this->connexion->getDB();
+        $sth = $db->prepare("SELECT * FROM acu.patho p where p.idP in (
+                                        select idP from acu.symptPatho sp where sp.idS = :id)");
+        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
     
     /**
@@ -60,9 +64,12 @@ class PathologieDAO extends DAO{
         $parameters = $parameters->substr($parameters,0,2);
         $parameters = $parameters + ")";
         
-        return ($this->connexion->requeteObjet("SELECT * FROM acu.patho p where p.idP in (
-                                        select idP from acu.symptPatho sp where sp.idS in ("
-                                        + $parameters +"))"));
+        $db = $this->connexion;
+        $sth = $db->prepare("SELECT * FROM acu.patho p where p.idP in (
+                                        select idP from acu.symptPatho sp where sp.idS in (:parameters))");
+        $sth->bindParam(':parameters', $parameters, PDO::PARAM_INT);
+        
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
     
     
@@ -87,14 +94,20 @@ class PathologieDAO extends DAO{
     
     
     public function selectPathoByLists($argCodeMeridien, $argTypePatho, $argIdKeyWords) {
-        return ($this->connexion->requeteObjet("SELECT patho.idP, patho.desc, patho.type , meridien.nom FROM acu.patho"
+        //prepare la requete
+        $db = $this->connexion;
+        $sth = $db->prepare("SELECT patho.idP, patho.desc, patho.type , meridien.nom FROM acu.patho"
                                             . " JOIN acu.meridien ON  patho.mer = meridien.code"
                                             . " JOIN acu.symptPatho ON symptPatho.idP = patho.idP"
                                             . " JOIN acu.keySympt ON keySympt.idS = symptPatho.idS"
-                                            . " WHERE meridien.code IN (".$argCodeMeridien.")"
-                                            . " OR patho.type IN (".$argTypePatho.")"
-                                            . " OR keySympt.idK IN (".$argIdKeyWords.")"
-                                            . " ORDER BY meridien.nom"));
+                                            . " WHERE meridien.code IN ( :argCodeMeridien )"
+                                            . " OR patho.type IN ( :argTypePatho )"
+                                            . " OR keySympt.idK IN ( :argIdKeyWords )"
+                                            . " ORDER BY meridien.nom");
+        $sth->bindParam(':argCodeMeridien', $argCodeMeridien, PDO::PARAM_STR, 5);
+        $sth->bindParam(':argTypePatho', $argTypePatho, PDO::PARAM_STR, 10);
+        $sth->bindParam(':argIdKeyWords', $argIdKeyWords, PDO::PARAM_INT);
+        return ($this->connexion->requeteObjetPrepare($sth));
     }
     
     
