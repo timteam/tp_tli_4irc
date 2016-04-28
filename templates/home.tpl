@@ -8,12 +8,12 @@
             <div class="summary">
                 <div>Sommaire</div>
                 
-                    <ul>
-                        <li><a href="#titre1" accesskey="1">Une premi&egrave;re approche</a></li>
-                        <li><a href="#titre2" accesskey="2">La premi&egrave;re consultation</a></li>
-                        <li><a href="#titre3" accesskey="3">Du picotement &agrave; la relaxation profonde</a></li>
-                        <li><a href="#titre4" accesskey="4">Il n&rsquo;y a pas que les aiguilles</a></li>
-                        <li><a href="#titre5" accesskey="5">Un long parcours vers l&rsquo;Occident</a></li>
+                    <ul role="menubar">
+                        <li><a href="#titre1" accesskey="1"  role="menuitem">Une premi&egrave;re approche</a></li>
+                        <li><a href="#titre2" accesskey="2"  role="menuitem">La premi&egrave;re consultation</a></li>
+                        <li><a href="#titre3" accesskey="3"  role="menuitem">Du picotement &agrave; la relaxation profonde</a></li>
+                        <li><a href="#titre4" accesskey="4"  role="menuitem">Il n&rsquo;y a pas que les aiguilles</a></li>
+                        <li><a href="#titre5" accesskey="5"  role="menuitem">Un long parcours vers l&rsquo;Occident</a></li>
                     </ul>
                 
             </div>
