@@ -23,7 +23,7 @@
             <div id="navigation">
                 <nav>
                     <ul>
-                        <li><img alt="Accueil" src="http://www.medecinechinoise.org/images/pagode.png"><a href="home">Accueil</a></li>
+                        <li><img alt="Accueil" src="/media/images/pagode.png"><a href="home">Accueil</a></li>
                         <li><a href="pathologies">Les pathologies</a></li>
                         <li><a href="infos">Informations</a></li>
                     </ul>
