@@ -1,4 +1,5 @@
        <header>
+           <div id="loginBlock">
             {if $user == false}
                 <div id="join" class="ajax-popup" data-href="sessions" data-titre="Connexion à Acupuntura">
                     Connexion
@@ -14,6 +15,7 @@
                     Déconnexion
                 </div>
             {/if}
+           </div>
             <div id="titre">
                 ACUPUNTURA
             </div>
@@ -23,7 +25,7 @@
             <div id="navigation">
                 <nav>
                     <ul>
-                        <li><img alt="Accueil" src="http://www.medecinechinoise.org/images/pagode.png"><a href="home">Accueil</a></li>
+                        <li><img alt="Accueil" src="/media/images/pagode.png"><a href="home">Accueil</a></li>
                         <li><a href="pathologies">Les pathologies</a></li>
                         <li><a href="infos">Informations</a></li>
                     </ul>

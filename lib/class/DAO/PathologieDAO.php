@@ -133,10 +133,13 @@ class PathologieDAO extends DAO{
         
         if(!empty($types)){
             $sql .= " and ("; $i = 0;
+            $zu = 0;
             foreach  ($types as $type) {
                 if($i != 0)
                         $sql .= " OR";
                     
+                if($type == 'tf')
+                        $zu = 1;
                 $sql .= " patho.type like '".$type."%'";
                 $i++;
             }
@@ -148,8 +151,15 @@ class PathologieDAO extends DAO{
             foreach  ($caracs as $carac) {
                 if($i != 0)
                         $sql .= " OR";
-                    
-                $sql .= " (patho.type like '%".$carac."%' and patho.type not like '".$carac."%' )";
+                
+                // resolution du problème du type fu-zang avec la caracteristique 
+                if(isset($zu) && $zu == 0 && $carac == 'f'){
+                    $sql .= " (patho.type like '%".$carac."%' and patho.type not like '".$carac."%' and patho.type not like 'tf%')";
+                }elseif($carac == 'f'){
+                    $sql .= " (patho.type like 'tf%f%' or (patho.type like '%f%' and patho.type not like 'tf%') )";
+                }else{
+                    $sql .= " (patho.type like '%".$carac."%' and patho.type not like '".$carac."%' )";
+                }
                 $i++;
             }
             $sql .= ") ";
