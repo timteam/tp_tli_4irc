@@ -8,14 +8,11 @@
     </thead>   
     <tbody>  
         {foreach from=$argument key=meridien item=objet}
-        <tr>
-            <td rowspan="{$objet|@count} ">
-                {$meridien}
-            </td>
             {foreach from=$objet key=nom item=patho}
-                {if !$patho@first}
                   <tr>
-                {/if}
+                    <td>
+                        {$meridien}
+                    </td>
                     <td>
                         {$nom}
                     </td>

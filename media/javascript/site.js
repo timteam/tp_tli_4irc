@@ -11,7 +11,23 @@ $(document).ready(function () {
     $("#caracteristique").select2({
         placeholder: "Caractéristiques"
     });
-    //$("#tableauPatho").DataTable();
+    $("#tableauPatho").DataTable({bFilter: false, bInfo: false,
+            "oLanguage": { "sProcessing":   "Traitement en cours...",
+               "sLengthMenu":   "Afficher _MENU_ éléments",
+           "sZeroRecords":  "Aucun élément à afficher",
+           "sInfo": "Affichage de l'élement _START_ à _END_ sur _TOTAL_ éléments",
+           "sInfoEmpty": "Affichage de l'élement 0 à 0 sur 0 éléments",
+           "sInfoFiltered": "(filtré de _MAX_ éléments au total)",
+           "sInfoPostFix":  "",
+           "sSearch":       "Rechercher:",
+           "sUrl":          "",
+           "oPaginate": {
+            "sFirst":    "Premier",
+            "sPrevious": "Précédent",
+            "sNext":     "Suivant",
+            "sLast":     "Dernier"
+               }
+            } } );
     
     $("#popup").dialog({
         autoOpen: false,
@@ -79,7 +95,7 @@ $(document).ready(function () {
     
     $("#formPatho").change("input,select",function () {
         element = $(this);
-        var loader = "<div id='loader'><img src='media/images/ring.gif' alt='loader'></div>";
+        var loader = "<div id='loader'><img src='/media/images/ring.gif' alt='loader'></div>";
         $("#resultat").fadeOut(function () {
             $("#resultat").html(loader);
             $("#resultat").fadeIn();
@@ -94,7 +110,25 @@ $(document).ready(function () {
             success: function (data) {
                 $("#resultat").fadeOut(function () {
                     $("#resultat").html(data);
-                    $("#resultat").fadeIn();
+                    $("#resultat").fadeIn(function () {
+                        $("#tableauPatho").DataTable({bFilter: false, bInfo: false,
+                                "oLanguage": { "sProcessing":   "Traitement en cours...",
+                                   "sLengthMenu":   "Afficher _MENU_ éléments",
+                               "sZeroRecords":  "Aucun élément à afficher",
+                               "sInfo": "Affichage de l'élement _START_ à _END_ sur _TOTAL_ éléments",
+                               "sInfoEmpty": "Affichage de l'élement 0 à 0 sur 0 éléments",
+                               "sInfoFiltered": "(filtré de _MAX_ éléments au total)",
+                               "sInfoPostFix":  "",
+                               "sSearch":       "Rechercher:",
+                               "sUrl":          "",
+                               "oPaginate": {
+                                "sFirst":    "Premier",
+                                "sPrevious": "Précédent",
+                                "sNext":     "Suivant",
+                                "sLast":     "Dernier"
+                                   }
+                            }});
+                    });
                 });
             }
         });
