@@ -78,7 +78,7 @@ $(document).ready(function () {
     
     $("#formPatho").change("input,select",function () {
         element = $(this);
-        var loader = "<div id='loader'><img src='/media/images/ring.gif' alt='loader'></div>";
+        var loader = "<div id='loader'><img src='media/images/ring.gif' alt='loader'></div>";
         $("#resultat").fadeOut(function () {
             $("#resultat").html(loader);
             $("#resultat").fadeIn();
