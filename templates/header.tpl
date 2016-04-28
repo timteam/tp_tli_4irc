@@ -25,9 +25,9 @@
             <div id="navigation">
                 <nav>
                     <ul role="menubar">
-                        <li><img alt="Accueil" src="/media/images/pagode.png"><a href="home" role="menuitem" >Accueil</a></li>
-                        <li><a href="pathologies" role="menuitem" >Les pathologies</a></li>
-                        <li><a href="infos" role="menuitem" >Informations</a></li>
+                        <li><img alt="Accueil" src="/media/images/pagode.png"><a href="home" role="menuitem" title="Accueil" >Accueil</a></li>
+                        <li><a href="pathologies" role="menuitem" title="Les pathologies" >Les pathologies</a></li>
+                        <li><a href="infos" role="menuitem" title="Informations" >Informations</a></li>
                     </ul>
                 </nav>
             </div>
