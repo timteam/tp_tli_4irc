@@ -39,7 +39,7 @@ class PathologiesController extends Controller {
     }
 
     private function pathosToXml($pathosList) {
-        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><pathologies/>');
+        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><pathologies/>');
 
         foreach ($pathosList as $key1 => $value1) {
             $patho = $xml->addChild('patho');
