@@ -25,12 +25,12 @@ class UserDAO extends DAO{
     }
     
     public function selectAll() {
-        return ($this->connexion->requete("SELECT * FROM acu.user"));
+        return ($this->connexion->requete("SELECT * FROM acu.User"));
     }
 
     public function selectById($id) {
         $db = $this->connexion->getDB();
-        $sth = $db->prepare("SELECT * FROM acu.user WHERE idU = :id");
+        $sth = $db->prepare("SELECT * FROM acu.User WHERE idU = :id");
         $sth->bindParam(':id', $id, PDO::PARAM_INT);
         return ($this->connexion->requeteObjetPrepare($sth));
     }
@@ -38,7 +38,7 @@ class UserDAO extends DAO{
     public function insertUser($user, $password, $email){
         $array = array();
         $db = $this->connexion->getDB();
-        $sth = $db->prepare("INSERT INTO acu.user (name, password, email) VALUES ( :user, :password, :email)");
+        $sth = $db->prepare("INSERT INTO acu.User (name, password, email) VALUES ( :user, :password, :email)");
         $sth->bindParam(':user', $user, PDO::PARAM_STR, 20);
         $sth->bindParam(':password', $password, PDO::PARAM_STR, 255);
         $sth->bindParam(':email', $email, PDO::PARAM_STR, 50);
@@ -59,7 +59,7 @@ class UserDAO extends DAO{
     
     public function selectUserWithName($user){
         $db = $this->connexion->getDB();
-        $sth = $db->prepare("SELECT * FROM acu.user WHERE name = :user");
+        $sth = $db->prepare("SELECT * FROM acu.User WHERE name = :user");
         $sth->bindParam(':user', $user, PDO::PARAM_INT);
         return ($this->connexion->requeteObjetPrepare($sth));
     }
